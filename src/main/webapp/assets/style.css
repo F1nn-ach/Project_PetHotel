@@ -1,0 +1,59 @@
+@charset "UTF-8";
+body {
+    font-family: 'Nunito', sans-serif;
+    background-color: #f8f9fa;
+    margin: 0;
+    padding: 0;
+}
+
+.container {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 20px;
+}
+
+header.banner {
+    background-color: #d74e8c;
+    color: white;
+    padding: 20px;
+    text-align: center;
+    border-radius: 10px;
+}
+
+header.banner h1 {
+    margin: 0;
+    font-size: 2.5em;
+}
+
+header.banner p {
+    font-size: 1.2em;
+}
+
+section.services, section.contact {
+    margin-top: 30px;
+    padding: 20px;
+    background-color: #fff;
+    border-radius: 10px;
+    box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.1);
+}
+
+section h2 {
+    color: #c43b7a;
+    font-size: 2em;
+    margin-bottom: 10px;
+}
+
+section ul {
+    list-style-type: disc;
+    padding-left: 20px;
+}
+
+section ul li {
+    font-size: 1.1em;
+    margin-bottom: 10px;
+}
+
+section.contact p {
+    font-size: 1.1em;
+    margin-bottom: 5px;
+}
