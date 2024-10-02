@@ -32,6 +32,8 @@
             <p>เบอร์โทร: 02-123-4567</p>
             <p>อีเมล: info@petshotel.com</p>
         </section>
+        
+        <div>ไม่เท่ไปแก้</div>
     </div>
 </body>
 </html>
