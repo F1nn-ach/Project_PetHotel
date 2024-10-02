@@ -12,5 +12,10 @@ public class PetHotelController {
 	public String loadIndexPage() {
 		return "index";
 	}
+	
+	@RequestMapping(value = "/login-admin", method = RequestMethod.GET)
+	public String loadAdminLoginPage() {
+		return "adminLogin";
+	}
 
 }
