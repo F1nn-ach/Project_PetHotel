@@ -33,7 +33,5 @@
             <p>อีเมล: info@petshotel.com</p>
         </section>
     </div>
-    
-    <p>Eiei</p>
 </body>
 </html>
