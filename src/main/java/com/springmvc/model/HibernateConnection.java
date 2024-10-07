@@ -22,7 +22,7 @@ public class HibernateConnection {
 		Configuration cfg = new Configuration()
 							.setProperties(database)
 							.addPackage("com.springmvc.model")
-							.addAnnotatedClass(User.class);
+							.addAnnotatedClass(Owner.class);
 		StandardServiceRegistryBuilder ssrb = new StandardServiceRegistryBuilder().applySettings(cfg.getProperties());
 		sessionFactory = cfg.buildSessionFactory(ssrb.build());
 		return sessionFactory;

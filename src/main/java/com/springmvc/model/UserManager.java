@@ -9,15 +9,15 @@ import org.hibernate.SessionFactory;
 import org.hibernate.Transaction;
 
 public class UserManager {
-	public User getLogin(String email, String password) {
-	    User user = null;
+	public Owner getLogin(String email, String password) {
+	    Owner user = null;
 	    SessionFactory sessionFactory = HibernateConnection.doHibernateConnection();
 	    Session session = sessionFactory.openSession();
 	    Transaction tx = null;
 	    
 	    try {
 	        tx = session.beginTransaction();
-	        user = session.createQuery("from User where email = :email and password = :password", User.class)
+	        user = session.createQuery("from User where email = :email and password = :password", Owner.class)
                     .setParameter("email", email)
                     .setParameter("password", password)
                     .uniqueResult();
@@ -35,7 +35,7 @@ public class UserManager {
 	}
 
 
-	public boolean saveUser(User s) {
+	public boolean saveUser(Owner s) {
 		try {
 			SessionFactory sessionFactory = HibernateConnection.doHibernateConnection();
 			Session session = sessionFactory.openSession();

@@ -9,7 +9,7 @@ import javax.persistence.Table;
 
 @Entity
 @Table(name = "users")
-public class User {
+public class Owner {
 	@Id
 	@Column(name = "email", length = 100, nullable = false)
 	private String email;
@@ -32,7 +32,7 @@ public class User {
 	@Column(name = "pic_url", length = 300, nullable = false)
 	private String pic_url;
 
-	public User() {
+	public Owner() {
 		super();
 		// TODO Auto-generated constructor stub
 	}
