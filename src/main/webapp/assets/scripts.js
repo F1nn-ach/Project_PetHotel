@@ -1,4 +1,3 @@
-
 function isValidated(frm) {
 	var reguxEmail = /^[\w-\.]+@([\w-]+\.)+[\w-]{2,4}$/;
 	if (!reguxEmail.test(frm.email.value.trim())) {
