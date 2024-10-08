@@ -35,7 +35,7 @@ public class Owner {
 
 	@Column(name = "owner_url", length = 300, nullable = false)
 	private String pic_url;
-	
+
 	@OneToMany(cascade = CascadeType.ALL, fetch = FetchType.EAGER)
 	@JoinColumn(name = "owner_email")
 	private List<Pet> pets = new ArrayList<Pet>();
@@ -45,5 +45,16 @@ public class Owner {
 		// TODO Auto-generated constructor stub
 	}
 
+	public Owner(String email, String phoneNumber, String firstname, String lastname, String username, String password,
+			String pic_url) {
+		super();
+		this.email = email;
+		this.phoneNumber = phoneNumber;
+		this.firstname = firstname;
+		this.lastname = lastname;
+		this.username = username;
+		this.password = password;
+		this.pic_url = pic_url;
+	}
 
 }

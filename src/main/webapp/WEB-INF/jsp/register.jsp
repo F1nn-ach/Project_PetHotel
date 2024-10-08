@@ -13,19 +13,19 @@
         <form action="register.jsp" method="post">
             <!-- ชื่อจริง -->
             <div class="form-floating mb-3">
-                <input type="text" class="form-control" id="firstName" name="firstName" placeholder="Firstname" required>
+                <input type="text" class="form-control" name="firstName" placeholder="Firstname" required>
                 <label for="firstName">ชื่อจริง</label>
             </div>
             
             <!-- นามสกุล -->
             <div class="form-floating mb-3">
-                <input type="text" class="form-control" id="lastName" name="lastName" placeholder="Lastname" required>
+                <input type="text" class="form-control" name="lastName" placeholder="Lastname" required>
                 <label for="lastName">นามสกุล</label>
             </div>
             
             <!-- ชื่อผู้ใช้ -->
             <div class="form-floating mb-3">
-                <input type="text" class="form-control" id="username" name="username" placeholder="Username" required>
+                <input type="text" class="form-control" name="username" placeholder="Username" required>
                 <label for="username">ชื่อผู้ใช้</label>
             </div>
             
@@ -37,20 +37,20 @@
             
             <!-- เบอร์โทรศัพท์ -->
             <div class="form-floating mb-3">
-                <input type="tel" class="form-control" id="phone" name="phone" placeholder="Phone Number" pattern="[0-9]{10}" required>
+                <input type="tel" class="form-control" name="phone" placeholder="Phone Number" pattern="[0-9]{10}" required>
                 <label for="phone">เบอร์โทรศัพท์</label>
             </div>
             
             <!-- รหัสผ่าน -->
             <div class="form-floating mb-3">
-                <input type="password" class="form-control" id="password" name="password" placeholder="Password" minlength="6" required>
+                <input type="password" class="form-control" name="password" placeholder="Password" minlength="6" required>
                 <label for="password">รหัสผ่าน</label>
             </div>
             
             <!-- URL -->
             <div class="form-floating mb-3">
-                <input type="url" class="form-control" id="website" name="website" placeholder="Website URL">
-                <label for="website">เว็บไซต์ (ถ้ามี)</label>
+                <input type="url" class="form-control" name="url" placeholder="Website URL">
+                <label for="url">เว็บไซต์ (ถ้ามี)</label>
             </div>
             
             <!-- ปุ่ม Submit -->
