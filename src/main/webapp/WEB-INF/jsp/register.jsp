@@ -9,6 +9,7 @@
 <body>
 	<div class="container">
 		<h2>ลงทะเบียนผู้ใช้ใหม่</h2>
+		<small style="color: red">${err_msg}</small>
 		<form action="register" name="frm" method="post">
 			<div>
 				<label for="firstName">ชื่อจริง</label>

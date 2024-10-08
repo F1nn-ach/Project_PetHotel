@@ -18,25 +18,25 @@ public class Owner {
 	@Column(name = "owner_email", length = 100, nullable = false)
 	private String email;
 
-	@Column(name = "owner_phonenumber", length = 100, nullable = false)
+	@Column(name = "owner_phonenumber", length = 10, nullable = false)
 	private String phoneNumber;
 
-	@Column(name = "owner_firstname", length = 100, nullable = false)
+	@Column(name = "owner_firstname", length = 50, nullable = false)
 	private String firstname;
 
-	@Column(name = "owner_lastname", length = 100, nullable = false)
+	@Column(name = "owner_lastname", length = 50, nullable = false)
 	private String lastname;
 
-	@Column(name = "owner_username", length = 100, nullable = false)
+	@Column(name = "owner_username", length = 50, nullable = false)
 	private String username;
 
 	@Column(name = "owner_password", length = 100, nullable = false)
 	private String password;
 
-	@Column(name = "owner_url", length = 300, nullable = false)
+	@Column(name = "owner_url", length = 200, nullable = false)
 	private String pic_url;
 
-	@Column(name = "owner_role", length = 300, nullable = false)
+	@Column(name = "owner_role", length = 15, nullable = false)
 	private String role;
 
 	@OneToMany(cascade = CascadeType.ALL, fetch = FetchType.EAGER)
