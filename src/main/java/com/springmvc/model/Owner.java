@@ -35,6 +35,9 @@ public class Owner {
 
 	@Column(name = "owner_url", length = 300, nullable = false)
 	private String pic_url;
+	
+	@Column(name = "owner_role", length = 300, nullable = false)
+	private String role;
 
 	@OneToMany(cascade = CascadeType.ALL, fetch = FetchType.EAGER)
 	@JoinColumn(name = "owner_email")
