@@ -8,7 +8,7 @@ import org.hibernate.Session;
 import org.hibernate.SessionFactory;
 import org.hibernate.Transaction;
 
-public class UserManager {
+public class HotelManager {
 	public Owner getLogin(String email, String password) {
 	    Owner user = null;
 	    SessionFactory sessionFactory = HibernateConnection.doHibernateConnection();
