@@ -3,23 +3,26 @@
 <!DOCTYPE html>
 <html>
 <head>
-<meta charset="UTF-8">
-<title>เข้าสู่ระบบ</title>
+	<meta charset="UTF-8">
+	<title>เข้าสู่ระบบ</title>
+	<script src="assets/scripts.js"></script>
 </head>
 <body>
 	<div class="container">
 		<h3>เข้าสู่ระบบผู้ใช้</h3>
+		<small style="color: red">${err_msg}</small>
 		<section>
 			<div>
 				<label for="name">Email:</label>
-				<input type="email" name="email">
+				<input type="email" name="email" required>
+				<small id="err_email" style="color: red;"></small>
 			</div>
 			<div>
 				<label for="passwprd">Password:</label>
-				<input type="password" name="pwd">
+				<input type="password" name="password" required>
 			</div>
 			<div>
-				<button type="submit">Login</button> <button type="reset">Cancel</button>
+				<button type="submit" onClick="return isValidated(this.form)">Login</button>&nbsp;<button type="reset">Cancel</button>
 			</div>
 		</section>
 	</div>
