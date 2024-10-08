@@ -19,11 +19,6 @@ public class HomeController {
 	public String loadIndexPage() {
 		return "index";
 	}
-	
-	@RequestMapping(value = "/login", method = RequestMethod.GET)
-	public String loadLoginPage() {
-		return "login";
-	}
 
 	@RequestMapping(value = "/register", method = RequestMethod.GET)
 	public String loadRegisterPage() {
@@ -44,8 +39,7 @@ public class HomeController {
 		HotelManager hm = new HotelManager();
 		boolean result = hm.saveOwner(owner);
 		if(result) {
-			ModelAndView mav = new ModelAndView("login");
-			return mav;
+			return new ModelAndView("login");
 		} else {
 			ModelAndView mav = new ModelAndView("register");
 			mav.addObject("err_msg", "ไม่สามารถสมัครข้อมูลได้ กรุณาลองใหม่อีกครั้ง");
@@ -54,4 +48,14 @@ public class HomeController {
 		
 	}
 	
+	@RequestMapping(value = "/login", method = RequestMethod.GET)
+	public String loadLoginPage() {
+		return "login";
+	}
+	
+	@RequestMapping(value = "/login", method = RequestMethod.POST)
+	public ModelAndView loginController() {
+		ModelAndView mav = new ModelAndView("/index");
+		return mav;
+	}
 }
