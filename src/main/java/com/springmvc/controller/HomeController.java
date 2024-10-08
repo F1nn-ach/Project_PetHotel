@@ -5,6 +5,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.servlet.ModelAndView;
 
+import com.springmvc.model.HotelManager;
 import com.springmvc.model.Owner;
 
 import jakarta.servlet.http.HttpServletRequest;
@@ -23,8 +24,13 @@ public class HomeController {
 	public String loadLoginPage() {
 		return "login";
 	}
-	
+
 	@RequestMapping(value = "/register", method = RequestMethod.GET)
+	public String loadRegisterPage() {
+		return "register";
+	}
+	
+	@RequestMapping(value = "/register", method = RequestMethod.POST)
 	public ModelAndView registerController(HttpServletRequest request, HttpSession session) {
 		String email = request.getParameter("email");
 		String firstname = request.getParameter("firstname");
@@ -35,13 +41,17 @@ public class HomeController {
 		String url = request.getParameter("url");
 		
 		Owner owner = new Owner(email, phone, firstname, lastname, username, password, url);
-		ModelAndView mav = new ModelAndView("login");
-		return mav;
-	}
-
-	@RequestMapping(value = "/register", method = RequestMethod.GET)
-	public String loadRegisterPage() {
-		return "register";
+		HotelManager hm = new HotelManager();
+		boolean result = hm.saveOwner(owner);
+		if(result) {
+			ModelAndView mav = new ModelAndView("login");
+			return mav;
+		} else {
+			ModelAndView mav = new ModelAndView("register");
+			mav.addObject("err_msg", "ไม่สามารถสมัครข้อมูลได้ กรุณาลองใหม่อีกครั้ง");
+			return mav;
+		}
+		
 	}
 	
 }
