@@ -55,10 +55,9 @@
                 <div class="service">
                     <ul>
                         <li>ดูแล</li>
-                        <li>วิ่งเล่น</li>
-                        <li>ความสะอาด</li>
-                        <li>ฝึกอบรม</li>
-                        <li>การพยาบาล</li>
+                        <li>อาหาร</li>
+                        <li>สุขภาพ</li>
+                        <li>เล่น</li>
                     </ul>
                 </div>
             </section>
