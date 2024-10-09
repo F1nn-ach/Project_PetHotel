@@ -8,9 +8,9 @@ import org.hibernate.cfg.Configuration;
  
 public class HibernateConnection {
 	public static SessionFactory sessionFactory;
-	static String url = "jdbc:mysql://localhost:33091/it311?characterEncoding=UTF-8"; 
-	static String uname = "project";
-	static String pwd = "password";
+	static String url = "jdbc:mysql://localhost:3306/it311?characterEncoding=UTF-8"; 
+	static String uname = "root";
+	static String pwd = "1234";
 	public static SessionFactory doHibernateConnection(){
 		Properties database = new Properties();
 		database.setProperty("hibernate.hbm2ddl.auto", "update"); //หลังจากสร้างตารางแล้วให้เอาออก
