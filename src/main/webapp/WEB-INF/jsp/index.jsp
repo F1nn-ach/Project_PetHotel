@@ -14,20 +14,22 @@
         <div class="header">
             <header>
                 <div class="Title">
-                    <img alt="Logo" src="/assets/logo.png">
+                    <img alt="Logo" src="assets/img/logo.png">
                     <h1>Pet Harmony</h1>
                 </div>
                 <div class="nav-head">
                     <nav>
-                        <a href="#home" class="home">Home</a>
-                        <a href="#service" class="service">Service</a>
-                        <a href="#about" class="about">About</a>
-                        <a href="#contact" class="contact">Contact</a>
+                    	<div class="main-nav">
+                    		<a href="#home" class="home">Home</a>
+	                        <a href="#service" class="service">Service</a>
+	                        <a href="#about" class="about">About</a>
+	                        <a href="#contact" class="contact">Contact</a>
+                    	</div>
+                        <div class="sub-nav">
+		                    <a href="login">Login</a>
+		                    <a href="register">Sign-up</a>
+		                </div>
                     </nav>
-                </div>
-                <div class="link-header">
-                    <a href="login">Login</a>
-                    <a href="register">Sign-up</a>
                 </div>
                 <div class="sub-header">
                     <h3>สัตว์เลี้ยงมีความสุข มนุษย์ก็มีความสุข</h3>

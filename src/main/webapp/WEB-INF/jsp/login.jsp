@@ -6,6 +6,7 @@
 	<meta charset="UTF-8">
 	<title>เข้าสู่ระบบ</title>
 	<script src="assets/scripts.js"></script>
+	<link rel="stylesheet" type="text/css" href="assets/style_login.css">
 </head>
 <body>
 	<div class="container">

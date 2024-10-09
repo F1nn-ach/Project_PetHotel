@@ -8,7 +8,7 @@
 </head>
 <body>
 	<div class="container">
-		<div>
+		<div class="main-content">
 		</div>
 	</div>
 </body>
