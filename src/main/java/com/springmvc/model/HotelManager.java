@@ -8,7 +8,7 @@ import org.hibernate.Transaction;
 
 public class HotelManager {
 	public List<Pet> getPets() {
-		List<Pet> list = new ArrayList<Pet>();
+		List<Pet> list = new ArrayList<>();
 		try {
 			SessionFactory sessionFactory = HibernateConnection.doHibernateConnection();
 			Session session = sessionFactory.openSession();
@@ -22,7 +22,7 @@ public class HotelManager {
 	}
 	
 	public List<Owner> getOwners() {
-		List<Owner> list = new ArrayList<Owner>();
+		List<Owner> list = new ArrayList<>();
 		try {
 			SessionFactory sessionFactory = HibernateConnection.doHibernateConnection();
 			Session session = sessionFactory.openSession();
@@ -40,10 +40,11 @@ public class HotelManager {
 			SessionFactory sessionFactory = HibernateConnection.doHibernateConnection();
 			Session session = sessionFactory.openSession();
 			session.beginTransaction();
+
 			session.save(owner);
+			System.out.println("saved");
 
 			session.getTransaction().commit();
-
 			session.close();
 			return true;
 		} catch (Exception ex) {

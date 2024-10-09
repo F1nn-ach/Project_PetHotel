@@ -27,16 +27,18 @@ public class HomeController {
 	
 	@RequestMapping(value = "/register", method = RequestMethod.POST)
 	public ModelAndView registerController(HttpServletRequest request, HttpSession session) {
+
 		String email = request.getParameter("email");
-		String firstname = request.getParameter("firstname");
-		String lastname = request.getParameter("lastname");
-		String username = request.getParameter("username");
-		String phone = request.getParameter("phone");
-		String password = request.getParameter("password");
-		String url = request.getParameter("url");
+//		String firstname = request.getParameter("firstname");
+//		String lastname = request.getParameter("lastname");
+//		String username = request.getParameter("username");
+//		String phone = request.getParameter("phone");
+//		String password = request.getParameter("password");
+//		String url = request.getParameter("url");
 		
-		Owner owner = new Owner(email, phone, firstname, lastname, username, password, url);
 		HotelManager hm = new HotelManager();
+		Owner owner = new Owner();
+		owner.setEmail(email);
 		boolean result = hm.saveOwner(owner);
 		if(result) {
 			return new ModelAndView("login");

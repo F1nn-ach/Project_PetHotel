@@ -12,12 +12,12 @@
 		<form action="register" name="frm" method="post">
 			<div>
 				<label for="firstName">ชื่อจริง</label>
-				<input type="text" name="firstName" required>
+				<input type="text" name="firstname" required>
 			</div>
 
 			<div>
 				<label for="lastName">นามสกุล</label>
-				<input type="text" name="lastName" required>
+				<input type="text" name="lastname" required>
 			</div>
 
 			<div>
@@ -42,7 +42,7 @@
 
 			<div>
 				<label for="url">เว็บไซต์ (ถ้ามี)</label>
-				<input type="url" name="url">
+				<input type="text" name="url">
 			</div>
 
 			<button type="submit">ลงทะเบียน</button>
