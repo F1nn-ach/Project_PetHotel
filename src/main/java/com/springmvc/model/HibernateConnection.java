@@ -10,7 +10,7 @@ public class HibernateConnection {
 	public static SessionFactory sessionFactory;
 	static String url = "jdbc:mysql://localhost:33091/Lab05_it311?characterEncoding=UTF-8"; 
 	static String uname = "project";
-	static String pwd = "password1";
+	static String pwd = "password";
 	public static SessionFactory doHibernateConnection(){
 		Properties database = new Properties();
 		database.setProperty("hibernate.hbm2ddl.auto", "update"); //หลังจากสร้างตารางแล้วให้เอาออก
