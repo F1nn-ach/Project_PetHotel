@@ -1,68 +1,47 @@
 package com.springmvc.model;
 
-import java.util.*;
-
 import org.hibernate.Session;
 import org.hibernate.SessionFactory;
 import org.hibernate.Transaction;
 
 public class HotelManager {
-	public List<Pet> getPets() {
-		List<Pet> list = new ArrayList<Pet>();
+	public boolean saveRegister(Register r) {
 		try {
 			SessionFactory sessionFactory = HibernateConnection.doHibernateConnection();
 			Session session = sessionFactory.openSession();
 			session.beginTransaction();
-			list = session.createQuery("From Pet").list();
-			session.close();
-		} catch (Exception e) {
-			e.printStackTrace();
-		}
-		return list;
-	}
 
-	public List<Owner> getOwners() {
-		List<Owner> list = new ArrayList<Owner>();
-		try {
-			SessionFactory sessionFactory = HibernateConnection.doHibernateConnection();
-			Session session = sessionFactory.openSession();
-			session.beginTransaction();
-			list = session.createQuery("From Owner").list();
-			session.close();
-		} catch (Exception e) {
-			e.printStackTrace();
-		}
-		return list;
-	}
-
-	public boolean saveOwner(Owner owner) {
-		try {
-			SessionFactory sessionFactory = HibernateConnection.doHibernateConnection();
-			Session session = sessionFactory.openSession();
-			session.beginTransaction();
-			session.save(owner);
+			session.save(r);
 
 			session.getTransaction().commit();
-
 			session.close();
 			return true;
-		} catch (Exception e) {
-			e.printStackTrace();
+		} catch (Exception ex) {
+			ex.printStackTrace();
 		}
 		return false;
 	}
+	
+	public Register getUserByEmail(String email) {
+		Register user = null;
+		SessionFactory sessionFactory = HibernateConnection.doHibernateConnection();
+		Session session = sessionFactory.openSession();
+		Transaction tx = null;
 
-	public Owner getOwnerByEmail(String email) {
-		Owner owner = new Owner();
 		try {
-			SessionFactory sessionFactory = HibernateConnection.doHibernateConnection();
-			Session session = sessionFactory.openSession();
-			session.beginTransaction();
-			owner = (Owner) session.createQuery("From Owner where email = '" + email + "'").uniqueResult();
+			tx = session.beginTransaction();
+			user = session.createQuery("from User where user_email = :email", Register.class)
+					.setParameter("email", email)
+					.uniqueResult();
+			tx.commit();
+		} catch (Exception ex) {
+			if (tx != null) {
+				tx.rollback();
+			}
+			ex.printStackTrace();
+		} finally {
 			session.close();
-		} catch (Exception e) {
-			e.printStackTrace();
 		}
-		return owner;
+		return user;
 	}
 }
