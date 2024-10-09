@@ -21,7 +21,7 @@ public class HotelManager {
 		return list;
 	}
 	
-	public List<Register> getUsers() {
+	public List<Register> getOwners() {
 		List<Register> list = new ArrayList<>();
 		try {
 			SessionFactory sessionFactory = HibernateConnection.doHibernateConnection();
@@ -35,13 +35,14 @@ public class HotelManager {
 		return list;
 	}
 	
-	public boolean saveRegister(Register r) {
+	public boolean saveOwner(Register owner) {
 		try {
 			SessionFactory sessionFactory = HibernateConnection.doHibernateConnection();
 			Session session = sessionFactory.openSession();
 			session.beginTransaction();
 
-			session.save(r);
+			session.save(owner);
+			System.out.println("saved");
 
 			session.getTransaction().commit();
 			session.close();

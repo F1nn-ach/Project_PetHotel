@@ -29,19 +29,23 @@ public class HomeController {
 	public ModelAndView registerController(HttpServletRequest request, HttpSession session) {
 
 		String email = request.getParameter("email");
-		String firstname = request.getParameter("firstname");
-		String lastname = request.getParameter("lastname");
-		String phone = request.getParameter("phone");
-		String password = request.getParameter("password");
+//		String firstname = request.getParameter("firstname");
+//		String lastname = request.getParameter("lastname");
+//		String username = request.getParameter("username");
+//		String phone = request.getParameter("phone");
+//		String password = request.getParameter("password");
+//		String url = request.getParameter("url");
 		
 		HotelManager hm = new HotelManager();
-		Register regis = new Register(email, phone, firstname, lastname, password);
-		boolean result = hm.saveRegister(regis);
+		Register owner = new Register();
+		owner.setEmail(email);
+		boolean result = hm.saveOwner(owner);
 		if(result) {
 			return new ModelAndView("login");
 		} else {
 			ModelAndView mav = new ModelAndView("register");
 			mav.addObject("err_msg", "ไม่สามารถสมัครข้อมูลได้ กรุณาลองใหม่อีกครั้ง");
+			System.out.println(owner);
 			return mav;
 		}
 		
