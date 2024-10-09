@@ -6,7 +6,7 @@ import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.servlet.ModelAndView;
 
 import com.springmvc.model.HotelManager;
-import com.springmvc.model.Owner;
+import com.springmvc.model.Register;
 
 import jakarta.servlet.http.HttpServletRequest;
 import jakarta.servlet.http.HttpSession;
@@ -37,7 +37,7 @@ public class HomeController {
 //		String url = request.getParameter("url");
 		
 		HotelManager hm = new HotelManager();
-		Owner owner = new Owner();
+		Register owner = new Register();
 		owner.setEmail(email);
 		boolean result = hm.saveOwner(owner);
 		if(result) {

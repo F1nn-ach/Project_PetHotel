@@ -13,7 +13,7 @@ import javax.persistence.Table;
 
 @Entity
 @Table(name = "owner")
-public class Owner {
+public class Register {
 	@Id
 	@Column(name = "owner_email", length = 100, nullable = false)
 	private String email;
@@ -27,33 +27,28 @@ public class Owner {
 	@Column(name = "owner_lastname", length = 100, nullable = false)
 	private String lastname;
 
-	@Column(name = "owner_username", length = 100, nullable = false)
-	private String username;
-
 	@Column(name = "owner_password", length = 100, nullable = false)
 	private String password;
 
-	@Column(name = "owner_url", length = 200, nullable = false)
-	private String pic_url;
-	
 	@Column(name = "owner_role", length = 20, nullable = false)
 	private String role;
 
-	public Owner() {
+	@OneToMany(cascade = CascadeType.ALL, fetch = FetchType.EAGER)
+	@JoinColumn(name = "owner_email")
+	private List<Pet> pets = new ArrayList<Pet>();
+
+	public Register() {
 		super();
 		// TODO Auto-generated constructor stub
 	}
 
-	public Owner(String email, String phoneNumber, String firstname, String lastname, String username, String password,
-			String pic_url) {
+	public Register(String email, String phoneNumber, String firstname, String lastname, String password) {
 		super();
 		this.email = email;
 		this.phoneNumber = phoneNumber;
 		this.firstname = firstname;
 		this.lastname = lastname;
-		this.username = username;
 		this.password = password;
-		this.pic_url = pic_url;
 	}
 
 	public String getEmail() {
@@ -88,14 +83,6 @@ public class Owner {
 		this.lastname = lastname;
 	}
 
-	public String getUsername() {
-		return username;
-	}
-
-	public void setUsername(String username) {
-		this.username = username;
-	}
-
 	public String getPassword() {
 		return password;
 	}
@@ -104,20 +91,20 @@ public class Owner {
 		this.password = password;
 	}
 
-	public String getPic_url() {
-		return pic_url;
-	}
-
-	public void setPic_url(String pic_url) {
-		this.pic_url = pic_url;
-	}
-
 	public String getRole() {
 		return role;
 	}
 
 	public void setRole(String role) {
 		this.role = role;
+	}
+
+	public List<Pet> getPets() {
+		return pets;
+	}
+
+	public void setPets(List<Pet> pets) {
+		this.pets = pets;
 	}
 
 }
