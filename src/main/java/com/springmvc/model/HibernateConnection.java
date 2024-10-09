@@ -21,7 +21,8 @@ public class HibernateConnection {
 		database.setProperty("hibernate.connection.url", url);
 		database.setProperty("hibernate.dialect", "org.hibernate.dialect.MySQL5InnoDBDialect");
 		Configuration cfg = new Configuration().setProperties(database).addPackage("com.springmvc.model")
-				.addAnnotatedClass(Owner.class);
+				.addAnnotatedClass(Register.class)
+				.addAnnotatedClass(Pet.class);
 		StandardServiceRegistryBuilder ssrb = new StandardServiceRegistryBuilder().applySettings(cfg.getProperties());
 		sessionFactory = cfg.buildSessionFactory(ssrb.build());
 		return sessionFactory;
