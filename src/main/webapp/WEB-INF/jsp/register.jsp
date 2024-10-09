@@ -1,53 +1,52 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
-	pageEncoding="UTF-8"%>
+    pageEncoding="UTF-8"%>
 <!DOCTYPE html>
 <html>
 <head>
 <meta charset="UTF-8">
 <title>ลงทะเบียนผู้ใช้ - เว็บไซต์รับฝากสัตว์เลี้ยง</title>
+<script src="assets/scripts.js"></script>
 </head>
 <body>
-	<div class="container">
-		<h2>ลงทะเบียนผู้ใช้ใหม่</h2>
-		<small style="color: red">${err_msg}</small>
-		<form action="register" name="frm" method="post">
-			<div>
-				<label for="firstName">ชื่อจริง</label>
-				<input type="text" name="firstName" required>
-			</div>
+    <div class="container">
+        <h2>ลงทะเบียนผู้ใช้ใหม่</h2>
+        <small style="color: red">${err_msg}</small>
+        <form action="register" name="frm" method="post" onsubmit="confirmPassword(event)">
+            <div>
+                <label for="email">Email:</label>
+                <input type="email" name="email" maxlength="55" required>
+            </div>
 
-			<div>
-				<label for="lastName">นามสกุล</label>
-				<input type="text" name="lastName" required>
-			</div>
+            <div>
+                <label for="phonenumber">Phone Number:</label>
+                <input type="tel" name="phone" maxlength="10" required>
+            </div>
 
-			<div>
-				<label for="username">ชื่อผู้ใช้</label>
-				<input type="text" name="username" required>
-			</div>
+            <div>
+                <label for="firstname">ชื่อ:</label>
+                <input type="text" name="firstname" maxlength="50" required>
+            </div>
 
-			<div>
-				<label for="email">อีเมล</label>
-				<input type="email" name="email" required>
-			</div>
+            <div>
+                <label for="lastname">นามสกุล:</label>
+                <input type="text" name="lastname" maxlength="50" required>
+            </div>
 
-			<div>
-				<label for="phone">เบอร์โทรศัพท์</label>
-				<input type="tel" name="phone" required>
-			</div>
+            <div>
+                <label for="password">รหัสผ่าน:</label>
+                <input type="password" id="password" name="password" autocomplete="off" maxlength="55" oninput="confirmPassword()" required>
+            </div>
 
-			<div>
-				<label for="password">รหัสผ่าน</label>
-				<input type="password" name="password" required>
-			</div>
+            <div>
+                <label for="confirm_pwd">ยืนยันรหัสผ่าน:</label>
+                <input type="password" id="confirm_pwd" name="confirm_pwd" autocomplete="off" maxlength="55" oninput="confirmPassword()" required>
+            	<div id="pwd_msg" style="color: red;"></div>
+            </div>            
 
-			<div>
-				<label for="url">เว็บไซต์ (ถ้ามี)</label>
-				<input type="url" name="url">
-			</div>
-
-			<button type="submit">ลงทะเบียน</button>
-		</form>
-	</div>
+            <div>
+                <button type="submit">เข้าสู่ระบบ</button>&nbsp;<button type="reset">ยกเลิก</button>
+            </div>
+        </form>
+    </div>
 </body>
 </html>

@@ -5,21 +5,18 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.servlet.ModelAndView;
 
-import com.springmvc.model.HotelManager;
-import com.springmvc.model.Owner;
+import com.springmvc.model.*;
 
 import jakarta.servlet.http.HttpServletRequest;
 import jakarta.servlet.http.HttpSession;
 
-
 @Controller
 public class HomeController {
-
 	@RequestMapping(value = "/", method = RequestMethod.GET)
 	public String loadIndexPage() {
 		return "index";
 	}
-
+	
 	@RequestMapping(value = "/register", method = RequestMethod.GET)
 	public String loadRegisterPage() {
 		return "register";
@@ -27,25 +24,23 @@ public class HomeController {
 	
 	@RequestMapping(value = "/register", method = RequestMethod.POST)
 	public ModelAndView registerController(HttpServletRequest request) {
-		String email = request.getParameter("email");
 		String firstname = request.getParameter("firstname");
 		String lastname = request.getParameter("lastname");
-		String username = request.getParameter("username");
+		String email = request.getParameter("email").trim();
 		String phone = request.getParameter("phone");
-		String pwd = request.getParameter("password");
-		String url = request.getParameter("url");
+		String password = request.getParameter("password");
 		
-		Owner owner = new Owner(email, phone, firstname, lastname, username, pwd, url);
-		HotelManager hm = new HotelManager();
-		boolean result = hm.saveOwner(owner);
+		HotelManager m = new HotelManager();
+		Register regis = new Register(email, phone, firstname, lastname, password);
+
+		boolean result = m.saveRegister(regis);
 		if(result) {
 			return new ModelAndView("login");
 		} else {
-			ModelAndView mav = new ModelAndView("register");
-			mav.addObject("err_msg", "ไม่สามารถสมัครข้อมูลได้ กรุณาลองใหม่อีกครั้ง");
+			ModelAndView mav = new ModelAndView();
+			mav.addObject("err_msg", "ไม่สามารถสมัครสมาชิกได้");
 			return mav;
 		}
-		
 	}
 	
 	@RequestMapping(value = "/login", method = RequestMethod.GET)
@@ -55,21 +50,22 @@ public class HomeController {
 	
 	@RequestMapping(value = "/login", method = RequestMethod.POST)
 	public ModelAndView loginController(HttpServletRequest request, HttpSession session) {
-		ModelAndView mav = new ModelAndView("/index");
+		ModelAndView mav = new ModelAndView();
 		
 		String email = request.getParameter("email");
-		String pwd = request.getParameter("password");
+		String password = request.getParameter("password");
 		
-		HotelManager hm = new HotelManager();
-		Owner owner = hm.getOwnerByEmail(email);
-		if(email != null && pwd.equals(owner.getPassword())) {
-			session.setMaxInactiveInterval(15 * 60);
+		HotelManager m = new HotelManager();
+		Register owner = m.getUserByEmail(email);
+		if(password.equals(owner.getPassword())) {
+			session.setMaxInactiveInterval(5*60);
 			session.setAttribute("owner", owner);
 			mav.addObject("owner", session.getAttribute("owner"));
 			mav.setViewName("redirect:/index");
 			return mav;
 		} else {
-			mav.addObject("err_msg", "ไม่สามารถเข้าสู่ระบบได้ กรุณาลองใหม่อีกครั้ง");
+			mav.addObject("err_msg", "ไม่สามารถเข้าสู๋ระบบได้ กรุณาลองใหม่อีกครั้ง");
+			mav.setViewName("login");
 			return mav;
 		}
 		
