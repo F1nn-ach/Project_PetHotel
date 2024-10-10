@@ -22,6 +22,11 @@ public class HomeController {
 		return "register";
 	}
 	
+	@RequestMapping(value = "/contact", method = RequestMethod.GET)
+	public String loadContactPage() {
+		return "contact_us";
+	}
+	
 	@RequestMapping(value = "/register", method = RequestMethod.POST)
 	public ModelAndView registerController(HttpServletRequest request) {
 		String firstname = request.getParameter("firstname");

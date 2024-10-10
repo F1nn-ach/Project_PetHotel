@@ -3,9 +3,10 @@
 <!DOCTYPE html>
 <html>
 <head>
-<meta charset="UTF-8">
-<title>เข้าสู่ระบบผู้ใช้ - เว็บไซต์รับฝากสัตว์เลี้ยง</title>
-<script src="assets/scripts.js"></script>
+	<meta charset="UTF-8">
+	<title>เข้าสู่ระบบ</title>
+	<script src="assets/scripts.js"></script>
+	<link rel="stylesheet" type="text/css" href="assets/style.css?v=1.0">
 </head>
 <body>
 	<div class="container">
