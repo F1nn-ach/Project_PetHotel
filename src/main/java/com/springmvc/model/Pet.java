@@ -17,9 +17,8 @@ import javax.persistence.Table;
 @Table(name = "pet")
 public class Pet {
 	@Id
-	@GeneratedValue(strategy = GenerationType.AUTO)
 	@Column(name = "pet_id", nullable = false)
-	private long id;
+	private String id;
 
 	@Column(name = "pet_name", length = 50, nullable = false)
 	private String name;
@@ -27,25 +26,19 @@ public class Pet {
 	@Column(name = "pet_gender", length = 10, nullable = false)
 	private String gender;
 
-	@Column(name = "pet_ageyear", nullable = false)
-	private int ageYear;
-
-	@Column(name = "pet_agemonth", nullable = false)
-	private int ageMonth;
+	@Column(name = "pet_age", length = 20, nullable = false)
+	private String age;
 
 	@Column(name = "pet_breed", length = 100, nullable = false)
 	private String breed;
 
-	@Column(name = "pet_species", length = 100, nullable = false)
+	@Column(name = "pet_species", length = 100)
 	private String species;
-
-	@Column(name = "pet_weight")
-	private double weight;
 
 	@Column(name = "pet_request", length = 200)
 	private String requests;
 
-//	@OneToMany(cascade = CascadeType.ALL, fetch = FetchType.EAGER)
+//	@OneToMany(cascade = CascadeType.ALL, fetch = FetchType.LAZY)
 //	@JoinColumn(name = "pet_id")
 //	private List<Booking> bookings = new ArrayList<>();
 
@@ -54,24 +47,27 @@ public class Pet {
 		// TODO Auto-generated constructor stub
 	}
 
-	public Pet(String name, String gender, int ageYear, int ageMonth, String breed, String species,
-			double weight, String requests) {
+	public Pet(String name, String gender, String age, String breed, String species, String requests) {
 		super();
+		this.id = generateId();
 		this.name = name;
 		this.gender = gender;
-		this.ageYear = ageYear;
-		this.ageMonth = ageMonth;
+		this.age = age;
 		this.breed = breed;
 		this.species = species;
-		this.weight = weight;
 		this.requests = requests;
 	}
 
-	public long getId() {
+	private String generateId() {
+		String randomPart = UUID.randomUUID().toString().replace("-", "").substring(0, 3);
+		return "H0" + randomPart;
+	}
+
+	public String getId() {
 		return id;
 	}
 
-	public void setId(long id) {
+	public void setId(String id) {
 		this.id = id;
 	}
 
@@ -91,20 +87,12 @@ public class Pet {
 		this.gender = gender;
 	}
 
-	public int getAgeYear() {
-		return ageYear;
+	public String getAge() {
+		return age;
 	}
 
-	public void setAgeYear(int ageYear) {
-		this.ageYear = ageYear;
-	}
-
-	public int getAgeMonth() {
-		return ageMonth;
-	}
-
-	public void setAgeMonth(int ageMonth) {
-		this.ageMonth = ageMonth;
+	public void setAge(String age) {
+		this.age = age;
 	}
 
 	public String getBreed() {
@@ -123,14 +111,6 @@ public class Pet {
 		this.species = species;
 	}
 
-	public double getWeight() {
-		return weight;
-	}
-
-	public void setWeight(double weight) {
-		this.weight = weight;
-	}
-
 	public String getRequests() {
 		return requests;
 	}
@@ -138,13 +118,5 @@ public class Pet {
 	public void setRequests(String requests) {
 		this.requests = requests;
 	}
-
-//	public List<Booking> getBookings() {
-//		return bookings;
-//	}
-//
-//	public void setBookings(List<Booking> bookings) {
-//		this.bookings = bookings;
-//	}
 
 }
