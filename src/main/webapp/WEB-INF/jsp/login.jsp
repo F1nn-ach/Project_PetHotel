@@ -12,7 +12,7 @@
 	<div class="container">
 		<h2>เข้าสู่ระบบผู้ใช้</h2>
 		<small style="color: red">${err_msg}</small>
-		<form action="register" name="frm" method="post">
+		<form action="login" name="frm" method="post">
 			<div>
 		     	<label for="email">Email:</label>
 		   		<input type="email" name="email" maxlength="55" required>

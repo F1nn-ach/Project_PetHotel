@@ -35,7 +35,7 @@ public class Register {
 
 	@OneToMany(cascade = CascadeType.ALL, fetch = FetchType.EAGER)
 	@JoinColumn(name = "register_email")
-	private List<Pet> pets = new ArrayList<Pet>();
+	private List<Pet> pets = new ArrayList<>();
 
 	public Register() {
 		super();
