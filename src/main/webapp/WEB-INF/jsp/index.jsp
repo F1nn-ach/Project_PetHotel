@@ -6,6 +6,11 @@
     <title>Pet Harmony</title>
     <link rel="stylesheet" type="text/css" href="assets/style.css?v=1.0">
     <link href="https://fonts.googleapis.com/css2?family=Kanit:wght@400;500;700&family=Prompt:wght@400;500;700&display=swap" rel="stylesheet">
+    <script type="text/javascript">
+	    function myFunction() {
+	    	  document.getElementById("myDropdown").classList.toggle("show");
+	    	}
+    </script>
 </head>
 <body>
     <div class="container">
@@ -14,17 +19,22 @@
         <div class="header">
             <header>
                 <div class="Title">
-                    <img alt="Logo of Pet Harmony" src="assets/img/logo.png">
-                    <h1>Pet Harmony</h1>
+                	<a href="http://localhost:8080/Project_PetHotel/">
+                		<img alt="Logo of Pet Harmony" src="assets/img/logo.png">
+                	</a>
+                	<h1>Pet Harmony</h1>
                 </div>
 	                <div class="nav-head">
+	                
 	                    <nav>
 	                    	<div class="main-nav">
-	                    		<a href="#home" class="home">Home</a>
+	                    		<a href="http://localhost:8080/Project_PetHotel/" class="home">Home</a>
 		                        <a href="#service" class="service">Service</a>
 		                        <a href="#about" class="about">About</a>
 		                        <a href="#contact" class="contact">Contact</a>
                     	</div>
+                    	<!-- ทำ if user login ตรงนี้ -->
+                    	<%-- <c:if test="${user.login == 'login'}"> --%>
                         <div class="sub-nav">
                         	<div class="link-login">
                         		<img alt="Login icon" src="assets/img/enter.png">
@@ -34,11 +44,23 @@
                         		<img alt="Sign-up icon" src="assets/img/add-user.png">
                         		<a href="register">Sign-up</a>
                         	</div>
-                        	<div class="link-logout">
-                        		<img alt="logout icon" src="assets/img/power-on.png">
-                        		<a href="logout">Logout</a>
-                        	</div>
-		                </div>
+                        	
+                        	<div class="user">
+							    <div class="dropdown">
+							        <a class="dropdown-toggle" onclick="myFunction()">
+							        	<img alt="User profile" src="assets/img/user.png">
+							        </a>
+							        <div id="myDropdown" class="dropdown-content">
+							            <a href="profile" class="profile">
+							            	<img alt="User profile" src="assets/img/user.png"> Profile
+							            </a>
+							            <a href="logout" class="link-logout">
+							                <img alt="logout icon" src="assets/img/power-on.png"> Logout
+							            </a>
+							        </div>
+							    </div>
+							</div>
+						<%-- </c:if> --%>
                     </nav>
                 </div>
                 <div class="sub-header">

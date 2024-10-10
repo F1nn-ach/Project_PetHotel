@@ -6,7 +6,7 @@
     --primary-pink: #EECAD5;
     --text-dark: #2C3E50;
     --text-light: #656D78;
-    --white: #ffffff;
+    --white: #fff;
     --shadow: rgba(0, 0, 0, 0.08);
     --gradient-primary: linear-gradient(135deg, var(--primary-blue) 0%, var(--primary-pink) 100%);
     --gradient-secondary: linear-gradient(135deg, var(--primary-beige) 0%, var(--primary-coral) 100%);
@@ -139,7 +139,7 @@ nav {
     gap: 25px;
 }
 
-.link-login, .link-signup, .link-logout {
+.link-login, .link-signup, .dropdown-toggle {
     display: flex;
     align-items: center;
     gap: 5px;
@@ -151,7 +151,7 @@ nav {
     height: 50px;
 }
 
-.link-login:hover, .link-signup:hover, .link-logout:hover {
+.link-login:hover, .link-signup:hover, .dropdown-toggle:hover {
     transform: translateY(-3px);
     box-shadow: 0 8px 25px var(--shadow);
 }
@@ -162,8 +162,14 @@ nav {
     transition: transform 0.3s ease;
 }
 
-.link-login:hover img, .link-signup:hover img, .link-logout:hover img {
+.link-login:hover img, .link-signup:hover img, .user:hover img{
     transform: rotate(10deg);
+}
+
+.user {
+    background: var(--white);
+    border-radius: 30px;
+    box-shadow: 0 4px 15px var(--shadow);
 }
 
 .sub-nav a {
@@ -197,6 +203,10 @@ nav {
     opacity: 0.5;
 }
 
+.sub-header p {
+	font-size: 20px;
+}
+
 .head-title {
     display: flex;
     justify-content: center;
@@ -217,6 +227,10 @@ nav {
     height: 50px;
     filter: drop-shadow(0 4px 6px var(--shadow));
     animation: float 3s ease-in-out infinite;
+}
+
+.main-content p {
+	font-size: 20px;
 }
 
 /* Service Section Styles */
@@ -426,4 +440,55 @@ footer::before {
 
 ::-webkit-scrollbar-thumb:hover {
     background: var(--primary-coral);
+}
+
+.dropbtn {
+  background-color: #3498DB;
+  color: white;
+  padding: 16px;
+  font-size: 16px;
+  border: none;
+  cursor: pointer;
+}
+
+.user {
+    position: relative;
+    display: inline-block;
+}
+
+.dropdown-toggle {
+    background-color: transparent;
+    border: none;
+    cursor: pointer;
+}
+
+.dropdown-content {
+    display: none;
+    position: absolute;
+    background-color: #f9f9f9;
+    min-width: 160px;
+    box-shadow: 0px 8px 16px rgba(0, 0, 0, 0.1);
+    z-index: 1;
+}
+
+.dropdown-content a {
+    color: black;
+    padding: 12px 16px;
+    text-decoration: none;
+    display: flex;
+    align-items: center;
+}
+
+.dropdown-content a img {
+    width: 20px;
+    height: 20px;
+    margin-right: 10px;
+}
+
+.show {
+    display: block;
+}
+
+.dropdown-content a:hover {
+    background-color: #f1f1f1;
 }
