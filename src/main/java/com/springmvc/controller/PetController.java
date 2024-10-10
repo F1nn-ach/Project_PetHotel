@@ -1,5 +1,7 @@
 package com.springmvc.controller;
 
+import java.util.*;
+
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
@@ -22,11 +24,9 @@ public class PetController {
 	@RequestMapping(value = "/pet_register", method = RequestMethod.POST)
 	public ModelAndView petRegisterController(HttpServletRequest request, HttpSession session) {
 		String name = request.getParameter("pet_name");
-		int ageYear = Integer.parseInt(request.getParameter("pet_ageyear"));
-		int ageMonth = Integer.parseInt(request.getParameter("pet_agemonth"));
 		String gender = request.getParameter("pet_gender");
-		double weight = Double.parseDouble(request.getParameter("pet_weight"));
 		String requests = request.getParameter("pet_request");
+		String age = request.getParameter("pet_age");
 		String breed = request.getParameter("breed");
 		String species;
 		if (request.getParameter("pet_type").equals("exotic")) {
@@ -36,32 +36,33 @@ public class PetController {
 		}	
 
 		Register user = (Register) session.getAttribute("user");
-		Pet pet = new Pet(name, gender, ageYear, ageMonth, breed, species, weight, requests);
-		user.getPets().add(pet);
-
-		ModelAndView mav = new ModelAndView("pet_register");
-
 		HotelManager hm = new HotelManager();
+		Pet pet = new Pet(name, gender, age, breed, species, requests);
+		List<Pet> list = hm.getPetByEmail(user.getEmail());
+		list.add(pet);
+		user.setPets(list);
+		
 		boolean result = hm.saveRegister(user);
 		if (result) {
-			mav.addObject("pet", pet);
-			mav.setViewName("redirect:/listpets");
+			list = hm.getPetByEmail(user.getEmail());
+			ModelAndView mav = new ModelAndView("listpets");
+			mav.addObject("pet", list);
 			return mav;
 		} else {
+			ModelAndView mav = new ModelAndView("pet_register");
 			mav.addObject("err_msg", "ไม่สามารถลงทะเบียนสัตว์เลี้ยงได้ กรุณาลองใหม่อีหครั้ง");
 			return mav;
 		}
-
 	}
 
 	@RequestMapping(value = "/listpets", method = RequestMethod.GET)
 	public ModelAndView loadListPetsPetPage(HttpSession session) {
 		HotelManager hm = new HotelManager();
 		String email = ((Register) session.getAttribute("user")).getEmail();
-		Register user = hm.getUserByEmail(email);
+		List<Pet> list = hm.getPetByEmail(email);
 
 		ModelAndView mav = new ModelAndView("listmypet");
-		mav.addObject("user", user);
+		mav.addObject("pet", list);
 		return mav;
 	}
 }
