@@ -25,7 +25,7 @@ public class Pet {
 	private int ageMonth;
 
 	@Column(name = "pet_type", length = 100, nullable = false)
-	private String pet_type;
+	private String type;
 
 	@Column(name = "pet_gender", length = 10, nullable = false)
 	private String gender;
@@ -38,12 +38,12 @@ public class Pet {
 		// TODO Auto-generated constructor stub
 	}
 
-	public Pet(String name, int ageYear, int ageMonth, String pet_type, String gender, String request) {
+	public Pet(String name, int ageYear, int ageMonth, String type, String gender, String request) {
 		super();
 		this.name = name;
 		this.ageYear = ageYear;
 		this.ageMonth = ageMonth;
-		this.pet_type = pet_type;
+		this.type = type;
 		this.gender = gender;
 		this.request = request;
 	}
@@ -80,12 +80,12 @@ public class Pet {
 		this.ageMonth = ageMonth;
 	}
 
-	public String getPet_type() {
-		return pet_type;
+	public String getType() {
+		return type;
 	}
 
-	public void setPet_type(String pet_type) {
-		this.pet_type = pet_type;
+	public void setType(String type) {
+		this.type = type;
 	}
 
 	public String getGender() {
