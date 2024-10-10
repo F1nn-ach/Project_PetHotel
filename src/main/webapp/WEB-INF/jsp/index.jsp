@@ -28,10 +28,10 @@
 	                
 	                    <nav>
 	                    	<div class="main-nav">
-	                    		<a href="http://localhost:8080/Project_PetHotel/" class="home">Home</a>
+	                    		<a href="/Project_PetHotel/" class="home">Home</a>
 		                        <a href="#service" class="service">Service</a>
 		                        <a href="#about" class="about">About</a>
-		                        <a href="#contact" class="contact">Contact</a>
+		                        <a href="contact" class="contact">Contact</a>
                     	</div>
                     	<!-- ทำ if user login ตรงนี้ -->
                     	<%-- <c:if test="${user.login == 'login'}"> --%>

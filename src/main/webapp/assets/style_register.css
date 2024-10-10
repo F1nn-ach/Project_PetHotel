@@ -35,15 +35,15 @@ body {
     justify-content: center;
     align-items: center;
     min-height: 100vh;
-    padding: 20px;
+    padding: 40px 20px;
 }
 
-.login-container {
+.register-container {
     width: 100%;
-    max-width: 480px;
+    max-width: 680px;
 }
 
-.login-card {
+.register-card {
     background: var(--white);
     padding: 40px;
     border-radius: 24px;
@@ -79,7 +79,7 @@ h2 {
     font-size: 1.8rem;
 }
 
-.login-form {
+.register-form {
     display: flex;
     flex-direction: column;
     gap: 20px;
@@ -90,6 +90,12 @@ h2 {
     text-align: center;
     margin-bottom: 10px;
     font-size: 0.9rem;
+}
+
+.form-row {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 20px;
 }
 
 .form-group {
@@ -125,10 +131,19 @@ h2 {
     box-shadow: 0 0 0 4px var(--primary-blue);
 }
 
-.login-button {
-    background: var(--gradient-secondary);
-    color: var(--text-dark);
-    border: none;
+.password-message {
+    color: var(--error-color);
+    font-size: 0.9rem;
+    margin-top: 5px;
+}
+
+.button-group {
+    display: flex;
+    gap: 15px;
+    margin-top: 10px;
+}
+
+.submit-button, .reset-button {
     padding: 14px 28px;
     border-radius: 12px;
     font-size: 1.1rem;
@@ -136,10 +151,21 @@ h2 {
     cursor: pointer;
     transition: all 0.3s ease;
     font-family: inherit;
-    margin-top: 10px;
+    border: none;
+    flex: 1;
 }
 
-.login-button:hover {
+.submit-button {
+    background: var(--gradient-secondary);
+    color: var(--text-dark);
+}
+
+.reset-button {
+    background: var(--primary-blue);
+    color: var(--text-dark);
+}
+
+.submit-button:hover, .reset-button:hover {
     transform: translateY(-2px);
     box-shadow: 0 8px 25px var(--shadow);
 }
@@ -169,8 +195,12 @@ h2 {
     font-size: 0.9rem;
 }
 
-@media (max-width: 480px) {
-    .login-card {
+@media (max-width: 640px) {
+    .form-row {
+        grid-template-columns: 1fr;
+    }
+
+    .register-card {
         padding: 30px 20px;
     }
 
@@ -180,5 +210,9 @@ h2 {
 
     h2 {
         font-size: 1.5rem;
+    }
+
+    .button-group {
+        flex-direction: column;
     }
 }
