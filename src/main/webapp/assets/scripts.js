@@ -48,15 +48,3 @@ function togglePetType() {
 		exoticBreedInput.classList.add("hidden");
 	}
 }
-
-function toggleWeightInput() {
-	var weightInput = document.getElementById("weight");
-	var notKnownCheckbox = document.getElementById("notKnown");
-
-	if (notKnownCheckbox.checked) {
-		weightInput.value = "";
-		weightInput.disabled = true;
-	} else {
-		weightInput.disabled = false;
-	}
-}

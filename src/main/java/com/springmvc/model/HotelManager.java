@@ -59,4 +59,20 @@ public class HotelManager {
 		}
 		return user;
 	}
+	
+	public List<Pet> getPetByEmail(String email) {
+		List<Pet> list = new ArrayList<>();
+		try {
+			SessionFactory sessionFactory = HibernateConnection.doHibernateConnection();
+			Session session = sessionFactory.openSession();
+			session.beginTransaction();
+			list = session.createQuery("Select p From Register r JOIN r.pets WHERE r.email = :email")
+					.setParameter("email", email)
+					.list();
+			session.close();
+		} catch (Exception ex) {
+			ex.printStackTrace();
+		}
+		return list;
+	}
 }

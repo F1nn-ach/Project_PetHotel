@@ -33,7 +33,7 @@ public class Register {
 	@Column(name = "register_role", length = 15)
 	private String role;
 
-	@OneToMany(cascade = CascadeType.ALL, fetch = FetchType.EAGER)
+	@OneToMany(cascade = CascadeType.ALL, fetch = FetchType.LAZY)
 	@JoinColumn(name = "register_email")
 	private List<Pet> pets = new ArrayList<>();
 

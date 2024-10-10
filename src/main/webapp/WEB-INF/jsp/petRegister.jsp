@@ -32,7 +32,7 @@
 			                <input type="radio" name="pet_type" value="common" onchange="togglePetType()" required> Common Pet
 			            </label>
 			            <label>
-			                <input type="radio" name="pet_type" value="exotic" onchange="togglePetType()"> Exotic Pet
+			                <input type="radio" name="pet_type" value="exotic" onchange="togglePetType()" required> Exotic Pet
 			            </label>
 			        </div>
 			    </div>
@@ -41,10 +41,10 @@
 			        <label>สายพันธุ์สัตว์เลี้ยง (Common):</label>
 			        <div>
 			            <label>
-			                <input type="radio" name="breed" value="หมา"> หมา
+			                <input type="radio" name="breed" value="หมา" required> หมา
 			            </label>
 			            <label>
-			                <input type="radio" name="breed" value="แมว"> แมว
+			                <input type="radio" name="breed" value="แมว" required> แมว
 			            </label>
 			        </div>
 			    </div>
@@ -53,7 +53,7 @@
 			        <label>สายพันธุ์สัตว์เลี้ยง (Exotic):</label>
 			        <div>
 			            <label>
-			                <input type="radio" name="breed" value="กิ้งก่า"> กิ้งก่า
+			                <input type="radio" name="breed" value="กิ้งก่า" required> กิ้งก่า
 			            </label>
 			            <label>
 			                <input type="radio" name="breed" value="กบ"> กบ
@@ -94,21 +94,8 @@
 			    
 			    <div>
 			        <label for="pet_ageyear">อายุปี:</label>
-			        <input type="number" name="pet_ageyear" min="0" required>		
+			        <input type="text" name="pet_age" placeholder="ระบุเป็นปี/เดือน" maxlength="50" required>		
 			    </div>
-			
-			    <div>            
-			        <label for="pet_agemonth">อายุเดือน:</label>
-			        <input type="number" name="pet_agemonth" min="0" max="11" required>
-			    </div>
-			    
-			 	<div>
-			 		<label for="weight">น้ำหนักสัตว์เลี้ยง (กิโลกรัม):</label>
-        			<input type="number" id="weight" name="pet_weight" step="0.1" placeholder="กรอกน้ำหนัก" required>
-        			
-        			<input type="checkbox" id="notKnown" name="notKnown" value="unknown" onclick="toggleWeightInput()">
-        			<label for="notKnown">ไม่ทราบได้</label>
-			 	</div>
 			
 			    <div>
 			        <label for="pet_request">คำร้องขอเพิ่มเติม:</label>
