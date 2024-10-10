@@ -39,7 +39,7 @@ public class PetController {
 		
 		boolean result = hm.saveRegister(user);
 		if (result) {
-			ModelAndView mav = new ModelAndView("listmypet");
+			ModelAndView mav = new ModelAndView("redirect:/listpets");
 			mav.addObject("pet", list);
 			return mav;
 		} else {
