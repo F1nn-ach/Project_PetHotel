@@ -1,0 +1,40 @@
+<%@ page language="java" contentType="text/html; charset=UTF-8"
+    pageEncoding="UTF-8"%>
+<!DOCTYPE html>
+<html>
+<head>
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.6.0/css/all.min.css">
+<meta charset="UTF-8">
+<title>ข้อมูลส่วนตัว</title>
+</head>
+<body>
+	<div class="container">
+		<h2>ข้อมูลโปรไฟล์</h2><a href="edityourprofile"><i class="fa-solid fa-user-pen"></i>แก้ไขข้อมูล</a>
+		<div>
+			<label>ชื่อจริง:</label>
+			<input type="text" name="firstname" value="${user.firstname}" readonly>
+		</div>
+		
+		<div>
+			<label>นามสกุล:</label>
+			<input type="text" name="lastname" value="${user.lastname}" readonly>
+		</div>
+		
+		<div>
+			<label>เบอร์มือถือ:</label>
+			<input type="text" name="phone" value="${user.phoneNumber}" readonly>
+		</div>
+		
+		<div>
+			<label>อีเมล:</label>
+			<input type="text" name="email" value="${user.email}" readonly>
+		</div>
+		<a href="listpets">
+			<i class="fa-solid fa-paw"></i>ไปดูสัตว์เลี้ยงของคุณกันเถอะ!
+		</a>
+		<a href="/Project_PetHotel/">
+			กลับหน้าหลัก
+		</a>
+	</div>
+</body>
+</html>
