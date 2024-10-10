@@ -24,32 +24,7 @@
 			        <label for="pet_name">ชื่อสัตว์เลี้ยง:</label>
 			        <input type="text" name="pet_name" maxlength="50" required>
 			    </div>
-			
-			    <div>
-			        <label for="pet_ageyear">อายุปี:</label>
-			        <input type="number" name="pet_ageyear" min="0" required>		
-			    </div>
-			
-			    <div>            
-			        <label for="pet_agemonth">อายุเดือน:</label>
-			        <input type="number" name="pet_agemonth" min="0" max="11" required>
-			    </div>
 			    
-				<div>
-			        <label>เพศสัตว์เลี้ยง:</label>
-			        <div>
-			            <label>
-			                <input type="radio" name="pet_gender" value="เพศผู้" required> เพศผู้
-			            </label>
-			            <label>
-			                <input type="radio" name="pet_gender" value="เพศเมีย"> เพศเมีย
-			            </label>
-			            <label>
-			                <input type="radio" name="pet_gender" value="ไม่ทราบ"> ไม่ทราบ
-			            </label>
-			        </div>
-			    </div>
-			
 			    <div>
 			        <label>ประเภทสัตว์เลี้ยง:</label>
 			        <div>
@@ -94,13 +69,46 @@
 			
 			    <div id="breedInput" class="hidden">
 			        <label for="breed">กรุณากรอกสายพันธุ์ (Common):</label>
-			        <input type="text" name="common_detail" maxlength="50">
+			        <input type="text" name="common_species" maxlength="50">
 			    </div>
 			
 				<div id="exotic_breed_input" class="hidden">
 				   <label for="exotic_breed_detail">กรุณากรอกสายพันธุ์ (Exotic):</label>
-				   <input type="text" name="exotic_detail" maxlength="50">
+				   <input type="text" name="exotic_species" maxlength="50">
 				</div>
+			    
+				<div>
+			        <label>เพศสัตว์เลี้ยง:</label>
+			        <div>
+			            <label>
+			                <input type="radio" name="pet_gender" value="เพศผู้" required> เพศผู้
+			            </label>
+			            <label>
+			                <input type="radio" name="pet_gender" value="เพศเมีย"> เพศเมีย
+			            </label>
+			            <label>
+			                <input type="radio" name="pet_gender" value="ไม่ทราบ"> ไม่ทราบ
+			            </label>
+			        </div>
+			    </div>
+			    
+			    <div>
+			        <label for="pet_ageyear">อายุปี:</label>
+			        <input type="number" name="pet_ageyear" min="0" required>		
+			    </div>
+			
+			    <div>            
+			        <label for="pet_agemonth">อายุเดือน:</label>
+			        <input type="number" name="pet_agemonth" min="0" max="11" required>
+			    </div>
+			    
+			 	<div>
+			 		<label for="weight">น้ำหนักสัตว์เลี้ยง (กิโลกรัม):</label>
+        			<input type="number" id="weight" name="pet_weight" step="0.1" placeholder="กรอกน้ำหนัก" required>
+        			
+        			<input type="checkbox" id="notKnown" name="notKnown" value="unknown" onclick="toggleWeightInput()">
+        			<label for="notKnown">ไม่ทราบได้</label>
+			 	</div>
 			
 			    <div>
 			        <label for="pet_request">คำร้องขอเพิ่มเติม:</label>

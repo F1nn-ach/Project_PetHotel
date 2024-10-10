@@ -17,7 +17,8 @@
 	            	<th>ลำดับ</th>
 	                <th>Name</th>
 	                <th>Gender</th>
-	                <th>Type</th>
+	                <th>Breed</th>
+	                <th>Species</th>
 	                <th>Request</th>
 	            </tr>
 	        </thead>
@@ -27,8 +28,9 @@
 		            	<td><%= i++ %></td>
 		                <td>${item.name}</td>
 		                <td>${item.gender}</td>
-		                <td>${item.type}</td>
-		                <td>${item.request}</td>
+		                <td>${item.breed}</td>
+		                <td>${item.species}</td>
+		                <td>${item.requests}</td>
 		            </tr>        	
 	        	</c:forEach>
 	        </tbody>

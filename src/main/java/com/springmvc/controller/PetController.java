@@ -25,19 +25,18 @@ public class PetController {
 		int ageYear = Integer.parseInt(request.getParameter("pet_ageyear"));
 		int ageMonth = Integer.parseInt(request.getParameter("pet_agemonth"));
 		String gender = request.getParameter("pet_gender");
+		double weight = Double.parseDouble(request.getParameter("pet_weight"));
 		String requests = request.getParameter("pet_request");
 		String breed = request.getParameter("breed");
-		String detail;
+		String species;
 		if (request.getParameter("pet_type").equals("exotic")) {
-			detail = request.getParameter("exotic_detail");
+			species = request.getParameter("exotic_species");
 		} else {
-			detail = request.getParameter("common_detail");
-		}
-		String type = breed + " " + detail;
-		System.out.println(type);
+			species = request.getParameter("common_species");
+		}	
 
 		Register user = (Register) session.getAttribute("user");
-		Pet pet = new Pet(name, ageYear, ageMonth, type, gender, requests);
+		Pet pet = new Pet(name, gender, ageYear, ageMonth, breed, species, weight, requests);
 		user.getPets().add(pet);
 
 		ModelAndView mav = new ModelAndView("pet_register");
