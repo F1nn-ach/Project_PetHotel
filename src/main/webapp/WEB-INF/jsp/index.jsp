@@ -1,4 +1,5 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
+<%@ taglib prefix="c" uri="jakarta.tags.core" %>
 <!DOCTYPE html>
 <html lang="th">
 <head>
@@ -19,7 +20,7 @@
         <div class="header">
             <header>
                 <div class="Title">
-                	<a href="http://localhost:8080/Project_PetHotel/">
+                	<a href="/Project_PetHotel/">
                 		<img alt="Logo of Pet Harmony" src="assets/img/logo.png">
                 	</a>
                 	<h1>Pet Harmony</h1>
@@ -34,33 +35,36 @@
 		                        <a href="#contact" class="contact">Contact</a>
                     	</div>
                     	<!-- ทำ if user login ตรงนี้ -->
-                    	<%-- <c:if test="${user.login == 'login'}"> --%>
-                        <div class="sub-nav">
-                        	<div class="link-login">
-                        		<img alt="Login icon" src="assets/img/enter.png">
-                        		<a href="login">Login</a>
-                        	</div>
-                        	<div class="link-signup">
-                        		<img alt="Sign-up icon" src="assets/img/add-user.png">
-                        		<a href="register">Sign-up</a>
-                        	</div>
-                        	
-                        	<div class="user">
-							    <div class="dropdown">
-							        <a class="dropdown-toggle" onclick="myFunction()">
-							        	<img alt="User profile" src="assets/img/user.png">
-							        </a>
-							        <div id="myDropdown" class="dropdown-content">
-							            <a href="profile" class="profile">
-							            	<img alt="User profile" src="assets/img/user.png"> Profile
-							            </a>
-							            <a href="logout" class="link-logout">
-							                <img alt="logout icon" src="assets/img/power-on.png"> Logout
-							            </a>
-							        </div>
-							    </div>
-							</div>
-						<%-- </c:if> --%>
+						<% if (session.getAttribute("user") != null) { %>
+						    <div class="sub-nav">
+						        <div class="user">
+						            <div class="dropdown">
+						                <a class="dropdown-toggle" onclick="myFunction()">
+						                    <img alt="User profile" src="assets/img/user.png">
+						                </a>
+						                <div id="myDropdown" class="dropdown-content">
+						                    <a href="yourprofile" class="profile">
+						                        <img alt="User profile" src="assets/img/user.png"> Profile
+						                    </a>
+						                    <a href="logout" class="link-logout" onclick="return confirm('คุณต้องการออกจากระบบ?')">
+						                        <img alt="logout icon" src="assets/img/power-on.png"> Logout
+						                    </a>
+						                </div>
+						            </div>
+						        </div>
+						    </div>
+						<% } else { %>
+						    <div class="sub-nav">
+						        <div class="link-login">
+						            <img alt="Login icon" src="assets/img/enter.png">
+						            <a href="login">Login</a>
+						        </div>
+						        <div class="link-signup">
+						            <img alt="Sign-up icon" src="assets/img/add-user.png">
+						            <a href="register">Sign-up</a>
+						        </div>
+						    </div>
+						<% } %>
                     </nav>
                 </div>
                 <div class="sub-header">
