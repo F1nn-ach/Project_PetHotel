@@ -28,13 +28,8 @@ public class PetController {
 		String requests = request.getParameter("pet_request");
 		String age = request.getParameter("pet_age");
 		String breed = request.getParameter("breed");
-		String species;
-		if (request.getParameter("pet_type").equals("exotic")) {
-			species = request.getParameter("exotic_species");
-		} else {
-			species = request.getParameter("common_species");
-		}	
-
+		String species = request.getParameter("species");;
+		
 		Register user = (Register) session.getAttribute("user");
 		HotelManager hm = new HotelManager();
 		Pet pet = new Pet(name, gender, age, breed, species, requests);
@@ -62,6 +57,17 @@ public class PetController {
 
 		ModelAndView mav = new ModelAndView("listmypet");
 		mav.addObject("pet", list);
+		return mav;
+	}
+	
+	@RequestMapping(value = "/editmypet", method = RequestMethod.GET)
+	public ModelAndView loadEditPetPage(HttpServletRequest request) {
+		String id = request.getParameter("id");
+		HotelManager hm = new HotelManager();
+		Pet pet = hm.getPetById(id);
+		
+		ModelAndView mav = new ModelAndView("editpet");
+		mav.addObject(pet);
 		return mav;
 	}
 }

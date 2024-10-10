@@ -5,109 +5,69 @@
 <head>
     <meta charset="UTF-8">
     <title>การลงทะเบียนสัตว์เลี้ยง - เว็บไซต์รับฝากสัตว์เลี้ยง</title>
-    <script src="assets/scripts.js"></script>
-    <style>
-        .hidden {
-            display: none;
-        }
-    </style>
-    <script src="assets/scripts.js"></script>
 </head>
 <body>
 	<div class="container">
-	    <h1>ลงทะเบียนสัตว์เลี้ยง</h1>
-	    <small style="color: red;">${err_msg}</small>
-	    <form id="pet_frm" action="pet_register" method="post">
-	       <div class="pet-entry">
-			    <h2>ข้อมูลสัตว์เลี้ยง</h2>
-			    <div>
-			        <label for="pet_name">ชื่อสัตว์เลี้ยง:</label>
-			        <input type="text" name="pet_name" maxlength="50" required>
-			    </div>
-			    
-			    <div>
-			        <label>ประเภทสัตว์เลี้ยง:</label>
-			        <div>
-			            <label>
-			                <input type="radio" name="pet_type" value="common" onchange="togglePetType()" required> Common Pet
-			            </label>
-			            <label>
-			                <input type="radio" name="pet_type" value="exotic" onchange="togglePetType()" required> Exotic Pet
-			            </label>
-			        </div>
-			    </div>
-			
-			    <div id="commonPets" class="hidden">
-			        <label>สายพันธุ์สัตว์เลี้ยง (Common):</label>
-			        <div>
-			            <label>
-			                <input type="radio" name="breed" value="หมา" required> หมา
-			            </label>
-			            <label>
-			                <input type="radio" name="breed" value="แมว" required> แมว
-			            </label>
-			        </div>
-			    </div>
-			
-			    <div id="exoticPets" class="hidden">
-			        <label>สายพันธุ์สัตว์เลี้ยง (Exotic):</label>
-			        <div>
-			            <label>
-			                <input type="radio" name="breed" value="กิ้งก่า" required> กิ้งก่า
-			            </label>
-			            <label>
-			                <input type="radio" name="breed" value="กบ"> กบ
-			            </label>
-			            <label>
-			                <input type="radio" name="breed" value="เต่า"> เต่า
-			            </label>
-			            <label>
-			                <input type="radio" name="breed" value="งู"> งู
-			            </label>
-			        </div>
-			    </div>
-			
-			    <div id="breedInput" class="hidden">
-			        <label for="breed">กรุณากรอกสายพันธุ์ (Common):</label>
-			        <input type="text" name="common_species" maxlength="50">
-			    </div>
-			
-				<div id="exotic_breed_input" class="hidden">
-				   <label for="exotic_breed_detail">กรุณากรอกสายพันธุ์ (Exotic):</label>
-				   <input type="text" name="exotic_species" maxlength="50">
-				</div>
-			    
-				<div>
-			        <label>เพศสัตว์เลี้ยง:</label>
-			        <div>
-			            <label>
-			                <input type="radio" name="pet_gender" value="เพศผู้" required> เพศผู้
-			            </label>
-			            <label>
-			                <input type="radio" name="pet_gender" value="เพศเมีย"> เพศเมีย
-			            </label>
-			            <label>
-			                <input type="radio" name="pet_gender" value="ไม่ทราบ"> ไม่ทราบ
-			            </label>
-			        </div>
-			    </div>
-			    
-			    <div>
-			        <label for="pet_ageyear">อายุปี:</label>
-			        <input type="text" name="pet_age" placeholder="ระบุเป็นปี/เดือน" maxlength="50" required>		
-			    </div>
-			
-			    <div>
-			        <label for="pet_request">คำร้องขอเพิ่มเติม:</label>
-			        <textarea name="pet_request" maxlength="200"></textarea>
-			    </div>
-			</div>
-			
-			<div>
-				<button type="submit">ลงทะเบียน</button>&nbsp;<button type="reset">ยกเลิก</button>
-			</div>
-			<a href="listpets">แสดงรายชื่อสัตว์เลี้ยงของคุณ</a>  
-	    </form>	
+	<h1>ลงทะเบียนสัตว์เลี้ยง</h1>
+	<small style="color: red;">${err_msg}</small>
+	<form id="pet_frm" action="pet_register" method="post">
+	    <div class="pet-entry">
+	        <h2>ข้อมูลสัตว์เลี้ยง</h2>
+	        
+	        <div>
+	            <label for="pet_name">ชื่อสัตว์เลี้ยง:</label>
+	            <input type="text" name="pet_name" maxlength="50" required>
+	        </div>
+	        
+	        <div>
+	            <label>ประเถทสัตว์เลี้ยง:</label>
+	            <select name="breed">
+	                <option value="หมา">หมา</option>
+	                <option value="แมว">แมว</option>
+					<option value="กิ้งก่า">กิ้งก่า</option>
+	                <option value="กบ">กบ</option>
+	                <option value="เต่า">เต่า</option>
+	                <option value="งู">งู</option>
+	            </select>
+	        </div>
+	        
+	        <div>
+	        	<label>สายพันธุ์สัตว์เลี้ยง:</label>
+	        	<input type="text" name="species" maxlength="100" required>
+	        </div>
+	        
+	        <div>
+	            <label>เพศสัตว์เลี้ยง:</label>
+	            <div>
+	                <label>
+	                    <input type="radio" name="pet_gender" value="เพศผู้" required> เพศผู้
+	                </label>
+	                <label>
+	                    <input type="radio" name="pet_gender" value="เพศเมีย"> เพศเมีย
+	                </label>
+	                <label>
+	                    <input type="radio" name="pet_gender" value="ไม่ทราบ"> ไม่ทราบ
+	                </label>
+	            </div>
+	        </div>
+	        
+	        <div>
+	            <label for="pet_ageyear">อายุปี:</label>
+	            <input type="text" name="pet_age" placeholder="ระบุเป็นปี/เดือน" maxlength="50" required>
+	        </div>
+	        
+	        <div>
+	            <label for="pet_request">คำร้องขอเพิ่มเติม:</label>
+	            <textarea name="pet_request" maxlength="200"></textarea>
+	        </div>
+	    </div>
+	    
+	    <div>
+	        <button type="submit">ลงทะเบียน</button>&nbsp;<button type="reset">ยกเลิก</button>
+	    </div>
+	    <a href="listpets">แสดงรายชื่อสัตว์เลี้ยงของคุณ</a>
+	</form>
+
 	</div>
 
 </body>
