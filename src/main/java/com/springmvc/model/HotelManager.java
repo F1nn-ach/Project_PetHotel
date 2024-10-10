@@ -11,7 +11,7 @@ public class HotelManager {
 			Session session = sessionFactory.openSession();
 			session.beginTransaction();
 
-			session.save(r);
+			session.saveOrUpdate(r);
 
 			session.getTransaction().commit();
 			session.close();
