@@ -69,12 +69,6 @@
                             <input type="text" id="pet_age" name="pet_age" placeholder="ระบุเป็นปี/เดือน" maxlength="50" required>
                         </div>
 
-                        <div class="form-group">
-                            <label for="pet_request">คำร้องขอเพิ่มเติม:</label>
-                            <textarea id="pet_request" name="pet_request" maxlength="200"></textarea>
-                        </div>
-                    </div>
-
                     <div class="form-actions">
                         <button type="submit" class="btn btn-primary">ลงทะเบียน</button>
                         <button type="reset" class="btn btn-secondary">ยกเลิก</button>
@@ -82,6 +76,7 @@
 
                     <div class="form-footer">
                         <a href="listpets" class="link-pets">แสดงรายชื่อสัตว์เลี้ยงของคุณ</a>
+                    </div>
                     </div>
                 </form>
             </div>

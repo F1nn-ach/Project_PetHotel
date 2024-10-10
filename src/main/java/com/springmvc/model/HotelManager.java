@@ -41,6 +41,23 @@ public class HotelManager {
 		}
 		return false;
 	}
+	
+	public boolean updatePet(Pet p) {
+		try {
+			SessionFactory sessionFactory = HibernateConnection.doHibernateConnection();
+			Session session = sessionFactory.openSession();
+			session.beginTransaction();
+
+			session.update(p);
+
+			session.getTransaction().commit();
+			session.close();
+			return true;
+		} catch (Exception ex) {
+			ex.printStackTrace();
+		}
+		return false;
+	}
 
 	public Register getUserByEmail(String email) {
 		Register user = null;

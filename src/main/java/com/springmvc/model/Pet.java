@@ -35,9 +35,6 @@ public class Pet {
 	@Column(name = "pet_species", length = 100)
 	private String species;
 
-	@Column(name = "pet_request", length = 200)
-	private String requests;
-
 	@OneToMany(cascade = CascadeType.ALL, fetch = FetchType.LAZY)
 	@JoinColumn(name = "pet_id")
 	private List<Booking> bookings = new ArrayList<>();
@@ -47,7 +44,7 @@ public class Pet {
 		// TODO Auto-generated constructor stub
 	}
 
-	public Pet(String name, String gender, String age, String breed, String species, String requests) {
+	public Pet(String name, String gender, String age, String breed, String species) {
 		super();
 		this.id = generateId();
 		this.name = name;
@@ -55,7 +52,6 @@ public class Pet {
 		this.age = age;
 		this.breed = breed;
 		this.species = species;
-		this.requests = requests;
 	}
 
 	private String generateId() {
@@ -109,14 +105,6 @@ public class Pet {
 
 	public void setSpecies(String species) {
 		this.species = species;
-	}
-
-	public String getRequests() {
-		return requests;
-	}
-
-	public void setRequests(String requests) {
-		this.requests = requests;
 	}
 
 	public List<Booking> getBookings() {
