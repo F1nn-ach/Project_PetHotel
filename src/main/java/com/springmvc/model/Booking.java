@@ -24,16 +24,20 @@ public class Booking {
 	@Temporal(TemporalType.TIMESTAMP)
 	private Calendar endDate;
 
+	@Column(name = "booking_request", length = 150)
+	private String request;
+
 	public Booking() {
 		super();
 		// TODO Auto-generated constructor stub
 	}
 
-	public Booking(Calendar startDate, Calendar endDate) {
+	public Booking(Calendar startDate, Calendar endDate, String request) {
 		super();
 		this.id = generateBookingId();
 		this.startDate = startDate;
 		this.endDate = endDate;
+		this.request = request;
 	}
 
 	private String generateBookingId() {
@@ -69,6 +73,14 @@ public class Booking {
 
 	public void setEndDate(Calendar endDate) {
 		this.endDate = endDate;
+	}
+
+	public String getRequest() {
+		return request;
+	}
+
+	public void setRequest(String request) {
+		this.request = request;
 	}
 
 }

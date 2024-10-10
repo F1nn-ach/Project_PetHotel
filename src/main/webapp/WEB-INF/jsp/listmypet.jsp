@@ -30,37 +30,45 @@
                 </div>
 
                 <div class="table-container">
-                    <table class="pet-table">
-                        <thead>
-                            <tr>
-                                <th>ลำดับ</th>
-                                <th>Name</th>
-                                <th>Gender</th>
-                                <th>Breed</th>
-                                <th>Species</th>
-                                <th>Request</th>
-                                <th>Actions</th>
-                            </tr>
-                        </thead>
-                        <tbody>
-                            <c:forEach items="${pet}" var="item">
+                    <c:if test="${not empty message}">
+                        <div class="no-data-message">
+                            <p>${message}</p>
+                        </div>
+                    </c:if>
+
+                    <c:if test="${empty message}">
+                        <table class="pet-table">
+                            <thead>
                                 <tr>
-                                    <td class="center-align"><%= i++ %></td>
-                                    <td>${item.name}</td>
-                                    <td>${item.gender}</td>
-                                    <td>${item.breed}</td>
-                                    <td>${item.species}</td>
-                                    <td>${item.requests}</td>
-                                    <td>
-                                        <a href="editmypet?id=${item.id}" class="edit-button">
-                                            <i class="fa-regular fa-pen-to-square"></i>
-                                            แก้ไขข้อมูล
-                                        </a>
-                                    </td>
+                                    <th>ลำดับ</th>
+                                    <th>ชื่อ</th>
+                                    <th>เพศ</th>
+                                    <th>สายพันธุ์</th>
+                                    <th>Species</th>
+                                    <th>อายุ</th>
+                                    <th>Actions</th>
                                 </tr>
-                            </c:forEach>
-                        </tbody>
-                    </table>
+                            </thead>
+                            <tbody>
+                                <c:forEach items="${pet}" var="item">
+                                    <tr>
+                                        <td class="center-align"><%= i++ %></td>
+                                        <td>${item.name}</td>
+                                        <td>${item.gender}</td>
+                                        <td>${item.breed}</td>
+                                        <td>${item.species}</td>
+                                        <td>${item.age}</td>
+                                        <td>
+                                            <a href="editmypet?id=${item.id}" class="edit-button">
+                                                <i class="fa-regular fa-pen-to-square"></i>
+                                                แก้ไขข้อมูล
+                                            </a>
+                                        </td>
+                                    </tr>
+                                </c:forEach>
+                            </tbody>
+                        </table>
+                    </c:if>
                 </div>
 
                 <div class="navigation-links">

@@ -25,14 +25,13 @@ public class PetController {
 	public ModelAndView petRegisterController(HttpServletRequest request, HttpSession session) {
 		String name = request.getParameter("pet_name");
 		String gender = request.getParameter("pet_gender");
-		String requests = request.getParameter("pet_request");
 		String age = request.getParameter("pet_age");
 		String breed = request.getParameter("breed");
-		String species = request.getParameter("species");;
+		String species = request.getParameter("species");
 		
 		Register user = (Register) session.getAttribute("user");
 		HotelManager hm = new HotelManager();
-		Pet pet = new Pet(name, gender, age, breed, species, requests);
+		Pet pet = new Pet(name, gender, age, breed, species);
 		List<Pet> list = hm.getPetByEmail(user.getEmail());
 		user.setPets(list);
 		user.getPets().add(pet);
@@ -44,21 +43,26 @@ public class PetController {
 			return mav;
 		} else {
 			ModelAndView mav = new ModelAndView("pet_register");
-			mav.addObject("err_msg", "ไม่สามารถลงทะเบียนสัตว์เลี้ยงได้ กรุณาลองใหม่อีหครั้ง");
+			mav.addObject("err_msg", "ไม่สามารถลงทะเบียนสัตว์เลี้ยงได้ กรุณาลองใหม่อีกครั้ง");
 			return mav;
 		}
 	}
 
 	@RequestMapping(value = "/listpets", method = RequestMethod.GET)
-	public ModelAndView loadListPetsPetPage(HttpSession session) {
-		HotelManager hm = new HotelManager();
-		String email = ((Register) session.getAttribute("user")).getEmail();
-		List<Pet> list = hm.getPetByEmail(email);
+	public ModelAndView loadListPetsPage(HttpSession session) {
+	    HotelManager hm = new HotelManager();
+	    String email = ((Register) session.getAttribute("user")).getEmail();
+	    List<Pet> list = hm.getPetByEmail(email);
 
-		ModelAndView mav = new ModelAndView("listmypet");
-		mav.addObject("pet", list);
-		return mav;
+	    ModelAndView mav = new ModelAndView("listmypet");
+	    if (list.isEmpty()) {
+	        mav.addObject("message", "ไม่มีข้อมูลสัตว์เลี้ยงของคุณ");
+	    } else {
+	        mav.addObject("pet", list);
+	    }
+	    return mav;
 	}
+
 	
 	@RequestMapping(value = "/editmypet", method = RequestMethod.GET)
 	public ModelAndView loadEditPetPage(HttpServletRequest request) {
@@ -67,7 +71,42 @@ public class PetController {
 		Pet pet = hm.getPetById(id);
 		
 		ModelAndView mav = new ModelAndView("editpet");
-		mav.addObject(pet);
+		mav.addObject("pet", pet);
 		return mav;
 	}
+	
+	@RequestMapping(value = "/editmypet", method = RequestMethod.POST)
+	public ModelAndView editPetController(HttpServletRequest request, HttpSession session) {
+	    String id = request.getParameter("pet_id");
+	    String name = request.getParameter("pet_name");
+	    String gender = request.getParameter("pet_gender");
+	    String age = request.getParameter("pet_age");
+	    String breed = request.getParameter("breed");
+	    String species = request.getParameter("species");
+	    
+	    HotelManager hm = new HotelManager();
+	    Pet existingPet = hm.getPetById(id);
+	    if (existingPet == null) {
+	        ModelAndView mav = new ModelAndView("editpet");
+	        mav.addObject("err_msg", "ไม่พบข้อมูลสัตว์เลี้ยงที่ต้องการแก้ไข");
+	        return mav;
+	    }
+
+	    existingPet.setName(name);
+	    existingPet.setGender(gender);
+	    existingPet.setAge(age);
+	    existingPet.setBreed(breed);
+	    existingPet.setSpecies(species);
+
+	    boolean result = hm.updatePet(existingPet);
+	    if (result) {
+	        ModelAndView mav = new ModelAndView("redirect:/listpets");
+	        return mav;
+	    } else {
+	        ModelAndView mav = new ModelAndView("editpet");
+	        mav.addObject("err_msg", "ไม่สามารถแก้ไขข้อมูลสัตว์เลี้ยงได้ กรุณาลองใหม่อีกครั้ง");
+	        return mav;
+	    }
+	}
+
 }
