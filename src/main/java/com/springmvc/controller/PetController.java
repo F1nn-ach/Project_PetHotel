@@ -39,13 +39,12 @@ public class PetController {
 		HotelManager hm = new HotelManager();
 		Pet pet = new Pet(name, gender, age, breed, species, requests);
 		List<Pet> list = hm.getPetByEmail(user.getEmail());
-		list.add(pet);
 		user.setPets(list);
+		user.getPets().add(pet);
 		
 		boolean result = hm.saveRegister(user);
 		if (result) {
-			list = hm.getPetByEmail(user.getEmail());
-			ModelAndView mav = new ModelAndView("listpets");
+			ModelAndView mav = new ModelAndView("listmypet");
 			mav.addObject("pet", list);
 			return mav;
 		} else {

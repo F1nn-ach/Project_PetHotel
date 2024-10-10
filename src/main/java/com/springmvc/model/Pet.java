@@ -17,7 +17,7 @@ import javax.persistence.Table;
 @Table(name = "pet")
 public class Pet {
 	@Id
-	@Column(name = "pet_id", nullable = false)
+	@Column(name = "pet_id", length = 6,nullable = false)
 	private String id;
 
 	@Column(name = "pet_name", length = 50, nullable = false)
@@ -59,7 +59,7 @@ public class Pet {
 	}
 
 	private String generateId() {
-		String randomPart = UUID.randomUUID().toString().replace("-", "").substring(0, 3);
+		String randomPart = UUID.randomUUID().toString().replace("-", "").substring(0, 4);
 		return "H0" + randomPart;
 	}
 
