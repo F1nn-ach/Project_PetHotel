@@ -8,19 +8,6 @@ import org.hibernate.SessionFactory;
 import org.hibernate.Transaction;
 
 public class HotelManager {
-	public List<Pet> getAllPets() {
-		List<Pet> list = new ArrayList<>();
-		try {
-			SessionFactory sessionFactory = HibernateConnection.doHibernateConnection();
-			Session session = sessionFactory.openSession();
-			list = session.createQuery("From Pet").list(); // คำสั่งhibernate
-			session.close();
-		} catch (Exception ex) {
-			ex.printStackTrace();
-		}
-		return list;
-	}
-
 	public boolean saveRegister(Register r) {
 		try {
 			SessionFactory sessionFactory = HibernateConnection.doHibernateConnection();
@@ -28,6 +15,23 @@ public class HotelManager {
 			session.beginTransaction();
 
 			session.saveOrUpdate(r);
+
+			session.getTransaction().commit();
+			session.close();
+			return true;
+		} catch (Exception ex) {
+			ex.printStackTrace();
+		}
+		return false;
+	}
+	
+	public boolean updateRegister(Register r) {
+		try {
+			SessionFactory sessionFactory = HibernateConnection.doHibernateConnection();
+			Session session = sessionFactory.openSession();
+			session.beginTransaction();
+
+			session.update(r);
 
 			session.getTransaction().commit();
 			session.close();
@@ -74,5 +78,27 @@ public class HotelManager {
 			ex.printStackTrace();
 		}
 		return list;
+	}
+	
+	public Pet getPetById(String id) {
+		Pet pet = null;
+		SessionFactory sessionFactory = HibernateConnection.doHibernateConnection();
+		Session session = sessionFactory.openSession();
+		Transaction tx = null;
+
+		try {
+			tx = session.beginTransaction();
+			pet = session.createQuery("from Pet where id = :id", Pet.class)
+					.setParameter("id", id).uniqueResult();
+			tx.commit();
+		} catch (Exception ex) {
+			if (tx != null) {
+				tx.rollback();
+			}
+			ex.printStackTrace();
+		} finally {
+			session.close();
+		}
+		return pet;
 	}
 }

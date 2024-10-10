@@ -5,6 +5,7 @@
 <!DOCTYPE html>
 <html>
 <head>
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.6.0/css/all.min.css">
 <meta charset="UTF-8">
 <title>ข้อมูลสัตว์เลี้ยงของฉัน</title>
 </head>
@@ -31,11 +32,16 @@
 		                <td>${item.breed}</td>
 		                <td>${item.species}</td>
 		                <td>${item.requests}</td>
+		                <td>
+		                	<a href="editmypet?id=${item.id}">
+		                		<i class="fa-regular fa-pen-to-square"></i>แก้ไขข้อมูล
+		                	</a>
+		                </td>
 		            </tr>        	
 	        	</c:forEach>
 	        </tbody>
    	 	</table>
-   	 	<a href="/index">กลับไปหน้าหลัก</a><a href="pet_register">กลับไปลงทะเบียนสัตว์</a>
+   	 	<a href="/index">กลับไปหน้าหลัก</a>&nbsp;<a href="pet_register">กลับไปลงทะเบียนสัตว์</a>
 	</div>
 </body>
 </html>
