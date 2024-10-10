@@ -17,7 +17,7 @@ import javax.persistence.Table;
 @Table(name = "pet")
 public class Pet {
 	@Id
-	@Column(name = "pet_id", length = 6,nullable = false)
+	@Column(name = "pet_id", length = 6, nullable = false)
 	private String id;
 
 	@Column(name = "pet_name", length = 50, nullable = false)
@@ -38,9 +38,9 @@ public class Pet {
 	@Column(name = "pet_request", length = 200)
 	private String requests;
 
-//	@OneToMany(cascade = CascadeType.ALL, fetch = FetchType.LAZY)
-//	@JoinColumn(name = "pet_id")
-//	private List<Booking> bookings = new ArrayList<>();
+	@OneToMany(cascade = CascadeType.ALL, fetch = FetchType.LAZY)
+	@JoinColumn(name = "pet_id")
+	private List<Booking> bookings = new ArrayList<>();
 
 	public Pet() {
 		super();
@@ -119,4 +119,11 @@ public class Pet {
 		this.requests = requests;
 	}
 
+	public List<Booking> getBookings() {
+		return bookings;
+	}
+
+	public void setBookings(List<Booking> bookings) {
+		this.bookings = bookings;
+	}
 }
