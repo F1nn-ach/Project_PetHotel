@@ -62,7 +62,6 @@ public class PetController {
 	    }
 	    return mav;
 	}
-
 	
 	@RequestMapping(value = "/editmypet", method = RequestMethod.GET)
 	public ModelAndView loadEditPetPage(HttpServletRequest request) {
@@ -91,7 +90,6 @@ public class PetController {
 	        mav.addObject("err_msg", "ไม่พบข้อมูลสัตว์เลี้ยงที่ต้องการแก้ไข");
 	        return mav;
 	    }
-
 	    existingPet.setName(name);
 	    existingPet.setGender(gender);
 	    existingPet.setAge(age);
@@ -108,5 +106,4 @@ public class PetController {
 	        return mav;
 	    }
 	}
-
 }
