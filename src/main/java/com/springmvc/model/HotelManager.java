@@ -66,7 +66,7 @@ public class HotelManager {
 			SessionFactory sessionFactory = HibernateConnection.doHibernateConnection();
 			Session session = sessionFactory.openSession();
 			session.beginTransaction();
-			list = session.createQuery("Select p From Register r JOIN r.pets WHERE r.email = :email")
+			list = session.createQuery("Select p From Register r JOIN r.pets p WHERE r.email = :email")
 					.setParameter("email", email)
 					.list();
 			session.close();

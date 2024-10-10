@@ -23,7 +23,7 @@
 	            </tr>
 	        </thead>
 	        <tbody>
-	        	<c:forEach items="${user.pets}" var="item">
+	        	<c:forEach items="${pet}" var="item">
 		            <tr>
 		            	<td><%= i++ %></td>
 		                <td>${item.name}</td>
@@ -35,6 +35,7 @@
 	        	</c:forEach>
 	        </tbody>
    	 	</table>
+   	 	<a href="/index">กลับไปหน้าหลัก</a><a href="pet_register">กลับไปลงทะเบียนสัตว์</a>
 	</div>
 </body>
 </html>
