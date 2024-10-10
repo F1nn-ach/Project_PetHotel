@@ -3,16 +3,15 @@
 <!DOCTYPE html>
 <html>
 <head>
-	<meta charset="UTF-8">
-	<title>เข้าสู่ระบบ</title>
-	<script src="assets/scripts.js"></script>
-	<link rel="stylesheet" type="text/css" href="assets/style_login.css">
+<meta charset="UTF-8">
+<title>เข้าสู่ระบบผู้ใช้ - เว็บไซต์รับฝากสัตว์เลี้ยง</title>
+<script src="assets/scripts.js"></script>
 </head>
 <body>
 	<div class="container">
 		<h2>เข้าสู่ระบบผู้ใช้</h2>
 		<small style="color: red">${err_msg}</small>
-		<form action="register" name="frm" method="post">
+		<form action="login" name="frm" method="post">
 			<div>
 		     	<label for="email">Email:</label>
 		   		<input type="email" name="email" maxlength="55" required>

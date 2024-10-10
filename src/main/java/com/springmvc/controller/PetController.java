@@ -46,7 +46,7 @@ public class PetController {
 		boolean result = hm.saveRegister(user);
 		if (result) {
 			mav.addObject("pet", pet);
-			mav.setViewName("redirect:/login");
+			mav.setViewName("redirect:/listpets");
 			return mav;
 		} else {
 			mav.addObject("err_msg", "ไม่สามารถลงทะเบียนสัตว์เลี้ยงได้ กรุณาลองใหม่อีหครั้ง");
