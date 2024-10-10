@@ -19,7 +19,7 @@
         <div class="header">
             <header>
                 <div class="Title">
-                	<a href="http://localhost:8080/Project_PetHotel/">
+                	<a href="/Project_PetHotel/">
                 		<img alt="Logo of Pet Harmony" src="assets/img/logo.png">
                 	</a>
                 	<h1>Pet Harmony</h1>

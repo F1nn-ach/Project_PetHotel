@@ -64,13 +64,9 @@
                 </div>
 
                 <div class="navigation-links">
-                    <a href="/index" class="nav-button">
+                    <a href="/Project_PetHotel/" class="nav-button">
                         <i class="fas fa-home"></i>
                         กลับไปหน้าหลัก
-                    </a>
-                    <a href="pet_register" class="nav-button">
-                        <i class="fas fa-plus-circle"></i>
-                        ลงทะเบียนสัตว์
                     </a>
                 </div>
             </div>
