@@ -27,7 +27,7 @@ public class Register {
 	@Column(name = "register_lastname", length = 50, nullable = false)
 	private String lastname;
 
-	@Column(name = "register_password", length = 55, nullable = false)
+	@Column(name = "register_password", length = 100, nullable = false)
 	private String password;
 
 	@Column(name = "register_role", length = 15)

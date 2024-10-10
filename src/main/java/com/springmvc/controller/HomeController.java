@@ -34,6 +34,11 @@ public class HomeController {
 		String email = request.getParameter("email").trim();
 		String phone = request.getParameter("phone");
 		String password = request.getParameter("password");
+		try {
+			password = PasswordUtil.getInstance().createPassword(password, "mook");
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
 		
 		HotelManager m = new HotelManager();
 		Register regis = new Register(email, phone, firstname, lastname, password);
@@ -59,6 +64,11 @@ public class HomeController {
 		
 		String email = request.getParameter("email");
 		String password = request.getParameter("password");
+		try {
+			password = PasswordUtil.getInstance().createPassword(password, "mook");
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
 		
 		HotelManager m = new HotelManager();
 		Register user = m.getUserByEmail(email);
