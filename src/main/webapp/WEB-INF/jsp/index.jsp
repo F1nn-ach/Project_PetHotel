@@ -4,7 +4,7 @@
 <head>
     <meta charset="UTF-8">
     <title>Pet Harmony</title>
-    <link rel="stylesheet" type="text/css" href="assets/style.css">
+    <link rel="stylesheet" type="text/css" href="assets/style.css?v=1.0">
     <link href="https://fonts.googleapis.com/css2?family=Kanit:wght@400;500;700&family=Prompt:wght@400;500;700&display=swap" rel="stylesheet">
 </head>
 <body>
@@ -14,25 +14,38 @@
         <div class="header">
             <header>
                 <div class="Title">
-                    <img alt="Logo" src="assets/img/logo.png">
+                    <img alt="Logo of Pet Harmony" src="assets/img/logo.png">
                     <h1>Pet Harmony</h1>
                 </div>
-                <div class="nav-head">
-                    <nav>
-                    	<div class="main-nav">
-                    		<a href="#home" class="home">Home</a>
-	                        <a href="#service" class="service">Service</a>
-	                        <a href="#about" class="about">About</a>
-	                        <a href="#contact" class="contact">Contact</a>
+	                <div class="nav-head">
+	                    <nav>
+	                    	<div class="main-nav">
+	                    		<a href="#home" class="home">Home</a>
+		                        <a href="#service" class="service">Service</a>
+		                        <a href="#about" class="about">About</a>
+		                        <a href="#contact" class="contact">Contact</a>
                     	</div>
                         <div class="sub-nav">
-		                    <a href="login">Login</a>
-		                    <a href="register">Sign-up</a>
+                        	<div class="link-login">
+                        		<img alt="Login icon" src="assets/img/enter.png">
+                        		<a href="login">Login</a>
+                        	</div>
+                        	<div class="link-signup">
+                        		<img alt="Sign-up icon" src="assets/img/add-user.png">
+                        		<a href="register">Sign-up</a>
+                        	</div>
+                        	<div class="link-logout">
+                        		<img alt="logout icon" src="assets/img/power-on.png">
+                        		<a href="logout">Logout</a>
+                        	</div>
 		                </div>
                     </nav>
                 </div>
                 <div class="sub-header">
-                    <h3>สัตว์เลี้ยงมีความสุข มนุษย์ก็มีความสุข</h3>
+                	<div class="head-title">
+                		<h3>สัตว์เลี้ยงมีความสุข มนุษย์ก็มีความสุข</h3>
+                		<img alt="Customer service icon" src="assets/img/customer-service.png">
+                	</div>
                     <p>คุณกำลังยุ่งจนไม่มีเวลาดูแลสัตว์เลี้ยงใช่ไหม? ถ้าการดูแลสัตว์เลี้ยงเป็นเรื่องยากในช่วงที่คุณไม่ว่าง ให้เราช่วยคุณดูแลพวกเขาเอง!</p>
                 </div>
             </header>
@@ -42,7 +55,7 @@
         <div class="body-content">
 
             <!-- Main Section -->
-            <section class="main-content">
+            <section id="home" class="main-content">
                 <div class="main-paragraph">
                     <p>"สัตว์เลี้ยงของคุณสมควรได้รับการดูแลที่ดีที่สุดเสมอ เราพร้อมที่จะช่วยเหลือและให้ความรักต่อสัตว์เลี้ยงของคุณในทุกช่วงเวลา เพราะการดูแลสัตว์เลี้ยงไม่ใช่แค่หน้าที่ แต่คือการสร้างสายใยแห่งความรักและความผูกพันที่ยาวนาน"</p>
                     <p>"ความสุขของสัตว์เลี้ยง คือความสุขของคุณ ให้ Pet Harmony เป็นส่วนหนึ่งในการสร้างวันใหม่ที่เต็มไปด้วยรอยยิ้มของสัตว์เลี้ยงที่คุณรัก"</p>
@@ -50,22 +63,42 @@
             </section>
 
             <!-- Service Section -->
-            <section class="service-content">
+            <section id="service" class="service-content">
                 <div class="head-service">
                     <h2>มาดูกันว่าเรามีดีอะไร!</h2>
                 </div>
                 <div class="service">
                     <ul>
-                        <li>ดูแล</li>
-                        <li>อาหาร</li>
-                        <li>สุขภาพ</li>
-                        <li>เล่น</li>
+                        <li>
+	                        <div class="se-li">
+	                        <img alt="Veterinary care icon" src="assets/img/veterinary.png">
+	                        <p>ดูแล</p>
+	                        </div>
+                        </li>
+                        <li>
+	                        <div class="se-li">
+	                        <img alt="Pet food icon" src="assets/img/pet-food.png">
+	                        <p>อาหาร</p>
+	                        </div>
+                        </li>
+                        <li>
+	                        <div class="se-li">
+	                        <img alt="Pet health icon" src="assets/img/vet.png">
+	                        <p>สุขภาพ</p>
+	                        </div>
+                        </li>
+                        <li>
+	                        <div class="se-li">
+	                        <img alt="Dog playing icon" src="assets/img/dog.png">
+	                        <p>เล่น</p>
+	                        </div>
+                        </li>
                     </ul>
                 </div>
             </section>
     
             <!-- Sub Content -->
-            <section class="sub-content">
+            <section id="about" class="sub-content">
                 <div class="content-header">
                     <h2>ทำไมต้องเลือกเรา</h2>
                 </div>
