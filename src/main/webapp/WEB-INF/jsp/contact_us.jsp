@@ -4,37 +4,12 @@
 <head>
     <meta charset="UTF-8">
     <title>ติดต่อพวกเรา</title>
-    <link rel="stylesheet" type="text/css" href="assets/style_contact.css?v=1.0">
+    <link rel="stylesheet" type="text/css" href="assets/css/style_contact.css?v=1.0">
     <link href="https://fonts.googleapis.com/css2?family=Prompt:wght@300;400;500;600;700&display=swap" rel="stylesheet">
 </head>
 <body>
     <div class="container">
-        <header class="header">
-            <div class="header-content">
-                <div class="logo">
-                    <img alt="Logo" src="assets/img/logo.png">
-                    <h1>Pet Harmony</h1>
-                </div>
-                <nav>
-                    <div class="main-nav">
-                        <a href="http://localhost:8080/Project_PetHotel/" class="nav-link">Home</a>
-                        <a href="#service" class="nav-link">Service</a>
-                        <a href="#about" class="nav-link">About</a>
-                        <a href="contact" class="nav-link active">Contact</a>
-                    </div>
-                    <div class="auth-nav">
-                        <a href="login" class="btn btn-login">
-                            <img alt="" src="assets/img/enter.png">
-                            <span>Login</span>
-                        </a>
-                        <a href="register" class="btn btn-signup">
-                            <img alt="" src="assets/img/add-user.png">
-                            <span>Sign-up</span>
-                        </a>
-                    </div>
-                </nav>
-            </div>
-        </header>
+        <%@ include file="header.jsp" %>
 
         <main class="main-content">
             <section class="contact-section">

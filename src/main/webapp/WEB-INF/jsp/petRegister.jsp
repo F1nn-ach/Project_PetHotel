@@ -4,7 +4,7 @@
 <head>
     <meta charset="UTF-8">
     <title>การลงทะเบียนสัตว์เลี้ยง - เว็บไซต์รับฝากสัตว์เลี้ยง</title>
-    <link rel="stylesheet" type="text/css" href="assets/style_pet_register.css?v=1.0">
+    <link rel="stylesheet" type="text/css" href="assets/css/style_pet_register.css?v=1.0">
     <link href="https://fonts.googleapis.com/css2?family=Prompt:wght@300;400;500;600;700&display=swap" rel="stylesheet">
 </head>
 <body>

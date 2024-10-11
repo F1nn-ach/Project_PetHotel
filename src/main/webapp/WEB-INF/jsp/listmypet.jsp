@@ -7,7 +7,7 @@
     <meta charset="UTF-8">
     <title>ข้อมูลสัตว์เลี้ยงของฉัน</title>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.6.0/css/all.min.css">
-    <link rel="stylesheet" type="text/css" href="assets/style_pet_list.css?v=1.0">
+    <link rel="stylesheet" type="text/css" href="assets/css/style_pet_list.css?v=1.0">
     <link href="https://fonts.googleapis.com/css2?family=Prompt:wght@300;400;500;600;700&display=swap" rel="stylesheet">
 </head>
 <body>

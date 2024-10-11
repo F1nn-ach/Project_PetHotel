@@ -5,80 +5,23 @@
 <head>
     <meta charset="UTF-8">
     <title>Pet Harmony</title>
-    <link rel="stylesheet" type="text/css" href="assets/style.css?v=1.0">
+    <link rel="stylesheet" type="text/css" href="assets/css/style.css?v=1.0">
     <link href="https://fonts.googleapis.com/css2?family=Kanit:wght@400;500;700&family=Prompt:wght@400;500;700&display=swap" rel="stylesheet">
-    <script type="text/javascript">
-	    function myFunction() {
-	    	  document.getElementById("myDropdown").classList.toggle("show");
-	    	}
-    </script>
 </head>
 <body>
     <div class="container">
 
-        <!-- Header -->
-        <div class="header">
-            <header>
-                <div class="Title">
-                	<a href="/Project_PetHotel/">
-                		<img alt="Logo of Pet Harmony" src="assets/img/logo.png">
-                	</a>
-                	<h1>Pet Harmony</h1>
-                </div>
-	                <div class="nav-head">
-	                
-	                    <nav>
-	                    	<div class="main-nav">
-	                    		<a href="/Project_PetHotel/" class="home">Home</a>
-		                        <a href="#service" class="service">Service</a>
-		                        <a href="#about" class="about">About</a>
-		                        <a href="contact" class="contact">Contact</a>
-                    	</div>
-                    	<!-- ทำ if user login ตรงนี้ -->
-						<% if (session.getAttribute("user") != null) { %>
-						    <div class="sub-nav">
-						        <div class="user">
-						            <div class="dropdown">
-						                <a class="dropdown-toggle" onclick="myFunction()">
-						                    <img alt="User profile" src="assets/img/user.png">
-						                </a>
-						                <div id="myDropdown" class="dropdown-content">
-						                    <a href="yourprofile" class="profile">
-						                        <img alt="User profile" src="assets/img/user.png"> Profile
-						                    </a>
-						                    <a href="logout" class="link-logout" onclick="return confirm('คุณต้องการออกจากระบบ?')">
-						                        <img alt="logout icon" src="assets/img/power-on.png"> Logout
-						                    </a>
-						                </div>
-						            </div>
-						        </div>
-						    </div>
-						<% } else { %>
-						    <div class="sub-nav">
-						        <div class="link-login">
-						            <img alt="Login icon" src="assets/img/enter.png">
-						            <a href="login">Login</a>
-						        </div>
-						        <div class="link-signup">
-						            <img alt="Sign-up icon" src="assets/img/add-user.png">
-						            <a href="register">Sign-up</a>
-						        </div>
-						    </div>
-						<% } %>
-                    </nav>
-                </div>
-                <div class="sub-header">
+        <%@ include file="header.jsp" %>
+
+        <!-- Body Page -->
+        <div class="body-content">
+        	<div class="sub-content">
                 	<div class="head-title">
                 		<h3>สัตว์เลี้ยงมีความสุข มนุษย์ก็มีความสุข</h3>
                 		<img alt="Customer service icon" src="assets/img/customer-service.png">
                 	</div>
                     <p>คุณกำลังยุ่งจนไม่มีเวลาดูแลสัตว์เลี้ยงใช่ไหม? ถ้าการดูแลสัตว์เลี้ยงเป็นเรื่องยากในช่วงที่คุณไม่ว่าง ให้เราช่วยคุณดูแลพวกเขาเอง!</p>
                 </div>
-            </header>
-        </div>
-
-        <!-- Body Page -->
-        <div class="body-content">
 
             <!-- Main Section -->
             <section id="home" class="main-content">
