@@ -35,7 +35,7 @@ public class Pet {
 	@Column(name = "pet_species", length = 100)
 	private String species;
 
-	@OneToMany(cascade = CascadeType.ALL, fetch = FetchType.LAZY)
+	@OneToMany(cascade = CascadeType.ALL, fetch = FetchType.EAGER)
 	@JoinColumn(name = "pet_id")
 	private List<Booking> bookings = new ArrayList<>();
 

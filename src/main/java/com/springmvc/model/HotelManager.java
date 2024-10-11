@@ -97,16 +97,34 @@ public class HotelManager {
 		return list;
 	}
 	
+	public List<Booking> getBookingByEmail(String email) {
+	    List<Booking> list = new ArrayList<>();
+	    Transaction transaction = null;
+	    try (Session session = HibernateConnection.doHibernateConnection().openSession()) {
+	        transaction = session.beginTransaction();
+	        list = session.createQuery("SELECT b FROM Register r JOIN r.bookings b WHERE r.email = :email", Booking.class)
+	                      .setParameter("email", email)
+	                      .getResultList();
+	        transaction.commit();
+	    } catch (Exception ex) {
+	        if (transaction != null) {
+	            transaction.rollback();
+	        }
+	        ex.printStackTrace();
+	    }
+	    return list;
+	}
+
+	
 	public Pet getPetById(String id) {
 		Pet pet = null;
-		SessionFactory sessionFactory = HibernateConnection.doHibernateConnection();
-		Session session = sessionFactory.openSession();
+		Session session = null;
 		Transaction tx = null;
-
 		try {
+			SessionFactory sessionFactory = HibernateConnection.doHibernateConnection();
+			session = sessionFactory.openSession();
 			tx = session.beginTransaction();
-			pet = session.createQuery("from Pet where id = :id", Pet.class)
-					.setParameter("id", id).uniqueResult();
+			pet = session.get(Pet.class, id); // Use session.get() for fetching by primary key
 			tx.commit();
 		} catch (Exception ex) {
 			if (tx != null) {
@@ -114,7 +132,9 @@ public class HotelManager {
 			}
 			ex.printStackTrace();
 		} finally {
-			session.close();
+			if (session != null && session.isOpen()) {
+				session.close();
+			}
 		}
 		return pet;
 	}

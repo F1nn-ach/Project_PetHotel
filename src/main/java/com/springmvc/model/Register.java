@@ -37,6 +37,10 @@ public class Register {
 	@JoinColumn(name = "register_email")
 	private List<Pet> pets = new ArrayList<>();
 
+	@OneToMany(cascade = CascadeType.ALL, fetch = FetchType.LAZY)
+	@JoinColumn(name = "register_email")
+	private List<Booking> bookings = new ArrayList<>();
+
 	public Register() {
 		super();
 		// TODO Auto-generated constructor stub
@@ -105,6 +109,14 @@ public class Register {
 
 	public void setPets(List<Pet> pets) {
 		this.pets = pets;
+	}
+
+	public List<Booking> getBookings() {
+		return bookings;
+	}
+
+	public void setBookings(List<Booking> bookings) {
+		this.bookings = bookings;
 	}
 
 }
