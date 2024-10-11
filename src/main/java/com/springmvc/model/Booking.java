@@ -5,6 +5,8 @@ import java.util.*;
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.Id;
+import javax.persistence.JoinColumn;
+import javax.persistence.ManyToOne;
 import javax.persistence.Table;
 import javax.persistence.Temporal;
 import javax.persistence.TemporalType;
@@ -16,16 +18,20 @@ public class Booking {
 	@Column(name = "booking_id", length = 7, nullable = false)
 	private String id;
 
-	@Column(name = "booking_startdate", nullable = false)
+	@Column(name = "booking_startdate")
 	@Temporal(TemporalType.TIMESTAMP)
 	private Calendar startDate;
 
-	@Column(name = "booking_enddate", nullable = false)
+	@Column(name = "booking_enddate")
 	@Temporal(TemporalType.TIMESTAMP)
 	private Calendar endDate;
 
 	@Column(name = "booking_request", length = 150)
 	private String request;
+	
+	@ManyToOne
+	@JoinColumn(name = "pet_id")
+	private Pet pet;
 
 	public Booking() {
 		super();
@@ -81,6 +87,14 @@ public class Booking {
 
 	public void setRequest(String request) {
 		this.request = request;
+	}
+
+	public Pet getPet() {
+		return pet;
+	}
+
+	public void setPet(Pet pet) {
+		this.pet = pet;
 	}
 
 }
