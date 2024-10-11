@@ -15,18 +15,6 @@
 		var dropdown = document.getElementById("userDropdown");
 		dropdown.classList.toggle("show");
 	}
-
-	window.onclick = function(event) {
-		if (!event.target.matches('.user-menu-toggle')) {
-			var dropdowns = document.getElementsByClassName("dropdown-menu");
-			for (var i = 0; i < dropdowns.length; i++) {
-				var openDropdown = dropdowns[i];
-				if (openDropdown.classList.contains('show')) {
-					openDropdown.classList.remove('show');
-				}
-			}
-		}
-	}
 </script>
 </head>
 <body>
@@ -78,7 +66,7 @@
 								src="assets/img/user.png" alt="Profile"> <span>Profile</span>
 							</a> <a href="booking" class="menu-item"> <img
 								src="assets/img/appointment.png" alt="appointment"> <span>Booking</span>
-							</a> <a href="booking" class="menu-item"> <img
+							</a> <a href="listpets" class="menu-item"> <img
 								src="assets/img/paws.png" alt="paws"> <span>Pets</span>
 							</a> <a href="logout" class="menu-item"
 								onclick="return confirm('Do you want to logout?')"> <img
