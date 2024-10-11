@@ -1,0 +1,173 @@
+:root {
+    --primary-blue: #D1E9F6;
+    --primary-beige: #F6EACB;
+    --primary-coral: #F1D3CE;
+    --primary-pink: #EECAD5;
+    --text-dark: #2C3E50;
+    --text-light: #656D78;
+    --white: #fff;
+    --shadow: rgba(0, 0, 0, 0.08);
+    --gradient-primary: linear-gradient(135deg, var(--primary-blue) 0%, var(--primary-pink) 100%);
+    --gradient-secondary: linear-gradient(135deg, var(--primary-beige) 0%, var(--primary-coral) 100%);
+    --error-red: #dc3545;
+}
+
+body {
+    font-family: 'Prompt', sans-serif;
+    line-height: 1.8;
+    color: var(--text-dark);
+    background: var(--gradient-primary);
+    background-attachment: fixed;
+    min-height: 100vh;
+    margin: 0;
+    padding: 0;
+}
+
+/* Scope all styles to the main container */
+.container {
+    max-width: 800px;
+    margin: 120px auto;
+    padding: 40px;
+    background: var(--white);
+    border-radius: 24px;
+    box-shadow: 0 8px 32px var(--shadow);
+}
+
+/* Scoped heading styles */
+.container > h2 {
+    font-size: 2rem;
+    color: var(--text-dark);
+    margin-bottom: 30px;
+    font-weight: 700;
+}
+
+/* Scoped form styles */
+.container > form {
+    margin-top: 30px;
+}
+
+.container > small {
+    display: block;
+    margin-bottom: 20px;
+    font-size: 0.9rem;
+}
+
+/* Form Field Styles - scoped to container */
+.container > form > div {
+    margin-bottom: 24px;
+}
+
+.container form label {
+    display: block;
+    font-weight: 500;
+    margin-bottom: 8px;
+    color: var(--text-dark);
+}
+
+.container form input[type="text"],
+.container form input[type="tel"] {
+    width: 100%;
+    padding: 12px 16px;
+    border: 2px solid var(--primary-blue);
+    border-radius: 12px;
+    font-size: 1rem;
+    color: var(--text-dark);
+    background-color: var(--white);
+    transition: all 0.3s ease;
+    font-family: 'Prompt', sans-serif;
+}
+
+.container form input[type="text"]:focus,
+.container form input[type="tel"]:focus {
+    outline: none;
+    border-color: var(--primary-coral);
+    box-shadow: 0 0 0 3px rgba(241, 211, 206, 0.3);
+}
+
+.container form input[readonly] {
+    background-color: var(--primary-blue);
+    opacity: 0.7;
+    cursor: not-allowed;
+}
+
+/* Submit Button - scoped */
+.container form button[type="submit"] {
+    width: 100%;
+    padding: 14px 28px;
+    background: var(--gradient-secondary);
+    color: var(--text-dark);
+    border: none;
+    border-radius: 12px;
+    font-weight: 600;
+    font-size: 1rem;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    font-family: 'Prompt', sans-serif;
+}
+
+.container form button[type="submit"]:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 8px 25px var(--shadow);
+}
+
+/* Back to Profile Link - scoped */
+.container > a[href="yourprofile"] {
+    display: block;
+    text-align: center;
+    margin-top: 30px;
+    padding: 12px 24px;
+    background: var(--gradient-primary);
+    color: var(--text-dark);
+    text-decoration: none;
+    border-radius: 12px;
+    font-weight: 600;
+    transition: all 0.3s ease;
+}
+
+.container > a[href="yourprofile"]:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 8px 25px var(--shadow);
+}
+
+/* Form Validation Styles - scoped */
+.container form input:invalid {
+    border-color: var(--error-red);
+}
+
+.container form input:invalid:focus {
+    box-shadow: 0 0 0 3px rgba(220, 53, 69, 0.3);
+}
+
+/* Responsive Design */
+@media (max-width: 768px) {
+    .container {
+        padding: 20px;
+        margin: 20px;
+    }
+
+    .container > h2 {
+        font-size: 1.5rem;
+    }
+
+    .container form input[type="text"],
+    .container form input[type="tel"],
+    .container form button[type="submit"] {
+        padding: 10px 16px;
+    }
+}
+
+/* Animation for error messages */
+@keyframes fadeIn {
+    from {
+        opacity: 0;
+        transform: translateY(-10px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+.container > small[style*="red"] {
+    animation: fadeIn 0.3s ease-in-out;
+}

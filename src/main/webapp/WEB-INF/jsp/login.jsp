@@ -4,8 +4,8 @@
 <head>
     <meta charset="UTF-8">
     <title>เข้าสู่ระบบ</title>
-    <script src="assets/scripts.js"></script>
-    <link rel="stylesheet" type="text/css" href="assets/style_login.css?v=1.0">
+    <script src="assets/js/scripts.js"></script>
+    <link rel="stylesheet" type="text/css" href="assets/css/style_login.css?v=1.0">
     <link href="https://fonts.googleapis.com/css2?family=Prompt:wght@300;400;500;600;700&display=swap" rel="stylesheet">
 </head>
 <body>
