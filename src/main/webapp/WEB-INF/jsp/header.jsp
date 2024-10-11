@@ -55,12 +55,10 @@
 					if (session.getAttribute("user") != null) {
 					%>
 					<div class="user-menu">
-						<button class="btn btn-user" onclick="toggleDropdown()"
-							aria-label="User menu">
-							<div class="user-avatar">
-								<img src="assets/img/user.png" alt="User profile">
-							</div>
-						</button>
+						<a class="bnt btn-user" onclick="toggleDropdown()">
+							<img alt="User profile" src="assets/img/user.png"> <span>User</span>
+						</a>
+						
 						<div id="userDropdown" class="dropdown-menu">
 							<a href="yourprofile" class="menu-item"> <img
 								src="assets/img/user.png" alt="Profile"> <span>Profile</span>
@@ -76,14 +74,11 @@
 					</div>
 					<%-- <% } else if (session.getAttribute("user").equals("admin")) { %>
 				        	<div class="admin-menu">
-				            <button class="user-menu-toggle" onclick="toggleDropdown()" aria-label="User menu">
-				                <div class="user-avatar">
-				                    <img src="assets/img/profile.png" alt="admin profile">
-				                    <div class="status-indicator"></div>
-				                </div>
-				            </button>
+				            <a class="bnt btn-admin" onclick="toggleDropdown()">
+							<img alt="User profile" src="assets/img/profile.png"> <span>Admin</span>
+							</a>
 				            <div id="userDropdown" class="dropdown-menu">
-				                <a href="yourprofile" class="menu-item">
+				                <a href="adminprofile" class="menu-item">
 				                    <img src="assets/img/settings.png" alt="Profile">
 				                    <span>Setting</span>
 				                </a>

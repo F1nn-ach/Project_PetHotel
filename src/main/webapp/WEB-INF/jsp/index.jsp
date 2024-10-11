@@ -9,12 +9,9 @@
     <link href="https://fonts.googleapis.com/css2?family=Kanit:wght@400;500;700&family=Prompt:wght@400;500;700&display=swap" rel="stylesheet">
 </head>
 <body>
+	<%@ include file="header.jsp" %>
     <div class="container">
-
-        <%@ include file="header.jsp" %>
-
         <!-- Body Page -->
-        <div class="body-content">
         	<div class="sub-content">
                 	<div class="head-title">
                 		<h3>สัตว์เลี้ยงมีความสุข มนุษย์ก็มีความสุข</h3>
@@ -94,7 +91,6 @@
                     </p>
                 </div>
             </section>
-        </div>
 
         <!-- Footer -->
         <footer>

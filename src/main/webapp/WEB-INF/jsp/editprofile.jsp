@@ -6,8 +6,11 @@
 <meta charset="UTF-8">
 <title>แก้ไขข้อมูลโปรไฟล์</title>
 <script src="assets/scripts.js"></script>
+	<link rel="stylesheet" type="text/css" href="assets/css/style_edit_profile.css?v=1.1">
+    <link href="https://fonts.googleapis.com/css2?family=Kanit:wght@400;500;700&family=Prompt:wght@400;500;700&display=swap" rel="stylesheet">
 </head>
 <body>
+	<%@ include file="header.jsp" %>
 	<div class="container">
 		<h2>แก้ไขข้อมูลโปรไฟล์</h2>
 		<small style="color: red">${err_msg}</small>

@@ -8,8 +8,8 @@
     <link href="https://fonts.googleapis.com/css2?family=Prompt:wght@300;400;500;600;700&display=swap" rel="stylesheet">
 </head>
 <body>
+	<%@ include file="header.jsp" %>
     <div class="container">
-        <%@ include file="header.jsp" %>
 
         <main class="main-content">
             <section class="contact-section">
