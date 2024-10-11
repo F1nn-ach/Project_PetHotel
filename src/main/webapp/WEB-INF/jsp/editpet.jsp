@@ -4,10 +4,11 @@
 <head>
     <meta charset="UTF-8">
     <title>แก้ไขข้อมูลสัตว์เลี้ยงของคุณ</title>
-    <link rel="stylesheet" type="text/css" href="assets/style_pet_register.css?v=1.0">
+    <link rel="stylesheet" type="text/css" href="assets/css/style_edit_pets.css?v=1.0">
     <link href="https://fonts.googleapis.com/css2?family=Prompt:wght@300;400;500;600;700&display=swap" rel="stylesheet">
 </head>
 <body>
+	<%@ include file="header.jsp" %>
     <div class="page-container">
         <div class="content-container">
             <div class="content-card">
