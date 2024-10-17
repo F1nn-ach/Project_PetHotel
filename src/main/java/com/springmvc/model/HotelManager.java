@@ -6,6 +6,7 @@ import java.util.List;
 import org.hibernate.Session;
 import org.hibernate.SessionFactory;
 import org.hibernate.Transaction;
+import org.hibernate.query.Query;
 
 public class HotelManager {
 	public boolean saveRegister(Register r) {
@@ -97,13 +98,13 @@ public class HotelManager {
 		return list;
 	}
 	
-	public List<Booking> getBookingByEmail(String email) {
+	public List<Booking> getBookingByPetid(String id) {
 	    List<Booking> list = new ArrayList<>();
 	    Transaction transaction = null;
 	    try (Session session = HibernateConnection.doHibernateConnection().openSession()) {
 	        transaction = session.beginTransaction();
-	        list = session.createQuery("SELECT b FROM Register r JOIN r.bookings b WHERE r.email = :email", Booking.class)
-	                      .setParameter("email", email)
+	        list = session.createQuery("SELECT b FROM Pet p JOIN p.bookings b WHERE p.id = :id", Booking.class)
+	                      .setParameter("id", id)
 	                      .getResultList();
 	        transaction.commit();
 	    } catch (Exception ex) {
@@ -138,4 +139,25 @@ public class HotelManager {
 		}
 		return pet;
 	}
+	
+	public long getTotalPetId() {
+        long total = 0;
+        SessionFactory sessionFactory = HibernateConnection.doHibernateConnection();
+        Session session = sessionFactory.openSession();
+
+        try {
+            session.beginTransaction();
+
+            Query<Long> query = session.createQuery("SELECT count(*) FROM Pet", Long.class);
+            total = query.uniqueResult();
+
+            session.getTransaction().commit();
+        } finally {
+            if (session.getTransaction().isActive()) {
+                session.getTransaction().rollback();
+            }
+            session.close();
+        }
+        return total;
+    }
 }

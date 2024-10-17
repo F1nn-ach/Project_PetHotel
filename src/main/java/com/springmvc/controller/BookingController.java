@@ -69,12 +69,9 @@ public class BookingController {
 	    b.setStartDate(startCalendar);
 	    b.setEndDate(endCalendar);
 	    b.setRequest(requests);
-	    b.setPet(pet);
 
-	    List<Booking> list = hm.getBookingByEmail(user.getEmail());
+	    List<Booking> list = hm.getBookingByPetid(user.getEmail());
 	    System.out.println(list.toString());
-	    user.setBookings(list);
-	    user.getBookings().add(b);
 	    pet.setBookings(list);
 	    pet.getBookings().add(b);
     

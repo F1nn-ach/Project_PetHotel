@@ -73,16 +73,17 @@ public class HomeController {
 		
 		HotelManager m = new HotelManager();
 		Register user = m.getUserByEmail(email);
-		if(password.equals(user.getPassword())) {
-			session.setMaxInactiveInterval(5*60);
-			session.setAttribute("user", user);
-			mav.addObject("user", session.getAttribute("user"));
-			mav.setViewName("redirect:/");
-			return mav;
+		
+		if (user != null && password.equals(user.getPassword())) {
+		    session.setMaxInactiveInterval(5 * 60); // 5 minutes
+		    session.setAttribute("user", user);
+		    mav.addObject("user", session.getAttribute("user"));
+		    mav.setViewName("redirect:/");
+		    return mav;
 		} else {
-			mav.addObject("err_msg", "ไม่สามารถเข้าสู๋ระบบได้ กรุณาลองใหม่อีกครั้ง");
-			mav.setViewName("login");
-			return mav;
+		    mav.addObject("err_msg", "ไม่สามารถเข้าสู๋ระบบได้ กรุณาลองใหม่อีกครั้ง");
+		    mav.setViewName("login");
+		    return mav;
 		}
 	}
 	

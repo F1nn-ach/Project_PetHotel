@@ -42,7 +42,7 @@ public class PetController {
 			mav.addObject("pet", list);
 			return mav;
 		} else {
-			ModelAndView mav = new ModelAndView("pet_register");
+			ModelAndView mav = new ModelAndView("petRegister");
 			mav.addObject("err_msg", "ไม่สามารถลงทะเบียนสัตว์เลี้ยงได้ กรุณาลองใหม่อีกครั้ง");
 			return mav;
 		}

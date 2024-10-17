@@ -32,6 +32,7 @@
                         <div class="form-group">
                             <label for="breed">ประเภทสัตว์เลี้ยง:</label>
                             <select id="breed" name="breed">
+                            	<option value="" disabled selected>-- เลือกสัตว์เลี้ยง --</option>
                                 <option value="หมา">หมา</option>
                                 <option value="แมว">แมว</option>
                                 <option value="กิ้งก่า">กิ้งก่า</option>

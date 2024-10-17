@@ -54,10 +54,19 @@ public class Pet {
 		this.species = species;
 	}
 
-	private String generateId() {
-		String randomPart = UUID.randomUUID().toString().replace("-", "").substring(0, 4);
-		return "H0" + randomPart;
+	public String generateId() {
+	    HotelManager hm = new HotelManager();
+	    long totalPets = hm.getTotalPetId();
+	    int maxNumber = 9999;
+	    int numberPart = (int) ((totalPets % maxNumber) + 1);
+	    // คำนวณตัวอักษรท้าย ID (A, B, C, ...)
+	    char letterPart = (char) ('A' + (totalPets / maxNumber));
+	    // แปลงเป็นรหัสในรูปแบบ P0001A
+	    String newId = String.format("P%04d%c", numberPart, letterPart);
+	    
+	    return newId;
 	}
+
 
 	public String getId() {
 		return id;

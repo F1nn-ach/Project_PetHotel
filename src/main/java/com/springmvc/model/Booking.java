@@ -28,10 +28,6 @@ public class Booking {
 
 	@Column(name = "booking_request", length = 150)
 	private String request;
-	
-	@ManyToOne
-	@JoinColumn(name = "pet_id")
-	private Pet pet;
 
 	public Booking() {
 		super();
@@ -87,14 +83,6 @@ public class Booking {
 
 	public void setRequest(String request) {
 		this.request = request;
-	}
-
-	public Pet getPet() {
-		return pet;
-	}
-
-	public void setPet(Pet pet) {
-		this.pet = pet;
 	}
 
 }
