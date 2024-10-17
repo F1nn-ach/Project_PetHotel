@@ -1,5 +1,6 @@
 package com.springmvc.model;
 
+import java.text.SimpleDateFormat;
 import java.util.*;
 
 import javax.persistence.Column;
@@ -15,7 +16,7 @@ import javax.persistence.TemporalType;
 @Table(name = "booking")
 public class Booking {
 	@Id
-	@Column(name = "booking_id", length = 7, nullable = false)
+	@Column(name = "booking_id", length = 13, nullable = false)
 	private String id;
 
 	@Column(name = "booking_startdate")
@@ -42,15 +43,16 @@ public class Booking {
 		this.request = request;
 	}
 
-	private String generateBookingId() {
-		String characters = "ABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789";
-		StringBuilder bookingId = new StringBuilder();
-		Random random = new Random();
-		for (int i = 0; i < 7; i++) {
-			int index = random.nextInt(characters.length());
-			bookingId.append(characters.charAt(index));
-		}
-		return bookingId.toString();
+	public String generateBookingId() {
+	    HotelManager hm = new HotelManager();
+	    long totalBookings = hm.getTotalBookingId();
+	    String date = new SimpleDateFormat("yyyyMMdd").format(new Date());
+	    int maxNumber = 999;
+	    int numberPart = (int) ((totalBookings % maxNumber) + 1);
+	    char letterPart = (char) ('A' + (totalBookings / maxNumber));
+	    String newId = String.format("B%s%03d%c", date, numberPart, letterPart);
+	    
+	    return newId;
 	}
 
 	public String getId() {

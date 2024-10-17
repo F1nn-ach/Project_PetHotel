@@ -61,23 +61,16 @@ public class BookingController {
 	        e.printStackTrace();
 	    }
 	    
-	    Register user = (Register) session.getAttribute("user");
-	    HotelManager hm = new HotelManager();
+	    HotelManager hm = new HotelManager(); 
 	    Pet pet = hm.getPetById(petId);
-	    
-	    Booking b = new Booking();
-	    b.setStartDate(startCalendar);
-	    b.setEndDate(endCalendar);
-	    b.setRequest(requests);
-
-	    List<Booking> list = hm.getBookingByPetid(user.getEmail());
-	    System.out.println(list.toString());
+	    Booking booking = new Booking(startCalendar, endCalendar, requests);
+	    List<Booking> list = hm.getBookingByPetid(petId);
 	    pet.setBookings(list);
-	    pet.getBookings().add(b);
+	    pet.getBookings().add(booking);
     
-	    boolean result = hm.saveRegister(user);
+	    boolean result = hm.savePet(pet);
 	    if(result) {
-	    	ModelAndView mav = new ModelAndView("redirect:/listbooking");
+	    	ModelAndView mav = new ModelAndView("redirect:/");
 	    	mav.addObject("b", list);
 	    	return mav;
 	    } else {
@@ -85,6 +78,12 @@ public class BookingController {
 	    	mav.addObject("err_msg", "ไม่สามารถทำาการจองได้ กรุณาลองใหม่อีกครั้ง");
 	    	return mav;
 	    }
+    }
+	
+	@RequestMapping(value = "/yourbooking", method = RequestMethod.GET)
+    public ModelAndView loadYourBookingPage(HttpSession session) {
+		ModelAndView mav = new ModelAndView("yourbooking");
+		return mav;
     }
 
 }

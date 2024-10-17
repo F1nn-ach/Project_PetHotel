@@ -117,4 +117,23 @@ public class PetController {
 	        return mav;
 	    }
 	}
+	
+	@RequestMapping(value = "/deletemypet", method = RequestMethod.GET)
+	public ModelAndView deletePetController(HttpServletRequest request, HttpSession session) {
+		if(session.getAttribute("user") == null) {
+			return new ModelAndView("redirect:/");
+		}
+		ModelAndView mav = new ModelAndView("redirect:/listpets");
+		String id = request.getParameter("id");
+		HotelManager hm = new HotelManager();
+		Pet pet = hm.getPetById(id);
+		
+		boolean result = hm.deletePet(pet);
+		if(result) {
+			return mav;
+		} else {
+			mav.addObject("err_msg", "ไม่สามารถลบข้อมูลได้ กรุณาลองใหม่อีกครั้ง");
+			return mav;
+		}
+	}
 }
