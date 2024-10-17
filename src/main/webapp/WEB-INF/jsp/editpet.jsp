@@ -31,14 +31,14 @@
                         </div>
 
                         <div class="form-group">
-                            <label for="breed">ประเภทสัตว์เลี้ยง:</label>
-                            <select id="breed" name="breed">
-                                <option value="หมา" ${pet.breed == 'หมา' ? 'selected' : ''}>หมา</option>
-                                <option value="แมว" ${pet.breed == 'แมว' ? 'selected' : ''}>แมว</option>
-                                <option value="กิ้งก่า" ${pet.breed == 'กิ้งก่า' ? 'selected' : ''}>กิ้งก่า</option>
-                                <option value="กบ" ${pet.breed == 'กบ' ? 'selected' : ''}>กบ</option>
-                                <option value="เต่า" ${pet.breed == 'เต่า' ? 'selected' : ''}>เต่า</option>
-                                <option value="งู" ${pet.breed == 'งู' ? 'selected' : ''}>งู</option>
+                            <label for="type">ประเภทสัตว์เลี้ยง:</label>
+                            <select id="type" name="pet_type">
+                                <option value="หมา" ${pet.type == 'หมา' ? 'selected' : ''}>หมา</option>
+                                <option value="แมว" ${pet.type == 'แมว' ? 'selected' : ''}>แมว</option>
+                                <option value="กิ้งก่า" ${pet.type == 'กิ้งก่า' ? 'selected' : ''}>กิ้งก่า</option>
+                                <option value="กบ" ${pet.type == 'กบ' ? 'selected' : ''}>กบ</option>
+                                <option value="เต่า" ${pet.type == 'เต่า' ? 'selected' : ''}>เต่า</option>
+                                <option value="งู" ${pet.type == 'งู' ? 'selected' : ''}>งู</option>
                             </select>
                         </div>
 

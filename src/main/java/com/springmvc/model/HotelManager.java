@@ -160,4 +160,30 @@ public class HotelManager {
         }
         return total;
     }
+	
+	 public boolean isEmailExists(String email) {
+	        Session session = null;
+	        Transaction transaction = null;
+	        boolean exists = false;
+	        try {
+	            session = HibernateConnection.doHibernateConnection().openSession();
+	            transaction = session.beginTransaction();
+	            
+	            Long count = session.createQuery("SELECT COUNT(*) FROM Register r WHERE r.email = :email", Long.class)
+	                .setParameter("email", email)
+	                .uniqueResult();
+	            exists = (count != null && count > 0);
+	            transaction.commit();
+	        } catch (Exception ex) {
+	            if (transaction != null) {
+	                transaction.rollback();
+	            }
+	            ex.printStackTrace();
+	        } finally {
+	            if (session != null && session.isOpen()) {
+	                session.close();
+	            }
+	        }
+	        return exists;
+	    }
 }

@@ -18,7 +18,7 @@ public class Register {
 	@Column(name = "register_email", length = 55, nullable = false)
 	private String email;
 
-	@Column(name = "register_phonenumber", length = 10, nullable = false)
+	@Column(name = "register_phonenumber", length = 10, nullable = false, unique = true)
 	private String phoneNumber;
 
 	@Column(name = "register_firstname", length = 50, nullable = false)

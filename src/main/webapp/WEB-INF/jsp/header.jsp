@@ -56,7 +56,7 @@
 					%>
 					<div class="user-menu">
 						<a class="bnt btn-user" onclick="toggleDropdown()">
-							<img alt="User profile" src="assets/img/user.png"> <span>User</span>
+							<img alt="User profile" src="assets/img/user.png"> <span>${user.firstname}</span>
 						</a>
 						
 						<div id="userDropdown" class="dropdown-menu">

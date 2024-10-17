@@ -39,14 +39,14 @@
                     </div>
 
                     <div class="form-group">
-                        <label for="email">Email:</label>
+                        <label for="email">อีเมล:</label>
                         <div class="input-wrapper">
                             <input type="email" id="email" name="email" maxlength="55" required>
                         </div>
                     </div>
 
                     <div class="form-group">
-                        <label for="phonenumber">Phone Number:</label>
+                        <label for="phonenumber">เบอร์มือถือ:</label>
                         <div class="input-wrapper">
                             <input type="tel" id="phonenumber" name="phone" maxlength="10" required>
                         </div>

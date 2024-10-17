@@ -1,7 +1,6 @@
 package com.springmvc.controller;
 
 import org.springframework.stereotype.Controller;
-import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.servlet.ModelAndView;
@@ -30,28 +29,35 @@ public class HomeController {
 	
 	@RequestMapping(value = "/register", method = RequestMethod.POST)
 	public ModelAndView registerController(HttpServletRequest request) {
-		String firstname = request.getParameter("firstname");
-		String lastname = request.getParameter("lastname");
-		String email = request.getParameter("email").trim();
-		String phone = request.getParameter("phone");
-		String password = request.getParameter("password");
-		try {
-			password = PasswordUtil.getInstance().createPassword(password, "mook");
-		} catch (Exception e) {
-			e.printStackTrace();
-		}
-		
-		HotelManager m = new HotelManager();
-		Register regis = new Register(email, phone, firstname, lastname, password);
+	    String firstname = request.getParameter("firstname");
+	    String lastname = request.getParameter("lastname");
+	    String email = request.getParameter("email").trim();
+	    String phone = request.getParameter("phone");
+	    String password = request.getParameter("password");
 
-		boolean result = m.saveRegister(regis);
-		if(result) {
-			return new ModelAndView("login");
-		} else {
-			ModelAndView mav = new ModelAndView();
-			mav.addObject("err_msg", "ไม่สามารถสมัครสมาชิกได้");
-			return mav;
-		}
+	    try {
+	        password = PasswordUtil.getInstance().createPassword(password, "mook");
+	    } catch (Exception e) {
+	        e.printStackTrace();
+	    }
+
+	    HotelManager m = new HotelManager(); 
+	    if (m.isEmailExists(email)) {
+	        ModelAndView mav = new ModelAndView("register");
+	        mav.addObject("err_msg", "อีเมลนี้ถูกใช้แล้ว กรุณาใช้อีเมลอื่น");
+	        return mav;
+	    }
+
+	    Register regis = new Register(email, phone, firstname, lastname, password);
+	    boolean result = m.saveRegister(regis);
+
+	    if (result) {
+	        return new ModelAndView("login");
+	    } else {
+	        ModelAndView mav = new ModelAndView("register");
+	        mav.addObject("err_msg", "ไม่สามารถสมัครสมาชิกได้ กรุณาลองอีกครั้งในภายหลัง");
+	        return mav;
+	    }
 	}
 	
 	@RequestMapping(value = "/login", method = RequestMethod.GET)
@@ -89,6 +95,9 @@ public class HomeController {
 	
 	@RequestMapping(value = "/yourprofile", method = RequestMethod.GET)
 	public ModelAndView loadProfilePage(HttpSession session) {
+		if(session.getAttribute("user") == null) {
+			return new ModelAndView("redirect:/");
+		}
 		ModelAndView mav = new ModelAndView("profile");
 		mav.addObject("user", session.getAttribute("user"));
 		return mav;
@@ -103,6 +112,9 @@ public class HomeController {
 	
 	@RequestMapping(value = "/edityourprofile", method = RequestMethod.GET)
 	public ModelAndView loadEditProfilePage(HttpSession session) {
+		if(session.getAttribute("user") == null) {
+			return new ModelAndView("redirect:/");
+		}
 		ModelAndView mav = new ModelAndView("editprofile");
 		mav.addObject("user", session.getAttribute("user"));
 		return mav;
