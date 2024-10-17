@@ -6,8 +6,6 @@ import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.FetchType;
-import javax.persistence.GeneratedValue;
-import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.OneToMany;
@@ -29,8 +27,8 @@ public class Pet {
 	@Column(name = "pet_age", length = 20, nullable = false)
 	private String age;
 
-	@Column(name = "pet_breed", length = 100, nullable = false)
-	private String breed;
+	@Column(name = "pet_type", length = 20, nullable = false)
+	private String type;
 
 	@Column(name = "pet_species", length = 100)
 	private String species;
@@ -44,29 +42,28 @@ public class Pet {
 		// TODO Auto-generated constructor stub
 	}
 
-	public Pet(String name, String gender, String age, String breed, String species) {
+	public Pet(String name, String gender, String age, String type, String species) {
 		super();
 		this.id = generateId();
 		this.name = name;
 		this.gender = gender;
 		this.age = age;
-		this.breed = breed;
+		this.type = type;
 		this.species = species;
 	}
 
 	public String generateId() {
-	    HotelManager hm = new HotelManager();
-	    long totalPets = hm.getTotalPetId();
-	    int maxNumber = 9999;
-	    int numberPart = (int) ((totalPets % maxNumber) + 1);
-	    // คำนวณตัวอักษรท้าย ID (A, B, C, ...)
-	    char letterPart = (char) ('A' + (totalPets / maxNumber));
-	    // แปลงเป็นรหัสในรูปแบบ P0001A
-	    String newId = String.format("P%04d%c", numberPart, letterPart);
-	    
-	    return newId;
-	}
+		HotelManager hm = new HotelManager();
+		long totalPets = hm.getTotalPetId();
+		int maxNumber = 9999;
+		int numberPart = (int) ((totalPets % maxNumber) + 1);
+		// คำนวณตัวอักษรท้าย ID (A, B, C, ...)
+		char letterPart = (char) ('A' + (totalPets / maxNumber));
+		// แปลงเป็นรหัสในรูปแบบ P0001A
+		String newId = String.format("P%04d%c", numberPart, letterPart);
 
+		return newId;
+	}
 
 	public String getId() {
 		return id;
@@ -100,12 +97,12 @@ public class Pet {
 		this.age = age;
 	}
 
-	public String getBreed() {
-		return breed;
+	public String getType() {
+		return type;
 	}
 
-	public void setBreed(String breed) {
-		this.breed = breed;
+	public void setType(String type) {
+		this.type = type;
 	}
 
 	public String getSpecies() {

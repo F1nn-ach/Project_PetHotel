@@ -41,11 +41,12 @@
                         <table class="pet-table">
                             <thead>
                                 <tr>
+                                	<th></th>
                                     <th>ลำดับ</th>
                                     <th>ชื่อ</th>
                                     <th>เพศ</th>
+                                    <th>ประเภท</th>
                                     <th>สายพันธุ์</th>
-                                    <th>Species</th>
                                     <th>อายุ</th>
                                     <th>Actions</th>
                                 </tr>
@@ -53,10 +54,11 @@
                             <tbody>
                                 <c:forEach items="${pet}" var="item">
                                     <tr>
+                                    	<td><input type="checkbox" name="petcheck" value="${item.id}"></td>
                                         <td class="center-align"><%= i++ %></td>
                                         <td>${item.name}</td>
                                         <td>${item.gender}</td>
-                                        <td>${item.breed}</td>
+                                        <td>${item.type}</td>
                                         <td>${item.species}</td>
                                         <td>${item.age}</td>
                                         <td>

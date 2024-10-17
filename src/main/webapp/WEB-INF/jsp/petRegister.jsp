@@ -30,8 +30,8 @@
                         </div>
 
                         <div class="form-group">
-                            <label for="breed">ประเภทสัตว์เลี้ยง:</label>
-                            <select id="breed" name="breed">
+                            <label for="pet_type">ประเภทสัตว์เลี้ยง:</label>
+                            <select id="pet_type" name="pet_type">
                             	<option value="" disabled selected>-- เลือกสัตว์เลี้ยง --</option>
                                 <option value="หมา">หมา</option>
                                 <option value="แมว">แมว</option>

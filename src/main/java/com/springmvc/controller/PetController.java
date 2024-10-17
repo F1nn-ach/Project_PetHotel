@@ -17,7 +17,10 @@ import jakarta.servlet.http.HttpSession;
 @Controller
 public class PetController {
 	@RequestMapping(value = "/pet_register", method = RequestMethod.GET)
-	public String loadRegisterPetPage() {
+	public String loadRegisterPetPage(HttpSession session) {
+		if(session.getAttribute("user") == null) {
+			return "index";
+		}
 		return "petRegister";
 	}
 
@@ -26,12 +29,12 @@ public class PetController {
 		String name = request.getParameter("pet_name");
 		String gender = request.getParameter("pet_gender");
 		String age = request.getParameter("pet_age");
-		String breed = request.getParameter("breed");
+		String type = request.getParameter("pet_type");
 		String species = request.getParameter("species");
 		
 		Register user = (Register) session.getAttribute("user");
 		HotelManager hm = new HotelManager();
-		Pet pet = new Pet(name, gender, age, breed, species);
+		Pet pet = new Pet(name, gender, age, type, species);
 		List<Pet> list = hm.getPetByEmail(user.getEmail());
 		user.setPets(list);
 		user.getPets().add(pet);
@@ -50,6 +53,10 @@ public class PetController {
 
 	@RequestMapping(value = "/listpets", method = RequestMethod.GET)
 	public ModelAndView loadListPetsPage(HttpSession session) {
+		if(session.getAttribute("user") == null) {
+			return new ModelAndView("redirect:/");
+		}
+		
 	    HotelManager hm = new HotelManager();
 	    String email = ((Register) session.getAttribute("user")).getEmail();
 	    List<Pet> list = hm.getPetByEmail(email);
@@ -64,7 +71,11 @@ public class PetController {
 	}
 	
 	@RequestMapping(value = "/editmypet", method = RequestMethod.GET)
-	public ModelAndView loadEditPetPage(HttpServletRequest request) {
+	public ModelAndView loadEditPetPage(HttpServletRequest request, HttpSession session) {
+		if(session.getAttribute("user") == null) {
+			return new ModelAndView("redirect:/");
+		}
+		
 		String id = request.getParameter("id");
 		HotelManager hm = new HotelManager();
 		Pet pet = hm.getPetById(id);
@@ -80,7 +91,7 @@ public class PetController {
 	    String name = request.getParameter("pet_name");
 	    String gender = request.getParameter("pet_gender");
 	    String age = request.getParameter("pet_age");
-	    String breed = request.getParameter("breed");
+	    String type = request.getParameter("pet_type");
 	    String species = request.getParameter("species");
 	    
 	    HotelManager hm = new HotelManager();
@@ -93,7 +104,7 @@ public class PetController {
 	    existingPet.setName(name);
 	    existingPet.setGender(gender);
 	    existingPet.setAge(age);
-	    existingPet.setBreed(breed);
+	    existingPet.setType(type);
 	    existingPet.setSpecies(species);
 
 	    boolean result = hm.updatePet(existingPet);
