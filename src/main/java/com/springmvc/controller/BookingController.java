@@ -21,6 +21,10 @@ import jakarta.servlet.http.HttpSession;
 public class BookingController {
 	@RequestMapping(value = "/booking", method = RequestMethod.GET)
     public ModelAndView loadBookingPage(HttpSession session) {
+		if(session.getAttribute("user") == null) {
+			return new ModelAndView("redirect:/");
+		}
+		
         HotelManager hm = new HotelManager();
         String email = ((Register) session.getAttribute("user")).getEmail();
         List<Pet> list = hm.getPetByEmail(email);
@@ -70,8 +74,9 @@ public class BookingController {
     
 	    boolean result = hm.savePet(pet);
 	    if(result) {
-	    	ModelAndView mav = new ModelAndView("redirect:/");
-	    	mav.addObject("b", list);
+	    	session.setAttribute("booking", booking);
+	    	session.setAttribute("pet", pet);
+	    	ModelAndView mav = new ModelAndView("redirect:/yourbooking");
 	    	return mav;
 	    } else {
 	    	ModelAndView mav = new ModelAndView("booking");
@@ -82,8 +87,24 @@ public class BookingController {
 	
 	@RequestMapping(value = "/yourbooking", method = RequestMethod.GET)
     public ModelAndView loadYourBookingPage(HttpSession session) {
+		if(session.getAttribute("user") == null) {
+			return new ModelAndView("redirect:/");
+		}
 		ModelAndView mav = new ModelAndView("yourbooking");
+		mav.addObject("user", session.getAttribute("user"));
+		mav.addObject("pet", session.getAttribute("pet"));
+		mav.addObject("booking", session.getAttribute("booking"));
 		return mav;
+    }
+	
+	@RequestMapping(value = "/backtohome", method = RequestMethod.GET)
+    public ModelAndView removeSessionLink(HttpSession session) {
+		if(session.getAttribute("user") == null) {
+			return new ModelAndView("redirect:/");
+		}
+		session.removeAttribute("pet");
+		session.removeAttribute("booking");
+		return new ModelAndView("index");
     }
 
 }

@@ -67,6 +67,6 @@
         </c:if>
     </div>	
 
-    <script src="assets/js/booking.js"></script> <!-- เชื่อมโยงไฟล์ JavaScript ของคุณ -->
+    <script src="assets/js/booking.js"></script>
 </body>
 </html>
