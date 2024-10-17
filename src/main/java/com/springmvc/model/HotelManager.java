@@ -43,6 +43,23 @@ public class HotelManager {
 		return false;
 	}
 	
+	public boolean savePet(Pet p) {
+		try {
+			SessionFactory sessionFactory = HibernateConnection.doHibernateConnection();
+			Session session = sessionFactory.openSession();
+			session.beginTransaction();
+
+			session.saveOrUpdate(p);
+
+			session.getTransaction().commit();
+			session.close();
+			return true;
+		} catch (Exception ex) {
+			ex.printStackTrace();
+		}
+		return false;
+	}
+	
 	public boolean updatePet(Pet p) {
 		try {
 			SessionFactory sessionFactory = HibernateConnection.doHibernateConnection();
@@ -50,6 +67,23 @@ public class HotelManager {
 			session.beginTransaction();
 
 			session.update(p);
+
+			session.getTransaction().commit();
+			session.close();
+			return true;
+		} catch (Exception ex) {
+			ex.printStackTrace();
+		}
+		return false;
+	}
+	
+	public boolean deletePet(Pet p) {
+		try {
+			SessionFactory sessionFactory = HibernateConnection.doHibernateConnection();
+			Session session = sessionFactory.openSession();
+			session.beginTransaction();
+
+			session.delete(p);
 
 			session.getTransaction().commit();
 			session.close();
@@ -161,6 +195,27 @@ public class HotelManager {
         return total;
     }
 	
+	public long getTotalBookingId() {
+        long total = 0;
+        SessionFactory sessionFactory = HibernateConnection.doHibernateConnection();
+        Session session = sessionFactory.openSession();
+
+        try {
+            session.beginTransaction();
+
+            Query<Long> query = session.createQuery("SELECT count(*) FROM Booking", Long.class);
+            total = query.uniqueResult();
+
+            session.getTransaction().commit();
+        } finally {
+            if (session.getTransaction().isActive()) {
+                session.getTransaction().rollback();
+            }
+            session.close();
+        }
+        return total;
+    }
+	
 	 public boolean isEmailExists(String email) {
 	        Session session = null;
 	        Transaction transaction = null;
@@ -185,5 +240,5 @@ public class HotelManager {
 	            }
 	        }
 	        return exists;
-	    }
+	 }
 }

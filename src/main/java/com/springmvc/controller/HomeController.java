@@ -55,7 +55,7 @@ public class HomeController {
 	        return new ModelAndView("login");
 	    } else {
 	        ModelAndView mav = new ModelAndView("register");
-	        mav.addObject("err_msg", "ไม่สามารถสมัครสมาชิกได้ กรุณาลองอีกครั้งในภายหลัง");
+	        mav.addObject("err_msg", "ไม่สามารถสมัครสมาชิกได้ กรุณาลองอีกครั้ง");
 	        return mav;
 	    }
 	}

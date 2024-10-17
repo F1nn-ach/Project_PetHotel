@@ -24,7 +24,7 @@
                     <select name="pet" id="pet" required>
                         <option value="" disabled selected>-- เลือกสัตว์เลี้ยง --</option>
                         <c:forEach items="${petList}" var="pet">
-                            <option value="${pet.id}">${pet.name} - ${pet.breed}</option>
+                            <option value="${pet.id}">${pet.name} - ${pet.type}</option>
                         </c:forEach>
                     </select>
                 </div>

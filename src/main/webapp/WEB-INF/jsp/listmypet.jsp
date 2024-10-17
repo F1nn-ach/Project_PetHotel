@@ -36,8 +36,8 @@
                             <p>${message}</p>
                         </div>
                     </c:if>
-
                     <c:if test="${empty message}">
+                    	<small style="color: red;">${err_msg}</small>
                         <table class="pet-table">
                             <thead>
                                 <tr>
@@ -48,13 +48,17 @@
                                     <th>ประเภท</th>
                                     <th>สายพันธุ์</th>
                                     <th>อายุ</th>
-                                    <th>Actions</th>
+                                    <th></th>
                                 </tr>
                             </thead>
                             <tbody>
                                 <c:forEach items="${pet}" var="item">
                                     <tr>
-                                    	<td><input type="checkbox" name="petcheck" value="${item.id}"></td>
+                                    	<td>
+                                    	   	<a href="editmypet?id=${item.id}" class="edit-button">
+                                                <i class="fa-regular fa-pen-to-square"></i>
+                                            </a>
+                                    	</td>
                                         <td class="center-align"><%= i++ %></td>
                                         <td>${item.name}</td>
                                         <td>${item.gender}</td>
@@ -62,10 +66,9 @@
                                         <td>${item.species}</td>
                                         <td>${item.age}</td>
                                         <td>
-                                            <a href="editmypet?id=${item.id}" class="edit-button">
-                                                <i class="fa-regular fa-pen-to-square"></i>
-                                                แก้ไขข้อมูล
-                                            </a>
+											<a href="deletemypet?id=${item.id}" onclick="return confirm('ตรวจสอบความถูกต้องให้เรียบร้อย')" class="edit-button">
+												<i class="fa-solid fa-trash-can"></i>
+											</a>
                                         </td>
                                     </tr>
                                 </c:forEach>
