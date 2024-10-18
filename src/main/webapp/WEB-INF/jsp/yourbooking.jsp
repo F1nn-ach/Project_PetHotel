@@ -31,7 +31,6 @@
                 </div>
                 
                 <div>
-                
                     วันที่เริ่มต้น:<fmt:formatDate value="${booking.startDate.time}" pattern="dd MMMM yyyy"/> 
                     เวลา: <fmt:formatDate value="${booking.startDate.time}" pattern="HH.mm"/> น.
                 </div>

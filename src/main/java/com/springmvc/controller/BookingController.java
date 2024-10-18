@@ -83,7 +83,7 @@ public class BookingController {
 	        }
 	    }
 	    
-	    Booking booking = new Booking(startCalendar, endCalendar, requests);
+	    Booking booking = new Booking(startCalendar, endCalendar, requests, "กำลังดำเนินการ");
 	    pet.setBookings(list);
 	    pet.getBookings().add(booking);
     
