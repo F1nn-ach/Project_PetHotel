@@ -30,8 +30,8 @@ public class Register {
 	@Column(name = "register_password", length = 100, nullable = false)
 	private String password;
 
-	@Column(name = "register_role")
-	private boolean role;
+	@Column(name = "admin")
+	private int isAdmin;
 
 	@OneToMany(cascade = CascadeType.ALL, fetch = FetchType.LAZY)
 	@JoinColumn(name = "register_email")
@@ -91,12 +91,12 @@ public class Register {
 		this.password = password;
 	}
 
-	public boolean isRole() {
-		return role;
+	public int getIsAdmin() {
+		return isAdmin;
 	}
 
-	public void setRole(boolean role) {
-		this.role = role;
+	public void setIsAdmin(int isAdmin) {
+		this.isAdmin = isAdmin;
 	}
 
 	public List<Pet> getPets() {

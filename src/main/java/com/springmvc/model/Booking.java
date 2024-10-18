@@ -30,29 +30,33 @@ public class Booking {
 	@Column(name = "booking_request", length = 150)
 	private String request;
 
+	@Column(name = "booking_status", length = 30, nullable = false)
+	private String status;
+
 	public Booking() {
 		super();
 		// TODO Auto-generated constructor stub
 	}
 
-	public Booking(Calendar startDate, Calendar endDate, String request) {
+	public Booking(Calendar startDate, Calendar endDate, String request, String status) {
 		super();
 		this.id = generateBookingId();
 		this.startDate = startDate;
 		this.endDate = endDate;
 		this.request = request;
+		this.status = status;
 	}
 
 	public String generateBookingId() {
-	    HotelManager hm = new HotelManager();
-	    long totalBookings = hm.getTotalBookingId();
-	    String date = new SimpleDateFormat("yyyyMMdd").format(new Date());
-	    int maxNumber = 999;
-	    int numberPart = (int) ((totalBookings % maxNumber) + 1);
-	    char letterPart = (char) ('A' + (totalBookings / maxNumber));
-	    String newId = String.format("B%s%03d%c", date, numberPart, letterPart);
-	    
-	    return newId;
+		HotelManager hm = new HotelManager();
+		long totalBookings = hm.getTotalBookingId();
+		String date = new SimpleDateFormat("yyyyMMdd").format(new Date());
+		int maxNumber = 999;
+		int numberPart = (int) ((totalBookings % maxNumber) + 1);
+		char letterPart = (char) ('A' + (totalBookings / maxNumber));
+		String newId = String.format("B%s%03d%c", date, numberPart, letterPart);
+
+		return newId;
 	}
 
 	public String getId() {
@@ -86,11 +90,19 @@ public class Booking {
 	public void setRequest(String request) {
 		this.request = request;
 	}
-	
+
+	public String getStatus() {
+		return status;
+	}
+
+	public void setStatus(String status) {
+		this.status = status;
+	}
+
 	public boolean isOverlapping(Calendar start1, Calendar end1, Calendar start2, Calendar end2) {
-	    long buffer = 60 * 60 * 1000;
-	    return start1.getTimeInMillis() < end2.getTimeInMillis() + buffer
-	        && start2.getTimeInMillis() < end1.getTimeInMillis() + buffer;
+		long buffer = 60 * 60 * 1000;
+		return start1.getTimeInMillis() < end2.getTimeInMillis() + buffer
+				&& start2.getTimeInMillis() < end1.getTimeInMillis() + buffer;
 	}
 
 }
