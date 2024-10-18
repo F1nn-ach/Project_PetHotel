@@ -31,10 +31,11 @@
 
                         <div class="form-group">
                             <label for="pet_type">ประเภทสัตว์เลี้ยง:</label>
-                            <select id="pet_type" name="pet_type">
+                            <select id="pet_type" name="pet_type" required>
                             	<option value="" disabled selected>-- เลือกสัตว์เลี้ยง --</option>
                                 <option value="หมา">หมา</option>
                                 <option value="แมว">แมว</option>
+                                <option value="นก">นก</option>
                                 <option value="กิ้งก่า">กิ้งก่า</option>
                                 <option value="กบ">กบ</option>
                                 <option value="เต่า">เต่า</option>

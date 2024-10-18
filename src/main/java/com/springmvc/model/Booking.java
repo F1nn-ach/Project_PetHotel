@@ -86,5 +86,11 @@ public class Booking {
 	public void setRequest(String request) {
 		this.request = request;
 	}
+	
+	public boolean isOverlapping(Calendar start1, Calendar end1, Calendar start2, Calendar end2) {
+	    long buffer = 60 * 60 * 1000;
+	    return start1.getTimeInMillis() < end2.getTimeInMillis() + buffer
+	        && start2.getTimeInMillis() < end1.getTimeInMillis() + buffer;
+	}
 
 }

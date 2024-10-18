@@ -35,6 +35,7 @@
                             <select id="type" name="pet_type">
                                 <option value="หมา" ${pet.type == 'หมา' ? 'selected' : ''}>หมา</option>
                                 <option value="แมว" ${pet.type == 'แมว' ? 'selected' : ''}>แมว</option>
+                                <option value="นก" ${pet.type == 'นก' ? 'selected' : ''}>นก</option>
                                 <option value="กิ้งก่า" ${pet.type == 'กิ้งก่า' ? 'selected' : ''}>กิ้งก่า</option>
                                 <option value="กบ" ${pet.type == 'กบ' ? 'selected' : ''}>กบ</option>
                                 <option value="เต่า" ${pet.type == 'เต่า' ? 'selected' : ''}>เต่า</option>

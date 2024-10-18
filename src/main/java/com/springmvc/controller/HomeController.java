@@ -152,6 +152,8 @@ public class HomeController {
 	
 	@RequestMapping(value = "/logout", method = RequestMethod.GET)
 	public ModelAndView logoutController(HttpSession session) {
+		session.removeAttribute("pet");
+		session.removeAttribute("booking");
 		session.removeAttribute("user");
 		return new ModelAndView("index");
 	}
