@@ -31,7 +31,7 @@ public class BookingController {
 
         ModelAndView mav = new ModelAndView("booking");
         if (list == null || list.isEmpty()) {
-            mav.addObject("message", "ไม่มีข้อมูลสัตว์เลี้ยงของคุณ");
+            mav.addObject("err_msg", "ไม่มีข้อมูลสัตว์เลี้ยงของคุณ");
         } else {
             mav.addObject("petList", list);
         }
@@ -40,6 +40,12 @@ public class BookingController {
 	
 	@RequestMapping(value = "/booking", method = RequestMethod.POST)
     public ModelAndView bookingController(HttpServletRequest request, HttpSession session) {
+		ModelAndView mav = new ModelAndView();
+		
+		HotelManager hm = new HotelManager(); 
+		String email = ((Register) session.getAttribute("user")).getEmail();
+		List<Pet> listpet = hm.getPetByEmail(email);
+		
 	    String petId = request.getParameter("pet");
 	    String startDate = request.getParameter("startDate");
 	    String startTime = request.getParameter("startTime");
@@ -65,10 +71,19 @@ public class BookingController {
 	        e.printStackTrace();
 	    }
 	    
-	    HotelManager hm = new HotelManager(); 
 	    Pet pet = hm.getPetById(petId);
-	    Booking booking = new Booking(startCalendar, endCalendar, requests);
 	    List<Booking> list = hm.getBookingByPetid(petId);
+	    
+	    for (Booking b : list) {
+	        if (b.isOverlapping(startCalendar, endCalendar, b.getStartDate(), b.getEndDate())) {
+	        	mav.addObject("err_msg", "คุณได้ทำการจองในช่วงเวลานี้ไปแล้ว กรุณาเลือกช่วงเวลาอื่น");
+	        	mav.addObject("petList", listpet);
+	            mav.setViewName("booking"); 
+	            return mav;
+	        }
+	    }
+	    
+	    Booking booking = new Booking(startCalendar, endCalendar, requests);
 	    pet.setBookings(list);
 	    pet.getBookings().add(booking);
     
@@ -76,11 +91,12 @@ public class BookingController {
 	    if(result) {
 	    	session.setAttribute("booking", booking);
 	    	session.setAttribute("pet", pet);
-	    	ModelAndView mav = new ModelAndView("redirect:/yourbooking");
+	    	mav.setViewName("redirect:/yourbooking");
 	    	return mav;
 	    } else {
-	    	ModelAndView mav = new ModelAndView("booking");
 	    	mav.addObject("err_msg", "ไม่สามารถทำาการจองได้ กรุณาลองใหม่อีกครั้ง");
+	    	mav.addObject("petList", listpet);
+	    	mav.setViewName("booking");
 	    	return mav;
 	    }
     }
