@@ -9,7 +9,7 @@
 <link
 	href="https://fonts.googleapis.com/css2?family=Prompt:wght@300;400;500;600;700&family=Playfair+Display:wght@700&display=swap"
 	rel="stylesheet">
-<link rel="stylesheet" href="assets/css/style_header.css">
+<link rel="stylesheet" href="assets/css/style_header.css?v=1.0">
 <script>
 	function toggleDropdown() {
 		var dropdown = document.getElementById("userDropdown");
