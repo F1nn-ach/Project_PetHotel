@@ -8,13 +8,14 @@
     <link href="https://fonts.googleapis.com/css2?family=Prompt:wght@300;400;500;600;700&display=swap" rel="stylesheet">
 </head>
 <body>
+	<%@ include file="header.jsp" %>
     <div class="page-container">
         <div class="content-container">
             <div class="content-card">
                 <div class="header">
                     <div class="logo">
                         <img src="assets/img/logo.png" alt="Pet Logo">
-                        <h1>ลงทะเบียนสัตว์เลี้ยง</h1>
+                        <h1>Pet Harmony</h1>
                     </div>
                 </div>
 
@@ -22,7 +23,7 @@
 
                 <form id="pet_frm" action="pet_register" method="post" class="pet-form">
                     <div class="form-section">
-                        <h2>ข้อมูลสัตว์เลี้ยง</h2>
+                        <h2>ลงทะเบียนสัตว์เลี้ยง</h2>
 
                         <div class="form-group">
                             <label for="pet_name">ชื่อสัตว์เลี้ยง:</label>

@@ -91,11 +91,7 @@
                     </p>
                 </div>
             </section>
-
-        <!-- Footer -->
-        <footer>
-            <p>&copy; 2024 Pet Harmony. All rights reserved.</p>
-        </footer>
     </div>
+    <%@ include file="footer.jsp" %>
 </body>
 </html>

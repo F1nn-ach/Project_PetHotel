@@ -107,28 +107,40 @@ body {
 .table-container {
     overflow-x: auto;
     margin-bottom: 30px;
+    border-radius: 12px;
+    box-shadow: 0 4px 6px var(--shadow);
 }
 
 .pet-table {
     width: 100%;
-    border-collapse: collapse;
+    border-collapse: separate;
+    border-spacing: 0;
     background: var(--white);
     border-radius: 12px;
     overflow: hidden;
 }
 
-.pet-table th {
-    background: var(--table-header);
+.pet-table th,
+.pet-table td {
     padding: 15px;
     text-align: left;
+}
+
+.pet-table th {
+    background: var(--table-header);
     font-weight: 600;
     color: var(--text-dark);
-    border-bottom: 2px solid var(--table-border);
+    position: sticky;
+    top: 0;
+    z-index: 10;
 }
 
 .pet-table td {
-    padding: 15px;
     border-bottom: 1px solid var(--table-border);
+}
+
+.pet-table tbody tr:last-child td {
+    border-bottom: none;
 }
 
 .pet-table tbody tr:hover {
@@ -139,7 +151,7 @@ body {
     text-align: center;
 }
 
-.edit-button {
+.edit-button, .delete-button {
     display: inline-flex;
     align-items: center;
     gap: 8px;
@@ -152,7 +164,7 @@ body {
     transition: all 0.3s ease;
 }
 
-.edit-button:hover {
+.edit-button:hover, .delete-button:hover {
     background: var(--primary-coral);
     transform: translateY(-2px);
 }
@@ -207,11 +219,22 @@ body {
         justify-content: center;
     }
 
+    .table-container {
+        margin: -20px;
+        width: calc(100% + 40px);
+        border-radius: 0;
+    }
+
     .pet-table {
         font-size: 0.9rem;
     }
 
-    .edit-button {
+    .pet-table th,
+    .pet-table td {
+        padding: 10px;
+    }
+
+    .edit-button, .delete-button {
         padding: 6px 12px;
     }
 }
