@@ -66,6 +66,28 @@ body {
 	font-size: 20px;
 }
 
+.head-title {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 20px;
+    margin-bottom: 30px;
+}
+
+.head-title h3 {
+    font-size: 2.2rem;
+    font-weight: 700;
+    color: var(--text-dark);
+    text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.1);
+}
+
+.head-title img {
+    width: 50px;
+    height: 50px;
+    filter: drop-shadow(0 4px 6px var(--shadow));
+    animation: float 3s ease-in-out infinite;
+}
+
 /* Service Section Styles */
 .service-content {
     padding: 80px 0;
