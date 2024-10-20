@@ -27,7 +27,7 @@
 		</div>
 		<div class="form-header">
 			<div class="booking-number">หมายเลขการจอง ${booking.id}</div>
-			<div class="status">กำลังดำเนินการ</div>
+			<div class="status">${booking.status}</div>
 		</div>
 
 		<div class="info-section">
@@ -54,6 +54,10 @@
 			<div class="info-item">
 				<span class="info-label">วันที่รับสัตว์เลี้ยง</span> <span><fmt:formatDate
 						value="${booking.endDate.time}" pattern="dd MMMM yyyy - HH:mm น." /></span>
+			</div>
+			<div class="info-item">
+				<span class="info-label">คำร้องขอเพิ่มเติม</span> 
+				<span>${booking.request}</span>
 			</div>
 		</div>
 		<%--     <div class="booking-summary">
