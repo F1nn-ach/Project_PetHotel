@@ -1,0 +1,29 @@
+INSERT INTO pet_types (pet_care_price, pet_type_name) VALUES 
+(500.00, 'หมา'), 
+(400.00, 'แมว'), 
+(300.00, 'หนู'), 
+(600.00, 'งู'), 
+(350.00, 'นก'), 
+(450.00, 'กิ้งก่า'), 
+(500.00, 'เต่า'), 
+(250.00, 'กบ');
+
+INSERT INTO room_types (room_description, room_type_name, room_type_price) VALUES 
+('Standard room for small pets', 'Type A', 1000.00), 
+('Medium-sized room', 'Type B', 1500.00), 
+('Large room for larger pets', 'Type C', 2000.00), 
+('Luxury room', 'Type D', 3000.00), 
+('Outdoor room with garden access', 'Type E', 2500.00);
+
+
+INSERT INTO rooms (room_status, room_type_id) VALUES 
+(1, 1), (1, 1), (1, 1), (1, 1), (1, 1), 
+(1, 2), (1, 2), (1, 2), (1, 2), (1, 2), 
+(1, 3), (1, 3), (1, 3), (1, 3), (1, 3), 
+(1, 4), (1, 4), (1, 4), (1, 4), (1, 5);
+
+INSERT INTO booking_statuses (status_name) VALUES 
+('รอดำเนินการ'), 
+('กำลังดำเนินการ'), 
+('ยกเลิก'), 
+('เสร็จสิ้น');
