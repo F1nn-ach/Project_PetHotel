@@ -28,6 +28,9 @@
                             <div class="input-wrapper">
                                 <input type="text" id="firstname" name="user_firstname" maxlength="50" required>
                             </div>
+	              			<div>
+	                        	<small style="color: red;" id="err_firstname"></small>
+	                        </div>
                         </div>
 
                         <div class="form-group">
@@ -35,6 +38,9 @@
                             <div class="input-wrapper">
                                 <input type="text" id="lastname" name="user_lastname" maxlength="50" required>
                             </div>
+                    		<div>
+                        		<small style="color: red;" id="err_lastname"></small>
+                        	</div>
                         </div>
                     </div>
 
@@ -43,6 +49,9 @@
                         <div class="input-wrapper">
                             <input type="email" id="email" name="user_email" maxlength="55" required>
                         </div>
+                        <div>
+                        	<small style="color: red;" id="err_email"></small>
+                        </div>
                     </div>
 
                     <div class="form-group">
@@ -50,12 +59,18 @@
                         <div class="input-wrapper">
                             <input type="tel" id="phonenumber" name="user_phone" maxlength="10" required>
                         </div>
+						<div>
+                        	<small style="color: red;" id="err_phone"></small>
+                        </div>
                     </div>
 
                     <div class="form-group">
                         <label for="password">รหัสผ่าน:</label>
                         <div class="input-wrapper">
                             <input type="password" id="password" name="user_password" autocomplete="off" maxlength="55" oninput="confirmPassword()" required>
+                        </div>
+              			<div>
+                        	<small style="color: red;" id="err_pwd"></small>
                         </div>
                     </div>
 
@@ -68,7 +83,7 @@
                     </div>
 
                     <div class="button-group">
-                        <button type="submit" class="submit-button">ลงทะเบียน</button>
+                        <button type="submit" class="submit-button" onclick="return isValidated(this.form)">ลงทะเบียน</button>
                         <button type="reset" class="reset-button">ยกเลิก</button>
                     </div>
                     

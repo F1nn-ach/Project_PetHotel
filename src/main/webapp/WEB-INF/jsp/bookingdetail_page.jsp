@@ -24,29 +24,29 @@
 	
         <c:if test="${not empty booking}">
             <div class="booking-details">
-                <h2>Booking ID: ${booking.bookingId}</h2>
+                <h2>รหัสการจอง: ${booking.bookingId}</h2>
                 <div class="detail-item">
-                    <span class="detail-label">Check-in Date</span>
+                    <span class="detail-label">วันที่เข้าพัก</span>
                     <span class="detail-value">${booking.startDate.time}</span>
                 </div>
                 <div class="detail-item">
-                    <span class="detail-label">Check-out Date</span>
+                    <span class="detail-label">วันที่ออกห้องพัก</span>
                     <span class="detail-value">${booking.endDate.time}</span>
                 </div>
                 <div class="detail-item">
-                    <span class="detail-label">Special Requests</span>
+                    <span class="detail-label">คำขอร้องเพิ่มเติม</span>
                     <span class="detail-value">${booking.request}</span>
                 </div>
                 <div class="detail-item">
-                    <span class="detail-label">Status</span>
+                    <span class="detail-label">สถานะการจอง</span>
                     <span class="detail-value">${booking.status.statusName}</span>
                 </div>
                 <div class="detail-item">
-                    <span class="detail-label">Room</span>
+                    <span class="detail-label">ห้องพัก</span>
                     <span class="detail-value">${booking.room.roomType.roomTypeName}</span>
                 </div>
                 <div class="detail-item">
-                    <span class="detail-label">Room No.</span>
+                    <span class="detail-label">หมายเลขห้องพัก</span>
                     <span class="detail-value">${booking.room.roomId}</span>
                 </div>
             </div>

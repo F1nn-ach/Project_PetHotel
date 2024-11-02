@@ -5,7 +5,7 @@
 <head>
 <meta charset="UTF-8">
 <title>แก้ไขข้อมูลโปรไฟล์</title>
-<script src="assets/scripts.js"></script>
+	<script src="assets/js/profile.js"></script>
 	<link rel="stylesheet" type="text/css" href="assets/css/style_editprofile.css?v=1.1">
     <link href="https://fonts.googleapis.com/css2?family=Kanit:wght@400;500;700&family=Prompt:wght@400;500;700&display=swap" rel="stylesheet">
 </head>
@@ -18,16 +18,19 @@
 			<div>
 				<label>ชื่อจริง:</label>
 				<input type="text" name="firstname" value="${user.userFirstname}" maxlength="50" required>
+				<small style="color: red;" id="err_firstname"></small>
 			</div>
 			
 			<div>
 				<label>นามสกุล:</label>
 				<input type="text" name="lastname" value="${user.userLastname}" maxlength="50" required>
+				<small style="color: red;" id="err_lastname"></small>
 			</div>
 			
 			<div>
 				<label>เบอร์มือถือ:</label>
 				<input type="tel" name="phone" value="${user.userPhone}" maxlength="10" required>
+				<small style="color: red;" id="err_phone"></small>
 			</div>
 			
 			<div>
@@ -36,7 +39,7 @@
 			</div>	
 			
 			<div>
-                <button type="submit">แก้ไขข้อมูล</button>
+                <button type="submit" onclick="return isValidated(this.form)">แก้ไขข้อมูล</button>
             </div>	
 		</form>
 

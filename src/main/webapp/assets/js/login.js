@@ -1,20 +1,4 @@
 function isValidated(frm) {
-	if (frm.user_firstname.value.trim() === "") {
-		document.getElementById('err_firstname').innerHTML = "กรุณากรอกชื่อจริงของคุณ";
-		frm.user_firstname.focus();
-		return false;
-	} else {
-		document.getElementById('err_firstname').innerHTML = " ";
-	}
-	
-	if (frm.user_lastname.value.trim() === "") {
-		document.getElementById('err_lastname').innerHTML = "กรุณากรอกนามสกุลของคุณ";
-		frm.user_lastname.focus();
-		return false;
-	} else {
-		document.getElementById('err_lastname').innerHTML = " ";
-	}
-	
 	var lengthEmail = /.{7,}/;
 	var reguxEmail = /^[\w-\.]+@([\w-]+\.)+[\w-]{2,4}$/;
 	if (frm.user_email.value.trim() === "") {
@@ -31,19 +15,6 @@ function isValidated(frm) {
 		return false;
 	} else {
 		document.getElementById('err_email').innerHTML = " ";
-	}
-	
-	var reguxTel = /^(0[689]{1})+([0-9]{8})+$/;
-	if(frm.user_phone.value === "") {
-	    document.getElementById('err_phone').innerHTML = "กรุณากรอกเบอร์โทรศัพท์ของคุณ";
-	    frm.user_phone.focus();
-	    return false;
-	} else if(!reguxTel.test(frm.user_phone.value)) {
-	    document.getElementById('err_phone').innerHTML = "เบอร์โทรศัพท์ไม่ถูกต้องกรุณาลองใหม่อีกครั้ง";
-	    frm.user_phone.focus();
-	    return false;
-	}	else {
-			document.getElementById('err_phone').innerHTML = " ";
 	}
 	
 	var lengthPwd = /.{5,}/;
@@ -64,19 +35,4 @@ function isValidated(frm) {
 			document.getElementById('err_pwd').innerHTML = " ";
 	}
 		
-}
-
-function confirmPassword(event) {
-	var password = document.getElementById("password").value;
-	var confirmPassword = document.getElementById("confirm_pwd").value;
-	var message = document.getElementById("pwd_msg");
-
-	if (password !== confirmPassword) {
-		message.style.color = "red";
-		message.innerHTML = "รหัสผ่านไม่ตรงกัน";
-		event.preventDefault();
-	} else {
-		message.style.color = "green";
-		message.innerHTML = "รหัสผ่านตรงกัน";
-	}
 }

@@ -18,7 +18,7 @@
                 <h1>Pet Harmony</h1>
             </div>
             <div class="title-section">
-                <h2>Book a Stay for Your Pet</h2>
+                <h2>การจองโรงแรมฝากสัตว์</h2>
             </div>
         </div>
 
@@ -28,9 +28,9 @@
 
         <form action="booking" method="post" id="bookingForm">
             <div class="form-group">
-                <label for="pet">Select Your Pet</label>
+                <label for="pet">เลือกสัตว์เลี้ยงของคุณ</label>
                 <select name="pet" id="pet" required>
-                    <option value="" disabled selected>-- Select Your Pet --</option>
+                    <option value="" disabled selected>-- สัตว์เลี้ยงของคุณ --</option>
                     <c:forEach items="${petList}" var="pet">
                         <option value="${pet.petId}">${pet.petName} - ${pet.petType.petTypeName}</option>
                     </c:forEach>
@@ -38,26 +38,26 @@
             </div>
 
             <div class="form-group">
-                <label>Select Room Type</label>
+                <label>เลือกประเภทห้องพัก</label>
                 <c:forEach items="${roomTypes}" var="roomType">
                     <div class="room-type-card" onclick="selectRoomType(${roomType.roomTypeId})">
                         <input type="radio" name="roomTypeId" value="${roomType.roomTypeId}" required>
                         <h3>${roomType.roomTypeName}</h3>
                         <p>${roomType.description}</p>
-                        <p class="price">Price: ฿${roomType.roomTypePrice} per night</p>
+                        <p class="price">ราคา: ฿${roomType.roomTypePrice} /คืน</p>
                     </div>
                 </c:forEach>
             </div>
 
             <div class="form-group">
-                <label for="startDate">Check-in Date</label>
+                <label for="startDate">วันที่เข้าพัก</label>
                 <input type="date" id="startDate" name="startDate" required min="${today}">
             </div>
 
             <div class="form-group">
-                <label for="startTime">Check-in Time</label>
+                <label for="startTime">เวลาเข้าพัก</label>
                 <select id="startTime" name="startTime" required>
-                    <option value="" disabled selected>-- Select Time --</option>
+                    <option value="" disabled selected>-- เลือกเวลา --</option>
                     <c:forEach var="hour" begin="9" end="17">
                         <option value="${hour}:00">${hour}:00</option>
                     </c:forEach>
@@ -65,14 +65,14 @@
             </div>
 
             <div class="form-group">
-                <label for="endDate">Check-out Date</label>
+                <label for="endDate">วันที่ออกห้องพัก</label>
                 <input type="date" id="endDate" name="endDate" required min="${today}">
             </div>
 
             <div class="form-group">
-                <label for="endTime">Check-out Time</label>
+                <label for="endTime">เวลาที่ออกห้องพัก</label>
                 <select id="endTime" name="endTime" required>
-                    <option value="" disabled selected>-- Select Time --</option>
+                    <option value="" disabled selected>-- เลือกเวลา --</option>
                     <c:forEach var="hour" begin="9" end="17">
                         <option value="${hour}:00">${hour}:00</option>
                     </c:forEach>
@@ -80,14 +80,14 @@
             </div>
 
             <div class="form-group">
-                <label for="requests">Special Requests</label>
+                <label for="requests">คำร้องขอเพิ่มเติม</label>
                 <textarea id="requests" name="requests" rows="4" maxlength="150" 
-                    placeholder="Any special requirements for your pet?"></textarea>
+                    placeholder="ต้องการร้องขอเพิ่มเติมให้สัตว์เลี้ยงคุณหรือไม่?"></textarea>
             </div>
 
             <div class="button-group">
-                <button type="submit">Confirm Booking</button>
-                <button type="reset">Clear Form</button>
+                <button type="submit">จองโรงแรม</button>
+                <button type="reset">ยกเลิก</button>
             </div>
         </form>
     </div>
@@ -112,7 +112,7 @@
             const endDate = new Date(this.value);
             
             if (endDate < startDate) {
-                alert('Check-out date cannot be earlier than check-in date');
+                alert('วันที่ออกห้องพักไม่ควรมาก่อนวันที่เข้าพัก');
                 this.value = document.getElementById('startDate').value;
             }
         });
