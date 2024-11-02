@@ -17,22 +17,22 @@
         
         <div>
             <label>ชื่อจริง:</label>
-            <input type="text" name="firstname" value="${user.firstname}" readonly>
+            <input type="text" name="firstname" value="${user.userFirstname}" readonly>
         </div>
 
         <div>
             <label>นามสกุล:</label>
-            <input type="text" name="lastname" value="${user.lastname}" readonly>
+            <input type="text" name="lastname" value="${user.userLastname}" readonly>
         </div>
 
         <div>
             <label>เบอร์มือถือ:</label>
-            <input type="text" name="phone" value="${user.phoneNumber}" readonly>
+            <input type="text" name="phone" value="${user.userPhone}" readonly>
         </div>
 
         <div>
             <label>อีเมล:</label>
-            <input type="text" name="email" value="${user.email}" readonly>
+            <input type="text" name="email" value="${user.userEmail}" readonly>
         </div>
 
         <a href="listpets" class="btn-primary">

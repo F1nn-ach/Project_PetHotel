@@ -5,7 +5,7 @@
 <head>
     <meta charset="UTF-8">
     <title>Pet Harmony</title>
-    <link rel="stylesheet" type="text/css" href="assets/css/style.css?v=1.0">
+    <link rel="stylesheet" type="text/css" href="assets/css/style_index.css?v=1.0">
     <link href="https://fonts.googleapis.com/css2?family=Kanit:wght@400;500;700&family=Prompt:wght@400;500;700&display=swap" rel="stylesheet">
 </head>
 <body>
@@ -15,7 +15,7 @@
         	<div class="sub-content">
                 	<div class="head-title">
                 		<h3>สัตว์เลี้ยงมีความสุข มนุษย์ก็มีความสุข</h3>
-                		<img alt="Customer service icon" src="assets/img/customer-service.png">
+                		<img alt="Customer service icon" src="assets/icon/customer-service.png">
                 	</div>
                     <p>คุณกำลังยุ่งจนไม่มีเวลาดูแลสัตว์เลี้ยงใช่ไหม? ถ้าการดูแลสัตว์เลี้ยงเป็นเรื่องยากในช่วงที่คุณไม่ว่าง ให้เราช่วยคุณดูแลพวกเขาเอง!</p>
                 </div>
@@ -37,25 +37,25 @@
                     <ul>
                         <li>
 	                        <div class="se-li">
-	                        <img alt="Veterinary care icon" src="assets/img/veterinary.png">
+	                        <img alt="Veterinary care icon" src="assets/icon/veterinary.png">
 	                        <p>ดูแล</p>
 	                        </div>
                         </li>
                         <li>
 	                        <div class="se-li">
-	                        <img alt="Pet food icon" src="assets/img/pet-food.png">
+	                        <img alt="Pet food icon" src="assets/icon/pet-food.png">
 	                        <p>อาหาร</p>
 	                        </div>
                         </li>
                         <li>
 	                        <div class="se-li">
-	                        <img alt="Pet health icon" src="assets/img/vet.png">
+	                        <img alt="Pet health icon" src="assets/icon/vet.png">
 	                        <p>สุขภาพ</p>
 	                        </div>
                         </li>
                         <li>
 	                        <div class="se-li">
-	                        <img alt="Dog playing icon" src="assets/img/dog.png">
+	                        <img alt="Dog playing icon" src="assets/icon/dog.png">
 	                        <p>เล่น</p>
 	                        </div>
                         </li>

@@ -1,70 +1,91 @@
 package com.springmvc.model;
 
+import javax.persistence.*;
+import com.springmvc.manager.BookingManager;
 import java.text.SimpleDateFormat;
 import java.util.*;
 
-import javax.persistence.Column;
-import javax.persistence.Entity;
-import javax.persistence.Id;
-import javax.persistence.JoinColumn;
-import javax.persistence.ManyToOne;
-import javax.persistence.Table;
-import javax.persistence.Temporal;
-import javax.persistence.TemporalType;
-
 @Entity
-@Table(name = "booking")
+@Table(name = "bookings")
 public class Booking {
-	@Id
-	@Column(name = "booking_id", length = 13, nullable = false)
-	private String id;
+    @Id
+    @Column(name = "booking_id")
+    private String bookingId;
 
-	@Column(name = "booking_startdate")
-	@Temporal(TemporalType.TIMESTAMP)
-	private Calendar startDate;
+    @Column(name = "booking_startdate")
+    @Temporal(TemporalType.TIMESTAMP)
+    private Calendar startDate;
 
-	@Column(name = "booking_enddate")
-	@Temporal(TemporalType.TIMESTAMP)
-	private Calendar endDate;
+    @Column(name = "booking_enddate")
+    @Temporal(TemporalType.TIMESTAMP)
+    private Calendar endDate;
 
-	@Column(name = "booking_request", length = 150)
-	private String request;
+    @Column(name = "booking_request", length = 150)
+    private String request;
 
-	@Column(name = "booking_status", length = 30, nullable = false)
-	private String status;
+    @ManyToOne(fetch = FetchType.EAGER)
+    @JoinColumn(name = "status_id", nullable = false)
+    private BookingStatus status;
 
-	public Booking() {
-		super();
-		// TODO Auto-generated constructor stub
-	}
+    @ManyToOne(fetch = FetchType.EAGER)
+    @JoinColumn(name = "room_id", nullable = false)
+    private Room room;
 
-	public Booking(Calendar startDate, Calendar endDate, String request, String status) {
-		super();
-		this.id = generateBookingId();
-		this.startDate = startDate;
-		this.endDate = endDate;
-		this.request = request;
-		this.status = status;
-	}
+    @ManyToOne(fetch = FetchType.EAGER)
+    @JoinColumn(name = "pet_id", nullable = false)
+    private Pet pet;  
 
+    @OneToMany(cascade = CascadeType.ALL, fetch = FetchType.LAZY)
+    private List<PetActivity> petActivities = new ArrayList<>();
+
+    public Booking() {
+        super();
+    }
+
+    public Booking(Calendar startDate, Calendar endDate, String request, BookingStatus status, Room room,
+                   Pet pet, List<PetActivity> petActivities) {
+        this.bookingId = generateBookingId();
+        this.startDate = startDate;
+        this.endDate = endDate;
+        this.request = request;
+        this.status = status;
+        this.room = room;
+        this.pet = pet;  
+        this.petActivities = petActivities;
+    }
+    
 	public String generateBookingId() {
-		HotelManager hm = new HotelManager();
-		long totalBookings = hm.getTotalBookingId();
-		String date = new SimpleDateFormat("yyyyMMdd").format(new Date());
-		int maxNumber = 999;
-		int numberPart = (int) ((totalBookings % maxNumber) + 1);
-		char letterPart = (char) ('A' + (totalBookings / maxNumber));
-		String newId = String.format("B%s%03d%c", date, numberPart, letterPart);
+        BookingManager bm = new BookingManager();
+        long totalBookings = bm.getTotalBookingId();
+        String date = new SimpleDateFormat("yyyyMMdd").format(new Date());
+        int maxNumber = 999;
+        int numberPart = (int) ((totalBookings % maxNumber) + 1);
+        char letterPart = (char) ('A' + (totalBookings / maxNumber));
+        return String.format("B%s%03d%c", date, numberPart, letterPart);
+    }
 
-		return newId;
+	public boolean isOverlapping(Calendar start1, Calendar end1, Calendar start2, Calendar end2) {
+		long buffer = 60 * 60 * 1000; 
+		return start1.getTimeInMillis() < end2.getTimeInMillis() + buffer
+				&& start2.getTimeInMillis() < end1.getTimeInMillis() + buffer;
 	}
 
-	public String getId() {
-		return id;
+	public double calculateDurationInDaysAndHours(Calendar startDateTime, Calendar endDateTime) {
+		long startMillis = startDateTime.getTimeInMillis();
+		long endMillis = endDateTime.getTimeInMillis();
+		long durationInMillis = endMillis - startMillis;
+		double durationInHours = (double) durationInMillis / (1000 * 60 * 60);
+		int days = (int) durationInHours / 24;
+		double remainingHours = durationInHours % 24;
+		return days + (remainingHours / 24);
 	}
 
-	public void setId(String id) {
-		this.id = id;
+	public String getBookingId() {
+		return bookingId;
+	}
+
+	public void setBookingId() {
+		this.bookingId = generateBookingId();
 	}
 
 	public Calendar getStartDate() {
@@ -91,18 +112,35 @@ public class Booking {
 		this.request = request;
 	}
 
-	public String getStatus() {
+	public BookingStatus getStatus() {
 		return status;
 	}
 
-	public void setStatus(String status) {
+	public void setStatus(BookingStatus status) {
 		this.status = status;
 	}
 
-	public boolean isOverlapping(Calendar start1, Calendar end1, Calendar start2, Calendar end2) {
-		long buffer = 60 * 60 * 1000;
-		return start1.getTimeInMillis() < end2.getTimeInMillis() + buffer
-				&& start2.getTimeInMillis() < end1.getTimeInMillis() + buffer;
+	public Room getRoom() {
+		return room;
 	}
 
+	public void setRoom(Room room) {
+		this.room = room;
+	}
+	
+	public Pet getPet() {
+		return pet;
+	}
+
+	public void setPet(Pet pet) {
+		this.pet = pet;
+	}
+
+	public List<PetActivity> getPetActivities() {
+		return petActivities;
+	}
+
+	public void setPetActivities(List<PetActivity> petActivities) {
+		this.petActivities = petActivities;
+	}
 }

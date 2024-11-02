@@ -218,7 +218,7 @@ header.scroll-down {
 }
 /* Enhanced Dropdown Menu */
 .dropdown-menu {
-    position: absolute;
+    position: fixed; 
     right: 0;
     top: 120%;
     background: var(--white);
@@ -235,7 +235,6 @@ header.scroll-down {
 .dropdown-menu.show {
     opacity: 1;
     visibility: visible;
-    transform: translateY(0);
 }
 
 .menu-item {

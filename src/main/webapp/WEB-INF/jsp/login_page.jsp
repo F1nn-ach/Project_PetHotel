@@ -13,26 +13,26 @@
         <div class="login-container">
             <div class="login-card">
                 <div class="logo">
-                    <img alt="Logo" src="assets/img/logo.png">
+                    <img alt="Logo" src="assets/icon/logo.png">
                     <h1>Pet Harmony</h1>
                 </div>
                 
                 <h2>เข้าสู่ระบบผู้ใช้</h2>
                 
-                <form action="login" name="frm" method="post" class="login-form">
+                <form action="login_form" name="frm" method="post" class="login-form">
                     <small class="error-message">${err_msg}</small>
                     
                     <div class="form-group">
                         <label for="email">Email:</label>
                         <div class="input-wrapper">
-                            <input type="email" id="email" name="email" maxlength="55" required>
+                            <input type="email" id="email" name="user_email" maxlength="55" required>
                         </div>
                     </div>
 
                     <div class="form-group">
                         <label for="password">รหัสผ่าน:</label>
                         <div class="input-wrapper">
-                            <input type="password" id="password" name="password" autocomplete="off" maxlength="50" required>
+                            <input type="password" id="password" name="user_password" autocomplete="off" maxlength="50" required>
                         </div>
                     </div>
 

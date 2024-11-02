@@ -1,118 +1,119 @@
 package com.springmvc.model;
 
 import java.util.*;
-
-import javax.persistence.CascadeType;
-import javax.persistence.Column;
-import javax.persistence.Entity;
-import javax.persistence.FetchType;
-import javax.persistence.Id;
-import javax.persistence.JoinColumn;
-import javax.persistence.OneToMany;
-import javax.persistence.Table;
+import javax.persistence.*;
+import com.springmvc.manager.PetManager;
 
 @Entity
-@Table(name = "pet")
+@Table(name = "pets")
 public class Pet {
-	@Id
-	@Column(name = "pet_id", length = 6, nullable = false)
-	private String id;
+    @Id
+    @Column(name = "pet_id")
+    private String petId;
 
-	@Column(name = "pet_name", length = 50, nullable = false)
-	private String name;
+    @Column(name = "pet_name", length = 50, nullable = false)
+    private String petName;
 
-	@Column(name = "pet_gender", length = 10, nullable = false)
-	private String gender;
+    @Column(name = "pet_gender", length = 50, nullable = false)
+    private String petGender;
 
-	@Column(name = "pet_age", length = 20, nullable = false)
-	private String age;
+    @Column(name = "pet_age", length = 50, nullable = false)
+    private String petAge;
 
-	@Column(name = "pet_type", length = 20, nullable = false)
-	private String type;
+    @ManyToOne(fetch = FetchType.EAGER)
+    @JoinColumn(name = "pet_type_id", nullable = false) 
+    private PetType petType;
 
-	@Column(name = "pet_species", length = 100)
-	private String species;
+    @Column(name = "pet_breed", length = 100, nullable = false)
+    private String petBreed;
+    
+    @ManyToOne(fetch = FetchType.LAZY)
+    @JoinColumn(name = "user_email", nullable = false)
+    private User user;
 
-	@OneToMany(cascade = CascadeType.ALL, fetch = FetchType.EAGER)
-	@JoinColumn(name = "pet_id")
-	private List<Booking> bookings = new ArrayList<>();
+    @OneToMany(cascade = CascadeType.ALL, fetch = FetchType.EAGER)
+    private List<Booking> bookings = new ArrayList<>();
 
-	public Pet() {
+    public Pet() {
+        super();
+    }
+    public Pet(String petName, String petGender, String petAge, PetType petType, String petBreed,
+			User user, List<Booking> bookings) {
 		super();
-		// TODO Auto-generated constructor stub
+		this.petName = petName;
+		this.petGender = petGender;
+		this.petAge = petAge;
+		this.petType = petType;
+		this.petBreed = petBreed;
+		this.user = user;
+		this.bookings = bookings;
 	}
 
-	public Pet(String name, String gender, String age, String type, String species) {
-		super();
-		this.id = generateId();
-		this.name = name;
-		this.gender = gender;
-		this.age = age;
-		this.type = type;
-		this.species = species;
+	public String generatePetId() {
+        PetManager pm = new PetManager();
+        long totalPets = pm.getTotalPetId();
+        int maxNumber = 9999;
+        int numberPart = (int) ((totalPets % maxNumber) + 1);
+        char letterPart = (char) ('A' + (totalPets / maxNumber));
+        return String.format("P%04d%c", numberPart, letterPart);
+    }
+
+    public String getPetId() {
+        return petId;
+    }
+
+    public void setPetId() {
+        this.petId = generatePetId();
+    }
+
+    public String getPetName() {
+        return petName;
+    }
+
+    public void setPetName(String petName) {
+        this.petName = petName;
+    }
+
+    public String getPetGender() {
+        return petGender;
+    }
+
+    public void setPetGender(String petGender) {
+        this.petGender = petGender;
+    }
+
+    public String getPetAge() {
+        return petAge;
+    }
+
+    public void setPetAge(String petAge) {
+        this.petAge = petAge;
+    }
+
+    public PetType getPetType() {
+        return petType; 
+    }
+
+    public void setPetType(PetType petType) {
+        this.petType = petType; 
+    }
+
+    public String getPetBreed() {
+        return petBreed;
+    }
+
+    public void setPetBreed(String petBreed) {
+        this.petBreed = petBreed;
+    }
+
+	public User getUser() {
+		return user;
 	}
-
-	public String generateId() {
-		HotelManager hm = new HotelManager();
-		long totalPets = hm.getTotalPetId();
-		int maxNumber = 9999;
-		int numberPart = (int) ((totalPets % maxNumber) + 1);
-		// คำนวณตัวอักษรท้าย ID (A, B, C, ...)
-		char letterPart = (char) ('A' + (totalPets / maxNumber));
-		// แปลงเป็นรหัสในรูปแบบ P0001A
-		String newId = String.format("P%04d%c", numberPart, letterPart);
-
-		return newId;
+	
+	public void setUser(User user) {
+		this.user = user;
 	}
-
-	public String getId() {
-		return id;
-	}
-
-	public void setId(String id) {
-		this.id = id;
-	}
-
-	public String getName() {
-		return name;
-	}
-
-	public void setName(String name) {
-		this.name = name;
-	}
-
-	public String getGender() {
-		return gender;
-	}
-
-	public void setGender(String gender) {
-		this.gender = gender;
-	}
-
-	public String getAge() {
-		return age;
-	}
-
-	public void setAge(String age) {
-		this.age = age;
-	}
-
-	public String getType() {
-		return type;
-	}
-
-	public void setType(String type) {
-		this.type = type;
-	}
-
-	public String getSpecies() {
-		return species;
-	}
-
-	public void setSpecies(String species) {
-		this.species = species;
-	}
-
+	
 	public List<Booking> getBookings() {
 		return bookings;
 	}

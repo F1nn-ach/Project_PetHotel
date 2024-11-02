@@ -4,11 +4,9 @@
 <html>
 <head>
 <meta charset="UTF-8">
-<title>รีวิวและคอมเม้นต่างๆ</title>
+<title>Insert title here</title>
 </head>
 <body>
-	<div class="container">
-		
-	</div>
+
 </body>
 </html>

@@ -35,13 +35,13 @@
 
                         <div class="social-links">
                             <a href="https://www.facebook.com/yourpage" target="_blank" class="social-link">
-                                <img alt="facebook icon" src="assets/img/facebook.png">
+                                <img alt="facebook icon" src="assets/icon/facebook.png">
                             </a>
                             <a href="https://line.me/ti/p/yourlineid" target="_blank" class="social-link">
-                                <img alt="line icon" src="assets/img/line.png">
+                                <img alt="line icon" src="assets/icon/line.png">
                             </a>
                             <a href="https://www.instagram.com/" target="_blank" class="social-link">
-                                <img alt="instagram icon" src="assets/img/instagram.png">
+                                <img alt="instagram icon" src="assets/icon/instagram.png">
                             </a>
                         </div>
                     </div>

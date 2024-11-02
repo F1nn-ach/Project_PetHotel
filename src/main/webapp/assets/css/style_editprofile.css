@@ -23,7 +23,6 @@ body {
     padding: 0;
 }
 
-/* Scope all styles to the main container */
 .container {
     max-width: 800px;
     margin: 120px auto;
