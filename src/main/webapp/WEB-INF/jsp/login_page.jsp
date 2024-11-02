@@ -4,7 +4,7 @@
 <head>
     <meta charset="UTF-8">
     <title>เข้าสู่ระบบ</title>
-    <script src="assets/js/scripts.js"></script>
+    <script src="assets/js/login.js"></script>
     <link rel="stylesheet" type="text/css" href="assets/css/style_login.css?v=1.0">
     <link href="https://fonts.googleapis.com/css2?family=Prompt:wght@300;400;500;600;700&display=swap" rel="stylesheet">
 </head>
@@ -27,6 +27,9 @@
                         <div class="input-wrapper">
                             <input type="email" id="email" name="user_email" maxlength="55" required>
                         </div>
+                  		<div>
+                        	<small style="color: red;" id="err_email"></small>
+                        </div>
                     </div>
 
                     <div class="form-group">
@@ -34,9 +37,12 @@
                         <div class="input-wrapper">
                             <input type="password" id="password" name="user_password" autocomplete="off" maxlength="50" required>
                         </div>
+                  		<div>
+                        	<small style="color: red;" id="err_pwd"></small>
+                        </div>
                     </div>
 
-                    <button type="submit" class="login-button">เข้าสู่ระบบ</button>
+                    <button type="submit" class="login-button" onclick="return isValidated(this.form)">เข้าสู่ระบบ</button>
                     
                     <div class="form-footer">
                         <p>ยังไม่มีบัญชี? <a href="register">สมัครสมาชิก</a></p>
