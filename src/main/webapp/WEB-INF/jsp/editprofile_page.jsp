@@ -6,7 +6,7 @@
 <meta charset="UTF-8">
 <title>แก้ไขข้อมูลโปรไฟล์</title>
 <script src="assets/scripts.js"></script>
-	<link rel="stylesheet" type="text/css" href="assets/css/style_edit_profile.css?v=1.1">
+	<link rel="stylesheet" type="text/css" href="assets/css/style_editprofile.css?v=1.1">
     <link href="https://fonts.googleapis.com/css2?family=Kanit:wght@400;500;700&family=Prompt:wght@400;500;700&display=swap" rel="stylesheet">
 </head>
 <body>
@@ -17,25 +17,23 @@
 		<form action="edityourprofile" method="post">
 			<div>
 				<label>ชื่อจริง:</label>
-				<input type="text" name="firstname" value="${user.firstname}" maxlength="50" required>
+				<input type="text" name="firstname" value="${user.userFirstname}" maxlength="50" required>
 			</div>
 			
 			<div>
 				<label>นามสกุล:</label>
-				<input type="text" name="lastname" value="${user.lastname}" maxlength="50" required>
+				<input type="text" name="lastname" value="${user.userLastname}" maxlength="50" required>
 			</div>
 			
 			<div>
 				<label>เบอร์มือถือ:</label>
-				<input type="tel" name="phone" value="${user.phoneNumber}" maxlength="10" required>
+				<input type="tel" name="phone" value="${user.userPhone}" maxlength="10" required>
 			</div>
 			
 			<div>
 				<label>อีเมล:</label>
-				<input type="text" name="email" value="${user.email}" readonly>
+				<input type="text" name="email" value="${user.userEmail}" readonly>
 			</div>	
-			
-                <input type="hidden" name="password" maxlength="55" required>
 			
 			<div>
                 <button type="submit">แก้ไขข้อมูล</button>

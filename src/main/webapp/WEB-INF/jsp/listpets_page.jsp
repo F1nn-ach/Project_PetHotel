@@ -12,7 +12,7 @@ int i = 1;
 <link rel="stylesheet"
 	href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.6.0/css/all.min.css">
 <link rel="stylesheet" type="text/css"
-	href="assets/css/style_pet_list.css?v=1.1">
+	href="assets/css/style_listpets.css?v=1.1">
 <link
 	href="https://fonts.googleapis.com/css2?family=Prompt:wght@300;400;500;600;700&display=swap"
 	rel="stylesheet">
@@ -24,7 +24,7 @@ int i = 1;
 			<div class="content-card">
 				<div class="header">
 					<div class="logo">
-						<img alt="Logo" src="assets/img/logo.png">
+						<img alt="Logo" src="assets/icon/logo.png">
 						<h1>Pet Harmony</h1>
 					</div>
 
@@ -58,19 +58,19 @@ int i = 1;
 								</tr>
 							</thead>
 							<tbody>
-								<c:forEach items="${pet}" var="item">
+								<c:forEach items="${pets}" var="item">
 									<tr>
 										<td class="center-align"><%=i++%></td>
-										<td>${item.name}</td>
-										<td>${item.gender}</td>
-										<td>${item.type}</td>
-										<td>${item.species}</td>
-										<td>${item.age}</td>
+										<td>${item.petName}</td>
+										<td>${item.petGender}</td>
+										<td>${item.petType.petTypeName}</td>
+										<td>${item.petBreed}</td>
+										<td>${item.petAge}</td>
 										<td colspan="2">
 											<div class="action-buttons">
-												<a href="editmypet?id=${item.id}" class="edit-button"> <i
-													class="fa-regular fa-pen-to-square"></i>
-												</a> <a href="deletemypet?id=${item.id}"
+												<a href="editmypet?id=${item.petId}" class="edit-button">
+													<i class="fa-regular fa-pen-to-square"></i>
+												</a> <a href="deletepet?id=${item.petId}"
 													onclick="return confirm('ตรวจสอบความถูกต้องให้เรียบร้อย')"
 													class="delete-button"> <i class="fa-solid fa-trash-can"></i>
 												</a>

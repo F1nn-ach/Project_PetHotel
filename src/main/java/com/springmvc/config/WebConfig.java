@@ -19,7 +19,7 @@ public class WebConfig implements WebMvcConfigurer {
 		viewResolver.setPrefix("/WEB-INF/jsp/");
 		viewResolver.setSuffix(".jsp");
 		return viewResolver;
-	}                                           
+	}
 
 	public void addResourceHandlers(ResourceHandlerRegistry registry) {
 		registry.addResourceHandler("/assets/**").addResourceLocations("/assets/");
