@@ -39,6 +39,33 @@ public class PetManager {
         }
         return total;
     }
+    
+    public List<Pet> getAllPets() {
+        Session session = null;
+        Transaction transaction = null;
+        List<Pet> pets = new ArrayList<>();
+
+        try {
+            session = sessionFactory.openSession();
+            transaction = session.beginTransaction();
+
+            Query<Pet> query = session.createQuery("FROM Pet", Pet.class);
+            pets = query.list();
+
+            transaction.commit();
+        } catch (Exception e) {
+            if (transaction != null) {
+                transaction.rollback();
+            }
+            e.printStackTrace();
+        } finally {
+            if (session != null) {
+                session.close();
+            }
+        }
+        return pets;
+    }
+
 
     public List<Pet> getPetByEmail(String email) {
         Session session = null;
@@ -201,5 +228,28 @@ public class PetManager {
             }
         }
         return isUpdated;
+    }
+
+    public List<Pet> getPetsByUser(String userEmail) {
+        Session session = null;
+        List<Pet> pets = new ArrayList<>();
+        
+        try {
+            session = sessionFactory.openSession();
+            
+            String hql = "FROM Pet p WHERE p.user.userEmail = :userEmail";
+            Query<Pet> query = session.createQuery(hql, Pet.class);
+            query.setParameter("userEmail", userEmail);
+            
+            pets = query.getResultList();
+        } catch (Exception e) {
+            e.printStackTrace();
+        } finally {
+            if (session != null) {
+                session.close();
+            }
+        }
+        
+        return pets;
     }
 }

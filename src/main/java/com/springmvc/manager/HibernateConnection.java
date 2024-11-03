@@ -10,9 +10,9 @@ import com.springmvc.model.*;
  
 public class HibernateConnection {
 	public static SessionFactory sessionFactory;
-	static String url = "jdbc:mysql://localhost:33091/test1234?characterEncoding=UTF-8"; 
-	static String uname = "test1234";
-	static String pwd = "1234";
+	static String url = "jdbc:mysql://localhost:33091/project311?characterEncoding=UTF-8"; 
+	static String uname = "project";
+	static String pwd = "password";
 	public static SessionFactory doHibernateConnection(){
 		Properties database = new Properties();
 		database.setProperty("hibernate.hbm2ddl.auto", "update"); //หลังจากสร้างตารางแล้วให้เอาออก

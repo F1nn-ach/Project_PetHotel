@@ -65,6 +65,32 @@ public class BookingManager {
 		}
 		return total;
 	}
+	
+	public List<Booking> getAllBookings() {
+	    Session session = null;
+	    Transaction transaction = null;
+	    List<Booking> bookings = new ArrayList<>();
+
+	    try {
+	        session = sessionFactory.openSession();
+	        transaction = session.beginTransaction();
+
+	        Query<Booking> query = session.createQuery("FROM Booking", Booking.class);
+	        bookings = query.list();
+
+	        transaction.commit();
+	    } catch (Exception e) {
+	        if (transaction != null) {
+	            transaction.rollback();
+	        }
+	        e.printStackTrace();
+	    } finally {
+	        if (session != null) {
+	            session.close();
+	        }
+	    }
+	    return bookings;
+	}
 
 	public List<Booking> getBookingByUserPetEmail(String userEmail) {
 		Session session = null;
@@ -255,6 +281,35 @@ public class BookingManager {
 			}
 		}
 		return availableRooms;
+	}
+	
+	public int getVacantRoomCount(int roomTypeId) {
+	    Session session = null;
+	    Transaction transaction = null;
+	    
+	    try {
+	        session = sessionFactory.openSession();
+	        transaction = session.beginTransaction();
+	        
+	        Long count = (Long) session.createQuery(
+	            "SELECT COUNT(r) FROM Room r WHERE r.roomType.roomTypeId = :roomTypeId AND r.isAvailable = true")
+	            .setParameter("roomTypeId", roomTypeId)
+	            .uniqueResult();
+	            
+	        transaction.commit();
+	        return count.intValue();
+	        
+	    } catch (Exception e) {
+	        if (transaction != null) {
+	            transaction.rollback();
+	        }
+	        e.printStackTrace();
+	        return 0;
+	    } finally {
+	        if (session != null) {
+	            session.close();
+	        }
+	    }
 	}
 
 	public void updateRoomStatus(int roomId, boolean isAvailable) {
