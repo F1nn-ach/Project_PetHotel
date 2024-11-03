@@ -121,7 +121,7 @@
             const endDate = new Date(this.value);
             
             if (endDate < startDate) {
-                alert('Check-out date cannot be earlier than check-in date');
+                alert('วันที่ออกห้องพักไม่ควรมาก่อนวันที่เข้าพัก');
                 this.value = document.getElementById('startDate').value;
             }
         });
