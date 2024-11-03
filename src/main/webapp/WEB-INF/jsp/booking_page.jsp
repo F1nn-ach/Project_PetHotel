@@ -18,7 +18,7 @@
 	<div class="container">
 		<div class="header">
 			<div class="logo">
-				<img src="assets/img/logo.png" alt="Pet Harmony Logo">
+				<img src="assets/icon/logo.png" alt="Pet Harmony Logo">
 				<h1>Pet Harmony</h1>
 			</div>
 			<div class="title-section">

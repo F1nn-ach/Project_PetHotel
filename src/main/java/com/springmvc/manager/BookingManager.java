@@ -224,6 +224,46 @@ public class BookingManager {
 		}
 		return roomTypes;
 	}
+	
+	public boolean updateBookingStatus(String bookingId, int statusId) {
+	    Session session = null;
+	    Transaction transaction = null;
+	    boolean isUpdated = false;
+
+	    try {
+	        session = sessionFactory.openSession();
+	        transaction = session.beginTransaction();
+
+	        Booking booking = session.get(Booking.class, bookingId);
+	        if (booking != null) {
+	            BookingStatus status = session.get(BookingStatus.class, statusId);
+	            if (status != null) {
+	                booking.setStatus(status);
+	                session.update(booking);
+	                
+	                if (status.getStatusName().equals("สำเร็จ") || status.getStatusName().equals("ยกเลิก")) {
+	                    Room room = booking.getRoom();
+	                    room.setAvailable(true);
+	                    session.update(room);
+	                }
+	                
+	                isUpdated = true;
+	            }
+	        }
+
+	        transaction.commit();
+	    } catch (Exception e) {
+	        if (transaction != null) {
+	            transaction.rollback();
+	        }
+	        e.printStackTrace();
+	    } finally {
+	        if (session != null) {
+	            session.close();
+	        }
+	    }
+	    return isUpdated;
+	}
 
 	public RoomType getRoomTypeById(int id) {
 		Session session = null;
@@ -473,10 +513,9 @@ public class BookingManager {
 	        session = sessionFactory.openSession();
 	        transaction = session.beginTransaction();
 
-	        String hql = "SELECT pa FROM PetActivity pa JOIN pa.booking b WHERE b.bookingId = :bookingId AND b.status.statusName = :status";
+	        String hql = "SELECT pa FROM PetActivity pa JOIN pa.booking b WHERE b.bookingId = :bookingId";
 	        Query<PetActivity> query = session.createQuery(hql, PetActivity.class);
 	        query.setParameter("bookingId", bookingId);
-	        query.setParameter("status", "กำลังดำเนินการ");
 
 	        petActivities = query.getResultList();
 

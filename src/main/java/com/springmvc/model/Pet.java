@@ -31,14 +31,11 @@ public class Pet {
     @JoinColumn(name = "user_email", nullable = false)
     private User user;
 
-    @OneToMany(cascade = CascadeType.ALL, fetch = FetchType.EAGER)
-    private List<Booking> bookings = new ArrayList<>();
-
     public Pet() {
         super();
     }
     public Pet(String petName, String petGender, String petAge, PetType petType, String petBreed,
-			User user, List<Booking> bookings) {
+			User user) {
 		super();
 		this.petName = petName;
 		this.petGender = petGender;
@@ -46,7 +43,6 @@ public class Pet {
 		this.petType = petType;
 		this.petBreed = petBreed;
 		this.user = user;
-		this.bookings = bookings;
 	}
 
 	public String generatePetId() {
@@ -112,13 +108,5 @@ public class Pet {
 	
 	public void setUser(User user) {
 		this.user = user;
-	}
-	
-	public List<Booking> getBookings() {
-		return bookings;
-	}
-
-	public void setBookings(List<Booking> bookings) {
-		this.bookings = bookings;
 	}
 }

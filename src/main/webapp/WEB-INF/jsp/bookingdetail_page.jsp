@@ -14,7 +14,7 @@
     <div class="container">
     <div class="header">
             <div class="logo">
-                <img src="assets/img/logo.png" alt="Pet Harmony Logo">
+                <img src="assets/icon/logo.png" alt="Pet Harmony Logo">
                 <h1>Pet Harmony</h1>
             </div>
             <div class="title-section">
@@ -59,7 +59,7 @@
                     <c:forEach var="petActivity" items="${activity}">
                         <li class="activity-card">
                             <h3>${petActivity.activityDetail}</h3>
-                            <img src="${petActivity.activityImage}" alt="Activity Image">
+                            <img src="assets/img/${petActivity.activityImage}" alt="Activity Image">
                             <div class="activity-date">
                                 Activity Date: ${petActivity.activityDate}
                             </div>
@@ -73,7 +73,7 @@
             </c:if>
         </div>
 
-        <a href="/" class="back-button">
+        <a href="/Project_PetHotel/" class="back-button">
             กลับไปยังหน้าหลัก
         </a>
     </div>
