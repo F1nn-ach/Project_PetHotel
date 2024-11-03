@@ -55,7 +55,7 @@ public class BookingController {
 
         List<Pet> userPets = pm.getPetByEmail(user.getUserEmail());
         List<Pet> availablePets = new ArrayList<>();
-        
+
         if (userPets.isEmpty()) {
             ModelAndView redirectMav = new ModelAndView("redirect:/pets");
             redirectMav.addObject("err_msg", "กรุณาเพิ่มข้อมูลสัตว์เลี้ยงก่อนทำการจอง");
@@ -63,11 +63,17 @@ public class BookingController {
         }
 
         List<RoomType> roomTypes = bm.getAllRoomType();
+        Map<Integer, Integer> vacantRoomCounts = new HashMap<>();
+        
+        for (RoomType roomType : roomTypes) {
+            int vacantRooms = bm.getVacantRoomCount(roomType.getRoomTypeId());
+            vacantRoomCounts.put(roomType.getRoomTypeId(), vacantRooms);
+        }
 
         Calendar cal = Calendar.getInstance();
         SimpleDateFormat dateFormat = new SimpleDateFormat("yyyy-MM-dd");
         String today = dateFormat.format(cal.getTime());
-        
+
         for (Pet pet : userPets) {
             if (!bm.isPetBooked(pet.getPetId())) {
                 availablePets.add(pet);
@@ -76,6 +82,7 @@ public class BookingController {
 
         mav.addObject("petList", availablePets);
         mav.addObject("roomTypes", roomTypes);
+        mav.addObject("vacantRoomCounts", vacantRoomCounts);
         mav.addObject("today", today);
 
         return mav;

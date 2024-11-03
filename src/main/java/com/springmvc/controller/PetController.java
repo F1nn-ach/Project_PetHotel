@@ -21,7 +21,7 @@ public class PetController {
         User user = (User) session.getAttribute("user");
         
         if (user == null) {
-            return new ModelAndView("redirect:/");
+            return new ModelAndView("redirect:/logout");
         }
         
         PetManager pm = new PetManager();
@@ -40,7 +40,7 @@ public class PetController {
         ModelAndView mav = new ModelAndView("registerpet_page");
         
         if (session.getAttribute("user") == null) {
-            return new ModelAndView("redirect:/");
+            return new ModelAndView("redirect:/logout");
         }
         
         PetManager pm = new PetManager();
@@ -57,7 +57,7 @@ public class PetController {
 
         User user = (User) session.getAttribute("user");
         if (user == null) {
-            return new ModelAndView("redirect:/login");
+            return new ModelAndView("redirect:/logout");
         }
 
         String name = request.getParameter("pet_name");
@@ -109,7 +109,7 @@ public class PetController {
     @RequestMapping(value = "/editmypet", method = RequestMethod.GET)
 	public ModelAndView loadEditPetPage(HttpServletRequest request, HttpSession session) {
 		if(session.getAttribute("user") == null) {
-			return new ModelAndView("redirect:/");
+			return new ModelAndView("redirect:/logout");
 		}
 		
 		String id = request.getParameter("id");
@@ -128,7 +128,7 @@ public class PetController {
         ModelAndView mav = new ModelAndView("editpet_page");
         
         if (session.getAttribute("user") == null) {
-            return new ModelAndView("redirect:/");
+            return new ModelAndView("redirect:/logout");
         }
 
         String petId = request.getParameter("petId");
@@ -180,7 +180,7 @@ public class PetController {
         ModelAndView mav = new ModelAndView("redirect:/listpets");
         
         if (session.getAttribute("user") == null) {
-        	mav.setViewName("redirect:/");
+        	mav.setViewName("redirect:/logout");
             return mav;
         }
 

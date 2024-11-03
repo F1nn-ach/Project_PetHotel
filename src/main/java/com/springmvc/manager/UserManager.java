@@ -63,6 +63,25 @@ public class UserManager {
 		}
 		return false;
 	}
+	
+	public User getUserByEmail(String email) {
+	    User user = null;
+
+	    try {
+	        SessionFactory sessionFactory = HibernateConnection.doHibernateConnection();
+	        Session session = sessionFactory.openSession();
+
+	        user = (User) session.createQuery("FROM User WHERE email = :email")
+	                .setParameter("email", email)
+	                .uniqueResult();
+
+	        session.close();
+	    } catch (Exception ex) {
+	        ex.printStackTrace();
+	    }
+
+	    return user;
+	}
 
 	public List<User> getAllUsers() {
 		List<User> list = new ArrayList<>();
@@ -70,7 +89,7 @@ public class UserManager {
 		try {
 			SessionFactory sessionFactory = HibernateConnection.doHibernateConnection();
 			Session session = sessionFactory.openSession();
-			list = session.createQuery("From User").list();
+			list = session.createQuery("From User where isAdmin = false").list();
 			session.close();
 		} catch (Exception ex) {
 			ex.printStackTrace();
